@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Calendar, Headphones, Heart, Home, Users, Wheelchair, Yoga } from "lucide-react";
+import { Accessibility, Headphones, Heart, Home, Users, Activity, Utensils } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface AmenityProps {
@@ -26,7 +26,7 @@ const AmenityCard: React.FC<AmenityProps> = ({ icon, title, description }) => {
 const Amenities: React.FC = () => {
   const amenities = [
     {
-      icon: <Yoga size={24} />,
+      icon: <Activity size={24} />,
       title: "Wellness Centre",
       description: "Daily yoga, meditation, and therapeutic sessions to nurture mind, body, and spirit."
     },
@@ -46,12 +46,12 @@ const Amenities: React.FC = () => {
       description: "Peace of mind with qualified medical professionals available when needed."
     },
     {
-      icon: <Calendar size={24} />,
+      icon: <Utensils size={24} />,
       title: "Community Activities",
       description: "Engage in various social events, workshops, and recreational activities."
     },
     {
-      icon: <Wheelchair size={24} />,
+      icon: <Accessibility size={24} />,
       title: "Accessibility Features",
       description: "Thoughtfully designed spaces with elevator access and wheelchair-friendly pathways."
     },
