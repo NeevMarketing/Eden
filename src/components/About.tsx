@@ -12,15 +12,37 @@ const About: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <h3 className="text-2xl font-serif text-eden mb-6">A Senior-First Hospitality Space</h3>
-            <p className="text-eden-text mb-4">
-              Eden Gracious Living is more than just accommodation—it's a philosophy of living that embraces comfort, dignity, and holistic wellbeing for our senior guests.
+            <h3 className="text-2xl font-serif text-eden mb-6">Find the peace, comfort, and connection you've been seeking.</h3>
+            <p className="text-eden-text mb-6">
+              At Eden, you step into a world designed for ease, thoughtfully crafted apartments, quiet hillside surroundings, and a community where you can truly belong. Here, life slows down just enough for you to breathe deeper, move at your own pace, and enjoy every day with dignity, care, and independence.
             </p>
-            <p className="text-eden-text mb-4">
-              Nestled in the serene landscapes of Dehradun, our thoughtfully designed residences offer a perfect blend of independence and support, privacy and community, tranquility and engagement.
-            </p>
-            <p className="text-eden-text">
-              Our attentive staff, peaceful campus, and tailored services create an environment where seniors can truly thrive, enjoying each day with grace and purpose.
+            
+            <h4 className="text-lg font-serif text-eden mb-4">What you'll enjoy at Eden:</h4>
+            <ul className="text-eden-text mb-6 space-y-2">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-eden rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                Beautifully furnished residences, maintained to perfection
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-eden rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                Personalized services that feel natural, not intrusive
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-eden rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                A wellness-rich environment: yoga, gym, jacuzzi, spa, and more
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-eden rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                Seamless support for your everyday housekeeping, maintenance, dining
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-eden rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                A warm, private community where neighbors become lifelong friends
+              </li>
+            </ul>
+            
+            <p className="text-eden-text italic">
+              No labels, no rush, just the freedom to experience life the way you want, for as long as you choose.
             </p>
           </div>
           
