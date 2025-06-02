@@ -8,8 +8,27 @@ import { CalendarIcon, Bed } from "lucide-react";
 import { format, differenceInDays } from "date-fns";
 import { cn } from "@/lib/utils";
 
+// Define types for better TypeScript support
+interface PackageInfo {
+  total: number;
+  perNight: number;
+  features: string[];
+  addOns: string[];
+}
+
+interface RoomData {
+  [key: number]: PackageInfo;
+}
+
+interface CategoryData {
+  [roomName: string]: RoomData;
+}
+
 // Package data based on the uploaded images
-const packageData = {
+const packageData: {
+  studio: CategoryData;
+  bhk2: CategoryData;
+} = {
   studio: {
     "Hamilton Studio": {
       7: { total: 60000, perNight: 8571, features: ["Room boarding with breakfast", "Access to swimming pool", "4 Yoga sessions", "Access to movie theatre", "Access to library", "Access to pool table"], addOns: ["Food vouchers: ₹3,000", "Spa sessions: ₹3,000"] },
@@ -52,7 +71,7 @@ const Accommodations: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedRoom, setSelectedRoom] = useState<string>("");
 
-  const getDurationCategory = (days: number) => {
+  const getDurationCategory = (days: number): 7 | 14 | 30 => {
     if (days <= 7) return 7;
     if (days <= 14) return 14;
     return 30;
@@ -71,8 +90,8 @@ const Accommodations: React.FC = () => {
     const duration = getStayDuration();
     const durationCategory = getDurationCategory(duration);
     const categoryData = selectedCategory === "studio" ? packageData.studio : packageData.bhk2;
-    const roomData = categoryData[selectedRoom as keyof typeof categoryData];
-    const packageInfo = roomData[durationCategory as keyof typeof roomData];
+    const roomData = categoryData[selectedRoom];
+    const packageInfo: PackageInfo | undefined = roomData?.[durationCategory];
 
     if (!packageInfo) return null;
 
