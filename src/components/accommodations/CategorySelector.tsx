@@ -100,7 +100,7 @@ const RoomCategorySelector = ({ roomType, onSelect, onBack }: RoomCategorySelect
 
       <div className="text-center">
         <div className="flex items-center justify-center mb-6">
-          <Home className="w-8 h-8 text-emerald-600 mr-3" />
+          <Home className="w-8 h-8 text-eden mr-3" />
           <h2 className="text-4xl font-serif font-bold text-stone-800">
             Choose Your {roomType.name} Collection
           </h2>
@@ -146,7 +146,7 @@ const RoomCategorySelector = ({ roomType, onSelect, onBack }: RoomCategorySelect
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2 text-stone-600">
-                  <Users className="w-5 h-5 text-emerald-600" />
+                  <Users className="w-5 h-5 text-eden" />
                   <span className="font-medium">{category.guests} guests</span>
                 </div>
                 <div className="text-right">
@@ -159,7 +159,7 @@ const RoomCategorySelector = ({ roomType, onSelect, onBack }: RoomCategorySelect
               </div>
               
               <Button 
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
                 onClick={() => onSelect(category)}
               >
                 Select Sanctuary

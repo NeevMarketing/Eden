@@ -74,7 +74,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
     <div className="space-y-12">
       <div className="text-center">
         <div className="flex items-center justify-center mb-6">
-          <Leaf className="w-8 h-8 text-emerald-600 mr-3" />
+          <Leaf className="w-8 h-8 text-eden mr-3" />
           <h2 className="text-4xl font-serif font-bold text-stone-800">Choose Your Sanctuary</h2>
         </div>
         <p className="text-stone-600 text-lg font-light">Select the accommodation that nurtures your well-being</p>
@@ -107,7 +107,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
             <CardContent className="space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2 text-stone-600">
-                  <Users className="w-5 h-5 text-emerald-600" />
+                  <Users className="w-5 h-5 text-eden" />
                   <span className="font-medium">{roomType.guests} guests</span>
                 </div>
                 <div className="text-right">
@@ -120,7 +120,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
               </div>
               
               <Button 
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
                 onClick={() => onSelect(roomType)}
               >
                 Know More

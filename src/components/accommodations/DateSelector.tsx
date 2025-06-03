@@ -180,7 +180,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
 
       <div className="text-center">
         <div className="flex items-center justify-center mb-6">
-          <Clock className="w-8 h-8 text-emerald-600 mr-3" />
+          <Clock className="w-8 h-8 text-eden mr-3" />
           <h2 className="text-3xl font-serif font-bold text-stone-800">
             Plan Your Retreat
           </h2>
@@ -197,14 +197,14 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
             onClick={() => setSelectionType("custom")}
           >
             <CardHeader className="text-center">
-              <CalendarIcon className="w-12 h-12 mx-auto text-emerald-600 mb-4" />
+              <CalendarIcon className="w-12 h-12 mx-auto text-eden mb-4" />
               <CardTitle className="font-serif text-stone-800">Custom Journey</CardTitle>
               <CardDescription className="font-light text-stone-600">
                 Choose your own arrival and departure dates
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 rounded-xl">Select Custom Dates</Button>
+              <Button className="w-full bg-eden hover:bg-emerald-700 rounded-xl">Select Custom Dates</Button>
             </CardContent>
           </Card>
 
@@ -326,7 +326,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
                 <Button 
                   onClick={handleCustomDateContinue}
                   disabled={!checkIn || !checkOut}
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 rounded-xl"
+                  className="flex-1 bg-eden hover:bg-emerald-700 rounded-xl"
                 >
                   Continue
                 </Button>
@@ -397,7 +397,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
             <Button 
               onClick={handlePackageContinue}
               disabled={!selectedPackage}
-              className="flex-1 bg-emerald-600 hover:bg-emerald-700 rounded-xl"
+              className="flex-1 bg-eden hover:bg-emerald-700 rounded-xl"
             >
               Continue with Package
             </Button>

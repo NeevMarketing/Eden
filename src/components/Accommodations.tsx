@@ -126,7 +126,7 @@ const AccommodationFlow = () => {
               <div
                 className={`w-14 h-14 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-500 ${
                   index <= currentStepIndex
-                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-200"
+                    ? "bg-eden text-white shadow-lg shadow-emerald-200"
                     : "bg-stone-200 text-stone-500"
                 }`}
               >
@@ -141,7 +141,7 @@ const AccommodationFlow = () => {
             {index < steps.length - 1 && (
               <div className={`w-20 h-1 mx-6 rounded-full transition-all duration-500 ${
                 index < currentStepIndex 
-                  ? "bg-emerald-600" 
+                  ? "bg-eden" 
                   : "bg-stone-200"
               }`} />
             )}

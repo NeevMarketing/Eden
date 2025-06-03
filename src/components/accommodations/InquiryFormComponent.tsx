@@ -45,7 +45,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
 
       <div className="text-center">
         <div className="flex items-center justify-center mb-6">
-          <Mail className="w-8 h-8 text-emerald-600 mr-3" />
+          <Mail className="w-8 h-8 text-eden mr-3" />
           <h2 className="text-3xl font-serif font-bold text-stone-800">
             Connect With Our Wellness Team
           </h2>
@@ -60,7 +60,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
         <Card className="h-fit bg-white/80 backdrop-blur-sm border-stone-200">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 font-serif text-stone-800">
-              <Package className="w-5 h-5 text-emerald-600" />
+              <Package className="w-5 h-5 text-eden" />
               <span>Your Sanctuary Selection</span>
             </CardTitle>
           </CardHeader>
@@ -210,7 +210,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
 
               <Button 
                 type="submit" 
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl py-6 text-lg font-medium"
+                className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-6 text-lg font-medium"
                 disabled={!formData.name || !formData.email || !formData.phone}
               >
                 Begin Your Wellness Journey
