@@ -3,17 +3,39 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Image, ChevronDown } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+interface GalleryCategory {
+  title: string;
+  images: GalleryImage[];
+}
+
+interface AmenitySubcategory {
+  title: string;
+  images: GalleryImage[];
+}
+
+interface AmenitiesCategory {
+  title: string;
+  subcategories: Record<string, AmenitySubcategory>;
+}
+
+type GalleryCategoryType = GalleryCategory | AmenitiesCategory;
 
 const GalleryPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [openSections, setOpenSections] = useState<string[]>(['exterior']);
 
-  const galleryCategories = {
+  const galleryCategories: Record<string, GalleryCategoryType> = {
     exterior: {
       title: "Exterior",
       images: [
@@ -136,7 +158,7 @@ const GalleryPage = () => {
     );
   };
 
-  const renderImageGrid = (images: { src: string; alt: string }[]) => (
+  const renderImageGrid = (images: GalleryImage[]) => (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {images.map((image, index) => (
         <div 
@@ -158,6 +180,14 @@ const GalleryPage = () => {
       ))}
     </div>
   );
+
+  const isAmenitiesCategory = (category: GalleryCategoryType): category is AmenitiesCategory => {
+    return 'subcategories' in category;
+  };
+
+  const isGalleryCategory = (category: GalleryCategoryType): category is GalleryCategory => {
+    return 'images' in category;
+  };
 
   return (
     <div className="min-h-screen">
@@ -204,7 +234,7 @@ const GalleryPage = () => {
                         </CardTitle>
                         <div className="flex items-center space-x-2">
                           <Badge variant="secondary">
-                            {category.images?.length || 0} photos
+                            {isGalleryCategory(category) ? category.images.length : 0} photos
                           </Badge>
                           <ChevronDown className={`w-5 h-5 transition-transform ${
                             openSections.includes(key) ? 'rotate-180' : ''
@@ -215,7 +245,7 @@ const GalleryPage = () => {
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <CardContent className="pt-0">
-                      {category.images && renderImageGrid(category.images)}
+                      {isGalleryCategory(category) && renderImageGrid(category.images)}
                     </CardContent>
                   </CollapsibleContent>
                 </Collapsible>
@@ -236,7 +266,8 @@ const GalleryPage = () => {
                       </CardTitle>
                       <div className="flex items-center space-x-2">
                         <Badge variant="secondary">
-                          {Object.keys(galleryCategories.amenities.subcategories).length} categories
+                          {isAmenitiesCategory(galleryCategories.amenities) ? 
+                            Object.keys(galleryCategories.amenities.subcategories).length : 0} categories
                         </Badge>
                         <ChevronDown className={`w-5 h-5 transition-transform ${
                           openSections.includes('amenities') ? 'rotate-180' : ''
@@ -247,17 +278,19 @@ const GalleryPage = () => {
                 </CollapsibleTrigger>
                 <CollapsibleContent>
                   <CardContent className="pt-0 space-y-6">
-                    {Object.entries(galleryCategories.amenities.subcategories).map(([subKey, subcategory]) => (
-                      <div key={subKey}>
-                        <h3 className="text-lg font-medium text-stone-800 mb-4 flex items-center">
-                          {subcategory.title}
-                          <Badge variant="outline" className="ml-2">
-                            {subcategory.images.length} photos
-                          </Badge>
-                        </h3>
-                        {renderImageGrid(subcategory.images)}
-                      </div>
-                    ))}
+                    {isAmenitiesCategory(galleryCategories.amenities) && 
+                      Object.entries(galleryCategories.amenities.subcategories).map(([subKey, subcategory]) => (
+                        <div key={subKey}>
+                          <h3 className="text-lg font-medium text-stone-800 mb-4 flex items-center">
+                            {subcategory.title}
+                            <Badge variant="outline" className="ml-2">
+                              {subcategory.images.length} photos
+                            </Badge>
+                          </h3>
+                          {renderImageGrid(subcategory.images)}
+                        </div>
+                      ))
+                    }
                   </CardContent>
                 </CollapsibleContent>
               </Collapsible>
