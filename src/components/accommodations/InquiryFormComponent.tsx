@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,8 +23,18 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     email: "",
     phone: "",
     message: "",
-    numberOfGuests: 1
+    numberOfGuests: bookingDetails.roomCategory?.guests || 1
   });
+
+  // Sync guest count with room capacity when room changes
+  useEffect(() => {
+    if (bookingDetails.roomCategory?.guests) {
+      setFormData(prev => ({ 
+        ...prev, 
+        numberOfGuests: Math.min(prev.numberOfGuests || 1, bookingDetails.roomCategory?.guests || 1)
+      }));
+    }
+  }, [bookingDetails.roomCategory]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,6 +42,13 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     // Redirect to thank you page in new tab
     window.open('/thank-you', '_blank');
   };
+
+  const handleGuestChange = (value: string) => {
+    const guests = parseInt(value);
+    setFormData(prev => ({ ...prev, numberOfGuests: guests }));
+  };
+
+  const maxGuests = bookingDetails.roomCategory?.guests || 8;
 
   return (
     <div className="space-y-8">
@@ -82,7 +99,9 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                   </div>
                   <div className="flex items-center space-x-1">
                     <Users className="w-4 h-4 text-stone-500" />
-                    <span className="text-sm text-stone-600">{bookingDetails.roomCategory?.guests} guests</span>
+                    <span className="text-sm text-stone-600">
+                      {formData.numberOfGuests} of {bookingDetails.roomCategory?.guests} guests
+                    </span>
                   </div>
                 </div>
               </div>
@@ -197,19 +216,22 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                 <Label htmlFor="guests" className="text-stone-700">Number of Guests *</Label>
                 <Select
                   value={formData.numberOfGuests?.toString() || "1"}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, numberOfGuests: parseInt(value) }))}
+                  onValueChange={handleGuestChange}
                 >
                   <SelectTrigger className="border-stone-300 rounded-xl">
                     <SelectValue placeholder="Select number of guests" />
                   </SelectTrigger>
                   <SelectContent>
-                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                    {Array.from({ length: Math.min(maxGuests, 8) }, (_, i) => i + 1).map((num) => (
                       <SelectItem key={num} value={num.toString()}>
                         {num} {num === 1 ? 'Guest' : 'Guests'}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
+                <p className="text-xs text-stone-500">
+                  Maximum {maxGuests} guests for this accommodation
+                </p>
               </div>
 
               <div className="space-y-2">
