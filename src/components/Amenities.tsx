@@ -46,11 +46,6 @@ const Amenities: React.FC = () => {
       description: "Peace of mind with qualified medical professionals available when needed."
     },
     {
-      icon: <Utensils size={24} />,
-      title: "Community Activities",
-      description: "Engage in various social events, workshops, and recreational activities."
-    },
-    {
       icon: <Accessibility size={24} />,
       title: "Accessibility Features",
       description: "Thoughtfully designed spaces with elevator access and wheelchair-friendly pathways."

@@ -8,9 +8,10 @@ import Index from "./pages/Index";
 import StudioPage from "./pages/StudioPage";
 import OneBHKPage from "./pages/OneBHKPage";
 import TwoBHKPage from "./pages/TwoBHKPage";
-import ThreeBHKPage from "./pages/ThreeBHKPage";
 import GalleryPage from "./pages/GalleryPage";
 import ThankYouPage from "./pages/ThankYouPage";
+import TermsPrivacyPage from "./pages/TermsPrivacyPage";
+import CancellationPolicyPage from "./pages/CancellationPolicyPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,9 +27,10 @@ const App = () => (
           <Route path="/studio" element={<StudioPage />} />
           <Route path="/1bhk" element={<OneBHKPage />} />
           <Route path="/2bhk" element={<TwoBHKPage />} />
-          <Route path="/3bhk" element={<ThreeBHKPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
+          <Route path="/terms-privacy" element={<TermsPrivacyPage />} />
+          <Route path="/cancellation-policy" element={<CancellationPolicyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

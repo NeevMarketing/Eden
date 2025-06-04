@@ -5,8 +5,9 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Users, Calendar } from 'lucide-react';
+import { CheckCircle, Users, Calendar, ArrowLeft } from 'lucide-react';
 import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
+import JourneyCTASection from '@/components/accommodations/JourneyCTASection';
 import { BookingDetails } from '@/types/accommodation';
 
 const StudioPage = () => {
@@ -57,6 +58,10 @@ const StudioPage = () => {
   const handleFormSubmit = (formData: any) => {
     console.log('Form submitted with sanctuary:', selectedSanctuary, formData);
     window.open('/thank-you', '_blank');
+  };
+
+  const handleBackToSanctuary = () => {
+    window.location.href = '/#accommodations';
   };
 
   if (showForm) {
@@ -119,6 +124,18 @@ const StudioPage = () => {
       </section>
 
       <main className="section-padding">
+        {/* Back Button */}
+        <div className="container-custom mb-8">
+          <Button 
+            variant="outline"
+            onClick={handleBackToSanctuary}
+            className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Choose Your Sanctuary
+          </Button>
+        </div>
+
         {/* Collections */}
         <section className="container-custom space-y-16">
           {collections.map((collection, index) => (
@@ -176,24 +193,8 @@ const StudioPage = () => {
           ))}
         </section>
 
-        {/* Call to Action Section */}
-        <section className="bg-gradient-to-r from-eden/5 to-emerald-50 py-16 mt-20 rounded-3xl">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-stone-800">
-              Ready to Begin Your Journey?
-            </h2>
-            <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
-              Choose your perfect studio sanctuary and let our wellness team create a personalized experience just for you.
-            </p>
-            <Button 
-              size="lg"
-              className="bg-eden hover:bg-emerald-700 text-white px-12 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => setShowForm(true)}
-            >
-              Start Your Wellness Journey
-            </Button>
-          </div>
-        </section>
+        {/* New CTA Section */}
+        <JourneyCTASection onStartJourney={() => setShowForm(true)} />
       </main>
 
       <Footer />

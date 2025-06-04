@@ -11,6 +11,9 @@ interface RoomTypeSelectorProps {
 }
 
 const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
+  // Filter out 3BHK option
+  const availableRoomTypes = roomTypes.filter(room => room.id !== '3bhk');
+
   const handleKnowMore = (roomType: RoomType) => {
     // Open in new tab based on room type
     let url = '';
@@ -23,9 +26,6 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
         break;
       case '2 bhk apartment':
         url = '/2bhk';
-        break;
-      case '3 bhk apartment':
-        url = '/3bhk';
         break;
       default:
         url = '/';
@@ -44,7 +44,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {roomTypes.map((roomType) => (
+        {availableRoomTypes.map((roomType) => (
           <Card key={roomType.id} className="group hover:shadow-2xl transition-all duration-700 border-0 shadow-lg bg-white/80 backdrop-blur-sm overflow-hidden hover:-translate-y-2">
             <div className="relative overflow-hidden">
               <img
@@ -82,19 +82,12 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
                 </div>
               </div>
               
-              <div className="flex space-x-3">
+              <div className="flex justify-center">
                 <Button 
-                  className="flex-1 bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                  className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
                   onClick={() => handleKnowMore(roomType)}
                 >
                   Know More
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="flex-1 border-eden text-eden hover:bg-eden hover:text-white py-6 text-lg font-medium transition-all duration-300 rounded-xl"
-                  onClick={() => onSelect(roomType)}
-                >
-                  Book Now
                 </Button>
               </div>
             </CardContent>

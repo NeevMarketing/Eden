@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { Image } from "lucide-react";
 
 const Gallery: React.FC = () => {
@@ -47,6 +48,10 @@ const Gallery: React.FC = () => {
     setIsOpen(true);
   };
 
+  const handleExploreGallery = () => {
+    window.open('/gallery', '_blank');
+  };
+
   return (
     <section id="gallery" className="section-padding">
       <div className="container-custom">
@@ -58,7 +63,7 @@ const Gallery: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
           {galleryImages.map((image, index) => (
             <div 
               key={index}
@@ -77,6 +82,15 @@ const Gallery: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center">
+          <Button 
+            onClick={handleExploreGallery}
+            className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            Explore Gallery
+          </Button>
         </div>
       </div>
       
