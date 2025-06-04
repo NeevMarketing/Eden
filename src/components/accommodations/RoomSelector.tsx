@@ -24,6 +24,9 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
       case '2 bhk apartment':
         url = '/2bhk';
         break;
+      case '3 bhk apartment':
+        url = '/3bhk';
+        break;
       default:
         url = '/';
     }

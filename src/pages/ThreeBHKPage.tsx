@@ -9,7 +9,7 @@ import { CheckCircle, Users, Calendar } from 'lucide-react';
 import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
 import { BookingDetails } from '@/types/accommodation';
 
-const TwoBHKPage = () => {
+const ThreeBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
 
@@ -17,34 +17,34 @@ const TwoBHKPage = () => {
     {
       name: "CREST",
       image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
-      description: "Luxurious 2BHK with expansive living spaces and premium wellness amenities for ultimate comfort. Perfect for families or those who appreciate generous living space.",
+      description: "Magnificent 3BHK with grand living spaces and premium wellness amenities for the ultimate luxury experience. Perfect for large families or those who desire expansive living.",
       features: [
         "Spacious layouts with modern finishes",
         "Full access to all amenities", 
         "Elegant modular kitchens",
-        "Spacious private balconies"
+        "Multiple private balconies"
       ]
     },
     {
       name: "HAMILTON",
       image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
-      description: "Elegant 2BHK featuring sophisticated design and comprehensive wellness facilities for refined living. Designed with accessibility and comfort in mind.",
+      description: "Sophisticated 3BHK featuring premium design and comprehensive wellness facilities for exceptional living. Designed with multigenerational families in mind.",
       features: [
         "Emergency call systems",
-        "Spacious private balconies", 
+        "Multiple private balconies", 
         "Senior-friendly accessibility design",
-        "Elegant modular kitchens"
+        "Premium modular kitchens"
       ]
     },
     {
       name: "SKYLINE",
       image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-      description: "Premium 2BHK with breathtaking views and integrated wellness amenities for exceptional tranquility. The pinnacle of luxury two-bedroom living.",
+      description: "Exclusive 3BHK with panoramic views and integrated wellness amenities for unparalleled tranquility. The epitome of luxury three-bedroom living.",
       features: [
         "Spacious layouts with modern finishes",
         "Full access to all amenities",
-        "Elegant modular kitchens", 
-        "Spacious private balconies"
+        "Premium modular kitchens", 
+        "Multiple private balconies"
       ]
     }
   ];
@@ -62,13 +62,13 @@ const TwoBHKPage = () => {
   if (showForm) {
     const mockBookingDetails: BookingDetails = {
       roomType: {
-        id: '2bhk',
-        name: '2 BHK Apartment',
+        id: '3bhk',
+        name: '3 BHK Apartment',
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        size: '900-1200 sq ft',
-        guests: 4,
-        startingPrice: 35000,
-        description: 'Spacious 2BHK apartment',
+        size: '1200-1600 sq ft',
+        guests: 6,
+        startingPrice: 50000,
+        description: 'Luxurious 3BHK apartment',
         amenities: []
       },
       roomCategory: {
@@ -76,7 +76,7 @@ const TwoBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        pricePerNight: 35000,
+        pricePerNight: 50000,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
       },
       nights: 1,
@@ -110,8 +110,8 @@ const TwoBHKPage = () => {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-serif font-bold mb-4">Choose Your 2BHK Collection</h1>
-          <p className="text-xl font-light">Discover our premium 2BHK collections designed for luxurious living</p>
+          <h1 className="text-5xl font-serif font-bold mb-4">Choose Your 3BHK Collection</h1>
+          <p className="text-xl font-light">Discover our exclusive 3BHK collections designed for luxury living</p>
         </div>
       </section>
 
@@ -132,7 +132,7 @@ const TwoBHKPage = () => {
                   <div className={`p-12 flex flex-col justify-center bg-gradient-to-br from-stone-50 to-white ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                     <div className="flex items-center mb-6">
                       <Badge className="bg-eden/10 text-eden border-eden px-4 py-2 rounded-full mr-4 text-sm font-medium">
-                        2BHK Collection
+                        3BHK Collection
                       </Badge>
                     </div>
                     
@@ -180,7 +180,7 @@ const TwoBHKPage = () => {
               Ready to Begin Your Journey?
             </h2>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
-              Choose your perfect 2BHK sanctuary and let our wellness team create a personalized experience just for you.
+              Choose your perfect 3BHK sanctuary and let our wellness team create a personalized experience just for you.
             </p>
             <Button 
               size="lg"
@@ -198,4 +198,4 @@ const TwoBHKPage = () => {
   );
 };
 
-export default TwoBHKPage;
+export default ThreeBHKPage;

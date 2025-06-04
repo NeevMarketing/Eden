@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import StudioPage from "./pages/StudioPage";
 import OneBHKPage from "./pages/OneBHKPage";
 import TwoBHKPage from "./pages/TwoBHKPage";
+import ThreeBHKPage from "./pages/ThreeBHKPage";
 import GalleryPage from "./pages/GalleryPage";
 import ThankYouPage from "./pages/ThankYouPage";
 import NotFound from "./pages/NotFound";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/studio" element={<StudioPage />} />
           <Route path="/1bhk" element={<OneBHKPage />} />
           <Route path="/2bhk" element={<TwoBHKPage />} />
+          <Route path="/3bhk" element={<ThreeBHKPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -1,18 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Users, Wifi, Coffee, Car, Utensils, Dumbbell, MapPin, CheckCircle } from 'lucide-react';
+import { CheckCircle, Users, Calendar } from 'lucide-react';
+import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
+import { BookingDetails } from '@/types/accommodation';
 
 const StudioPage = () => {
-  const accommodationOptions = [
+  const [showForm, setShowForm] = useState(false);
+  const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
+
+  const collections = [
     {
-      name: "Crest",
+      name: "CREST",
       image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-      description: "Modern studio with panoramic city views and premium amenities for the ultimate urban sanctuary experience.",
+      description: "Modern studio with panoramic city views and premium amenities for the ultimate urban sanctuary experience. Designed for those who appreciate contemporary luxury.",
       features: [
         "Spacious layouts with modern finishes",
         "Full access to all amenities", 
@@ -21,9 +26,9 @@ const StudioPage = () => {
       ]
     },
     {
-      name: "Hamilton",
+      name: "HAMILTON",
       image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
-      description: "Elegant studio featuring contemporary design and wellness-focused amenities for mindful living.",
+      description: "Elegant studio featuring contemporary design and wellness-focused amenities for mindful living. Perfect for those seeking tranquility and comfort.",
       features: [
         "Emergency call systems",
         "Spacious private balconies", 
@@ -32,9 +37,9 @@ const StudioPage = () => {
       ]
     },
     {
-      name: "Skyline",
+      name: "SKYLINE",
       image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
-      description: "Luxurious studio with stunning skyline views and integrated wellness facilities for complete tranquility.",
+      description: "Luxurious studio with stunning skyline views and integrated wellness facilities for complete tranquility. The pinnacle of sophisticated living.",
       features: [
         "Spacious layouts with modern finishes",
         "Full access to all amenities",
@@ -44,26 +49,54 @@ const StudioPage = () => {
     }
   ];
 
-  const stayIncludes = [
-    { icon: Wifi, label: "High-Speed WiFi" },
-    { icon: Coffee, label: "Daily Refreshments" },
-    { icon: Car, label: "Parking Space" },
-    { icon: Utensils, label: "Kitchenette" },
-    { icon: Dumbbell, label: "Gym Access" }
-  ];
+  const handleSelectSanctuary = (sanctuaryName: string) => {
+    setSelectedSanctuary(sanctuaryName);
+    setShowForm(true);
+  };
 
-  const exploreOptions = [
-    {
-      title: "Wellness Programs",
-      description: "Personalized wellness journeys designed for your studio sanctuary",
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80"
-    },
-    {
-      title: "Extended Stays",
-      description: "Long-term packages with special rates for extended wellness retreats",
-      image: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80"
-    }
-  ];
+  const handleFormSubmit = (formData: any) => {
+    console.log('Form submitted with sanctuary:', selectedSanctuary, formData);
+    window.open('/thank-you', '_blank');
+  };
+
+  if (showForm) {
+    const mockBookingDetails: BookingDetails = {
+      roomType: {
+        id: 'studio',
+        name: 'Studio Apartment',
+        image: collections.find(c => c.name === selectedSanctuary)?.image || '',
+        size: '400-500 sq ft',
+        guests: 1,
+        startingPrice: 15000,
+        description: 'Comfortable studio apartment',
+        amenities: []
+      },
+      roomCategory: {
+        id: selectedSanctuary.toLowerCase(),
+        name: selectedSanctuary,
+        image: collections.find(c => c.name === selectedSanctuary)?.image || '',
+        description: collections.find(c => c.name === selectedSanctuary)?.description || '',
+        pricePerNight: 15000,
+        amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
+      },
+      nights: 1,
+      isPackage: false
+    };
+
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="pt-20">
+          <InquiryFormComponent
+            bookingDetails={mockBookingDetails}
+            onSubmit={handleFormSubmit}
+            onBack={() => setShowForm(false)}
+          />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -77,134 +110,85 @@ const StudioPage = () => {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-serif font-bold mb-4">Studio</h1>
-          <p className="text-xl font-light">Discover our luxury studio apartments designed specifically for senior living</p>
+          <h1 className="text-5xl font-serif font-bold mb-4">Choose Your Studio Collection</h1>
+          <p className="text-xl font-light">Discover our carefully curated studio collections designed for modern living</p>
         </div>
       </section>
 
       <main className="section-padding">
-        {/* Accommodation Options */}
-        <section className="container-custom mb-16">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
-              Accommodation Options
-            </h2>
-            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
-            <p className="text-eden-text text-lg">
-              Eden offers 2BHK apartments for purchase, while Studio and 1BHK units are available for rental stays under our "Try Before You Buy" program.
-            </p>
-          </div>
-
-          <div className="space-y-8">
-            {accommodationOptions.map((option, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg">
-                <div className={`grid grid-cols-1 ${index % 2 === 0 ? 'lg:grid-cols-2' : 'lg:grid-cols-2'} gap-0`}>
+        {/* Collections */}
+        <section className="container-custom space-y-16">
+          {collections.map((collection, index) => (
+            <div key={collection.name} className="space-y-8">
+              <Card className="overflow-hidden shadow-xl border-0">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0`}>
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <img
-                      src={option.image}
-                      alt={option.name}
-                      className="w-full h-80 lg:h-full object-cover"
+                      src={collection.image}
+                      alt={collection.name}
+                      className="w-full h-96 lg:h-full object-cover"
                     />
                   </div>
-                  <div className={`p-8 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <div className="flex items-center mb-4">
-                      <Badge className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full mr-4">
-                        Available for Purchase
+                  <div className={`p-12 flex flex-col justify-center bg-gradient-to-br from-stone-50 to-white ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div className="flex items-center mb-6">
+                      <Badge className="bg-eden/10 text-eden border-eden px-4 py-2 rounded-full mr-4 text-sm font-medium">
+                        Studio Collection
                       </Badge>
                     </div>
-                    <h3 className="text-2xl font-serif font-bold text-stone-800 mb-4">{option.name}</h3>
-                    <p className="text-stone-600 leading-relaxed mb-6 font-light">{option.description}</p>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                      {option.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-stone-600">
-                          <CheckCircle className="w-4 h-4 text-green-600 mr-2 flex-shrink-0" />
-                          <span>{feature}</span>
+                    <h2 className="text-4xl font-serif font-bold text-stone-800 mb-6">{collection.name}</h2>
+                    <p className="text-stone-600 leading-relaxed mb-8 text-lg font-light">{collection.description}</p>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                      {collection.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-center text-stone-600">
+                          <CheckCircle className="w-5 h-5 text-eden mr-3 flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
                     
-                    <Button className="bg-eden hover:bg-emerald-700 text-white rounded-xl self-start px-6 py-3">
-                      Explore {option.name} Apartments
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* What Your Stay Includes */}
-        <section className="bg-stone-50 py-16 mb-16">
-          <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
-                What Your Stay Includes
-              </h2>
-              <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
-              <p className="text-eden-text text-lg">
-                Every detail thoughtfully curated for your wellness journey
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mb-12">
-              {stayIncludes.map((item, index) => {
-                const IconComponent = item.icon;
-                return (
-                  <div key={index} className="text-center">
-                    <div className="w-16 h-16 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <IconComponent className="w-8 h-8 text-eden" />
+                    <div className="flex space-x-4">
+                      <Button 
+                        size="lg"
+                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                        onClick={() => handleSelectSanctuary(collection.name)}
+                      >
+                        <Calendar className="w-5 h-5 mr-2" />
+                        Select Sanctuary
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        size="lg"
+                        className="flex-1 border-eden text-eden hover:bg-eden hover:text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
+                      >
+                        <Users className="w-5 h-5 mr-2" />
+                        Virtual Tour
+                      </Button>
                     </div>
-                    <p className="text-stone-700 font-medium">{item.label}</p>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="text-center">
-              <Button size="lg" className="bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl">
-                Book Your Studio Sanctuary
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Explore More Options */}
-        <section className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
-              Explore More Options
-            </h2>
-            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
-            <p className="text-eden-text text-lg">
-              Enhance your studio sanctuary experience
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {exploreOptions.map((option, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-500 overflow-hidden">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={option.image}
-                    alt={option.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-serif font-semibold">{option.title}</h3>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <p className="text-stone-600 leading-relaxed font-light mb-4">
-                    {option.description}
-                  </p>
-                  <Button variant="outline" className="w-full border-eden text-eden hover:bg-eden hover:text-white rounded-xl">
-                    Learn More
-                  </Button>
-                </CardContent>
               </Card>
-            ))}
+            </div>
+          ))}
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="bg-gradient-to-r from-eden/5 to-emerald-50 py-16 mt-20 rounded-3xl">
+          <div className="container-custom text-center">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-stone-800">
+              Ready to Begin Your Journey?
+            </h2>
+            <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
+              Choose your perfect studio sanctuary and let our wellness team create a personalized experience just for you.
+            </p>
+            <Button 
+              size="lg"
+              className="bg-eden hover:bg-emerald-700 text-white px-12 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => setShowForm(true)}
+            >
+              Start Your Wellness Journey
+            </Button>
           </div>
         </section>
       </main>

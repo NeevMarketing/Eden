@@ -1,36 +1,45 @@
-
 import { RoomType, RoomCategory, Package } from "@/types/accommodation";
 
 export const roomTypes: RoomType[] = [
   {
     id: "studio",
-    name: "Studio",
-    image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=800&h=600&fit=crop",
-    size: "350-450 sq ft",
-    guests: 2,
-    startingPrice: 3500,
-    description: "Perfect for solo travelers or couples seeking a cozy, efficient space",
-    amenities: ["Modern Kitchen", "High-Speed WiFi", "Air Conditioning", "Smart TV"]
+    name: "Studio Apartment",
+    image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
+    size: "400-500 sq ft",
+    guests: 1,
+    startingPrice: 15000,
+    description: "Cozy studio apartment perfect for solo travelers seeking comfort and wellness",
+    amenities: ["WiFi", "Kitchenette", "Balcony", "Air Conditioning"]
   },
   {
     id: "1bhk",
-    name: "1 BHK",
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=800&h=600&fit=crop",
-    size: "550-650 sq ft",
-    guests: 3,
-    startingPrice: 5500,
-    description: "Ideal for small families or extended stays with separate bedroom",
-    amenities: ["Separate Bedroom", "Living Area", "Full Kitchen", "Dining Space"]
+    name: "1 BHK Apartment",
+    image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+    size: "600-800 sq ft",
+    guests: 2,
+    startingPrice: 25000,
+    description: "Spacious one-bedroom apartment ideal for couples or individuals",
+    amenities: ["WiFi", "Full Kitchen", "Living Room", "Balcony", "Air Conditioning"]
   },
   {
     id: "2bhk",
-    name: "2 BHK",
-    image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=800&h=600&fit=crop",
-    size: "800-1000 sq ft",
-    guests: 5,
-    startingPrice: 8500,
-    description: "Spacious option for families or groups requiring multiple bedrooms",
-    amenities: ["Two Bedrooms", "Large Living Room", "Full Kitchen", "Two Bathrooms"]
+    name: "2 BHK Apartment",
+    image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+    size: "900-1200 sq ft",
+    guests: 4,
+    startingPrice: 35000,
+    description: "Premium two-bedroom apartment perfect for families",
+    amenities: ["WiFi", "Full Kitchen", "Living Room", "Multiple Balconies", "Air Conditioning"]
+  },
+  {
+    id: "3bhk",
+    name: "3 BHK Apartment",
+    image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+    size: "1200-1600 sq ft",
+    guests: 6,
+    startingPrice: 50000,
+    description: "Luxurious three-bedroom apartment for large families or groups",
+    amenities: ["WiFi", "Full Kitchen", "Spacious Living Room", "Multiple Balconies", "Air Conditioning", "Study Room"]
   }
 ];
 
