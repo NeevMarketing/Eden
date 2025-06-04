@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, Calendar, Package, MapPin, Users, Mail } from "lucide-react";
 import { format } from "date-fns";
@@ -21,12 +22,15 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
+    numberOfGuests: 1
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
+    // Redirect to thank you page in new tab
+    window.open('/thank-you', '_blank');
   };
 
   return (
@@ -187,6 +191,25 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                   placeholder="Enter your phone number"
                   className="border-stone-300 rounded-xl"
                 />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="guests" className="text-stone-700">Number of Guests *</Label>
+                <Select
+                  value={formData.numberOfGuests?.toString() || "1"}
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, numberOfGuests: parseInt(value) }))}
+                >
+                  <SelectTrigger className="border-stone-300 rounded-xl">
+                    <SelectValue placeholder="Select number of guests" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                      <SelectItem key={num} value={num.toString()}>
+                        {num} {num === 1 ? 'Guest' : 'Guests'}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <div className="space-y-2">

@@ -1,63 +1,4 @@
 
-// import React from "react";
-// import { Button } from "@/components/ui/button";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-// import { cn } from "@/lib/utils";
-// import { packageData } from "@/data/packageData";
-
-// interface RoomSelectorProps {
-//   selectedCategory: string;
-//   selectedRoom: string;
-//   onRoomChange: (room: string) => void;
-// }
-
-// const RoomSelector: React.FC<RoomSelectorProps> = ({
-//   selectedCategory,
-//   selectedRoom,
-//   onRoomChange,
-// }) => {
-//   if (!selectedCategory) return null;
-
-//   const categoryData = selectedCategory === "studio" ? packageData.studio : packageData.bhk2;
-
-//   return (
-//     <div className="mb-12">
-//       <h3 className="text-2xl font-serif text-eden-dark mb-8 text-center">
-//         Select Your {selectedCategory === "studio" ? "Studio" : "Apartment"}
-//       </h3>
-//       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-//         {Object.keys(categoryData).map((roomName) => (
-//           <Card
-//             key={roomName}
-//             className={cn(
-//               "cursor-pointer transition-all duration-300 border-2 hover:shadow-lg",
-//               selectedRoom === roomName ? "border-eden bg-eden-light/20" : "border-eden-light/50"
-//             )}
-//             onClick={() => onRoomChange(roomName)}
-//           >
-//             <CardHeader>
-//               <CardTitle className="text-lg font-serif text-eden-dark text-center">{roomName}</CardTitle>
-//             </CardHeader>
-//             <CardContent>
-//               <div className="text-center">
-//                 <Button 
-//                   variant={selectedRoom === roomName ? "default" : "outline"}
-//                   className="w-full"
-//                 >
-//                   {selectedRoom === roomName ? "Selected" : "Select This Room"}
-//                 </Button>
-//               </div>
-//             </CardContent>
-//           </Card>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default RoomSelector;
-
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -70,6 +11,25 @@ interface RoomTypeSelectorProps {
 }
 
 const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
+  const handleKnowMore = (roomType: RoomType) => {
+    // Open in new tab based on room type
+    let url = '';
+    switch (roomType.name.toLowerCase()) {
+      case 'studio apartment':
+        url = '/studio';
+        break;
+      case '1 bhk apartment':
+        url = '/1bhk';
+        break;
+      case '2 bhk apartment':
+        url = '/2bhk';
+        break;
+      default:
+        url = '/';
+    }
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="space-y-12">
       <div className="text-center">
@@ -119,12 +79,21 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
                 </div>
               </div>
               
-              <Button 
-                className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
-                onClick={() => onSelect(roomType)}
-              >
-                Know More
-              </Button>
+              <div className="flex space-x-3">
+                <Button 
+                  className="flex-1 bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                  onClick={() => handleKnowMore(roomType)}
+                >
+                  Know More
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="flex-1 border-eden text-eden hover:bg-eden hover:text-white py-6 text-lg font-medium transition-all duration-300 rounded-xl"
+                  onClick={() => onSelect(roomType)}
+                >
+                  Book Now
+                </Button>
+              </div>
             </CardContent>
           </Card>
         ))}
@@ -134,4 +103,3 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
 };
 
 export default RoomTypeSelector;
-

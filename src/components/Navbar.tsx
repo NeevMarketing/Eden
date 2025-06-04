@@ -35,19 +35,19 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container-custom flex items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
           <span className="text-md text-eden ml-1 font-light">Gracious Living</span>
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#about" className="text-eden-text hover:text-eden transition-colors">About</a>
-          <a href="#accommodations" className="text-eden-text hover:text-eden transition-colors">Accommodations</a>
-          <a href="#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
-          <a href="#gallery" className="text-eden-text hover:text-eden transition-colors">Gallery</a>
-          <a href="#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a>
-          <a href="#contact">
+          <a href="/#about" className="text-eden-text hover:text-eden transition-colors">About</a>
+          <a href="/#accommodations" className="text-eden-text hover:text-eden transition-colors">Accommodations</a>
+          <a href="/#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
+          <a href="/gallery" className="text-eden-text hover:text-eden transition-colors">Gallery</a>
+          <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a>
+          <a href="/#contact">
             <Button variant="outline" className="border-eden text-eden hover:bg-eden hover:text-white">Contact Us</Button>
           </a>
         </div>
@@ -66,12 +66,12 @@ const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4">
           <div className="container-custom flex flex-col space-y-4">
-            <a href="#about" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>About</a>
-            <a href="#accommodations" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Accommodations</a>
-            <a href="#amenities" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Amenities</a>
-            <a href="#gallery" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Gallery</a>
-            <a href="#faq" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>FAQs</a>
-            <a href="#contact" className="py-2 px-4" onClick={toggleMobileMenu}>
+            <a href="/#about" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>About</a>
+            <a href="/#accommodations" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Accommodations</a>
+            <a href="/#amenities" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Amenities</a>
+            <a href="/gallery" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Gallery</a>
+            <a href="/#faq" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>FAQs</a>
+            <a href="/#contact" className="py-2 px-4" onClick={toggleMobileMenu}>
               <Button className="bg-eden text-white w-full">Contact Us</Button>
             </a>
           </div>
