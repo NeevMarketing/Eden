@@ -7,8 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, Calendar, Package, MapPin, Users, Mail } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { ChevronLeft, Calendar as CalendarIcon, Package, MapPin, Users, Mail } from "lucide-react";
 import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 import { BookingDetails, InquiryForm } from "@/types/accommodation";
 
 interface InquiryFormComponentProps {
@@ -25,6 +28,9 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     message: "",
     numberOfGuests: bookingDetails.roomCategory?.guests || 1
   });
+
+  const [selectedDate, setSelectedDate] = useState<Date>();
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   // Sync guest count with room capacity when room changes
   useEffect(() => {
@@ -46,6 +52,13 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
   const handleGuestChange = (value: string) => {
     const guests = parseInt(value);
     setFormData(prev => ({ ...prev, numberOfGuests: guests }));
+  };
+
+  const handleDateSelect = (date: Date | undefined) => {
+    if (date) {
+      setSelectedDate(date);
+      setIsDatePickerOpen(false);
+    }
   };
 
   const maxGuests = bookingDetails.roomCategory?.guests || 8;
@@ -124,7 +137,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                 ) : (
                   <div>
                     <div className="flex items-center space-x-2">
-                      <Calendar className="w-4 h-4 text-stone-500" />
+                      <CalendarIcon className="w-4 h-4 text-stone-500" />
                       <span className="font-medium text-stone-800">{bookingDetails.nights} nights</span>
                     </div>
                     {bookingDetails.checkIn && bookingDetails.checkOut && (
@@ -232,6 +245,34 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                 <p className="text-xs text-stone-500">
                   Maximum {maxGuests} guests for this accommodation
                 </p>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="date" className="text-stone-700">Preferred Check-in Date</Label>
+                <Popover open={isDatePickerOpen} onOpenChange={setIsDatePickerOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={cn(
+                        "w-full justify-start text-left font-normal border-stone-300 rounded-xl",
+                        !selectedDate && "text-muted-foreground"
+                      )}
+                    >
+                      <CalendarIcon className="mr-2 h-4 w-4" />
+                      {selectedDate ? format(selectedDate, "PPP") : <span>Pick a date</span>}
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={selectedDate}
+                      onSelect={handleDateSelect}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                      className="pointer-events-auto"
+                    />
+                  </PopoverContent>
+                </Popover>
               </div>
 
               <div className="space-y-2">

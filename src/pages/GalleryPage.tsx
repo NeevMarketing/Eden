@@ -1,11 +1,11 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Image, ChevronDown, Play, Video } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Image, ChevronDown, ChevronLeft, ChevronRight, Play, Video, X } from 'lucide-react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 
 interface GalleryImage {
@@ -46,7 +46,8 @@ type GalleryCategoryType = GalleryCategory | AmenitiesCategory | VideosCategory;
 
 const GalleryPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [currentImages, setCurrentImages] = useState<GalleryImage[]>([]);
   const [selectedVideo, setSelectedVideo] = useState("");
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [openSections, setOpenSections] = useState<string[]>(['exterior']);
@@ -102,14 +103,6 @@ const GalleryPage = () => {
             }
           ]
         },
-        library: {
-          title: "Library",
-          images: [
-            { src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80", alt: "Reading area" },
-            { src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80", alt: "Book collection" },
-            { src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80", alt: "Study space" }
-          ]
-        },
         yoga: {
           title: "Yoga",
           images: [
@@ -127,54 +120,12 @@ const GalleryPage = () => {
             }
           ]
         },
-        medicare: {
-          title: "Medicare",
-          images: [
-            { src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80", alt: "Medical facility" },
-            { src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80", alt: "Consultation room" }
-          ]
-        },
         pools: {
           title: "Pools & Jacuzzi",
           images: [
             { src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80", alt: "Swimming pool" },
             { src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80", alt: "Jacuzzi area" },
             { src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80", alt: "Pool deck" }
-          ]
-        },
-        dining: {
-          title: "Dining",
-          images: [
-            { src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80", alt: "Dining hall" },
-            { src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80", alt: "Private dining" }
-          ]
-        },
-        restaurant: {
-          title: "Restaurant",
-          images: [
-            { src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80", alt: "Restaurant interior" },
-            { src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80", alt: "Restaurant seating" }
-          ]
-        },
-        saloon: {
-          title: "Saloon (Sauna & Steam)",
-          images: [
-            { src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80", alt: "Sauna room" },
-            { src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80", alt: "Steam room" }
-          ]
-        },
-        recreation: {
-          title: "Recreation Room (Chess, Carrom, Cards)",
-          images: [
-            { src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80", alt: "Game room" },
-            { src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80", alt: "Recreation area" }
-          ]
-        },
-        poolTable: {
-          title: "Pool Table",
-          images: [
-            { src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80", alt: "Pool table" },
-            { src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80", alt: "Billiards area" }
           ]
         }
       }
@@ -195,13 +146,6 @@ const GalleryPage = () => {
           thumbnail: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
           videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
           description: "Experience the daily life and activities at our wellness retreat"
-        },
-        {
-          id: "amenities-tour",
-          title: "Complete Amenities Tour",
-          thumbnail: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
-          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-          description: "Virtual tour of all amenities and facilities available at Eden"
         }
       ]
     },
@@ -217,9 +161,18 @@ const GalleryPage = () => {
     }
   };
 
-  const openLightbox = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
+  const openLightbox = (images: GalleryImage[], startIndex: number) => {
+    setCurrentImages(images);
+    setSelectedImageIndex(startIndex);
     setIsOpen(true);
+  };
+
+  const navigateImage = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setSelectedImageIndex(prev => prev === 0 ? currentImages.length - 1 : prev - 1);
+    } else {
+      setSelectedImageIndex(prev => prev === currentImages.length - 1 ? 0 : prev + 1);
+    }
   };
 
   const openVideoModal = (videoUrl: string) => {
@@ -241,7 +194,7 @@ const GalleryPage = () => {
         <div 
           key={index}
           className="relative aspect-square overflow-hidden rounded-xl cursor-pointer group shadow-md hover:shadow-xl transition-all duration-300"
-          onClick={() => openLightbox(image.src)}
+          onClick={() => openLightbox(images, index)}
         >
           <img 
             src={image.src} 
@@ -335,12 +288,12 @@ const GalleryPage = () => {
                   onOpenChange={() => toggleSection(key)}
                 >
                   <CollapsibleTrigger asChild>
-                    <CardHeader className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white">
+                    <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
+                        <div className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
                           <div className="w-2 h-8 bg-eden rounded-full"></div>
                           <span>{category.title}</span>
-                        </CardTitle>
+                        </div>
                         <div className="flex items-center space-x-3">
                           <Badge variant="secondary" className="bg-eden/10 text-eden border-0 px-3 py-1">
                             {isGalleryCategory(category) ? category.images.length : 0} photos
@@ -350,30 +303,30 @@ const GalleryPage = () => {
                           }`} />
                         </div>
                       </div>
-                    </CardHeader>
+                    </div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <CardContent className="pt-0 pb-6">
+                    <div className="px-6 pb-6">
                       {isGalleryCategory(category) && renderImageGrid(category.images)}
-                    </CardContent>
+                    </div>
                   </CollapsibleContent>
                 </Collapsible>
               </Card>
             ))}
 
-            {/* Amenities Category with Subcategories */}
+            {/* Amenities Category */}
             <Card className="overflow-hidden shadow-lg border-0">
               <Collapsible 
                 open={openSections.includes('amenities')} 
                 onOpenChange={() => toggleSection('amenities')}
               >
                 <CollapsibleTrigger asChild>
-                  <CardHeader className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white">
+                  <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
+                      <div className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
                         <div className="w-2 h-8 bg-eden rounded-full"></div>
                         <span>Amenities</span>
-                      </CardTitle>
+                      </div>
                       <div className="flex items-center space-x-3">
                         <Badge variant="secondary" className="bg-eden/10 text-eden border-0 px-3 py-1">
                           {isAmenitiesCategory(galleryCategories.amenities) ? 
@@ -384,10 +337,10 @@ const GalleryPage = () => {
                         }`} />
                       </div>
                     </div>
-                  </CardHeader>
+                  </div>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <CardContent className="pt-0 pb-6 space-y-8">
+                  <div className="px-6 pb-6 space-y-8">
                     {isAmenitiesCategory(galleryCategories.amenities) && 
                       Object.entries(galleryCategories.amenities.subcategories).map(([subKey, subcategory]) => (
                         <div key={subKey} className="border-l-4 border-eden/30 pl-6">
@@ -411,7 +364,7 @@ const GalleryPage = () => {
                         </div>
                       ))
                     }
-                  </CardContent>
+                  </div>
                 </CollapsibleContent>
               </Collapsible>
             </Card>
@@ -423,13 +376,13 @@ const GalleryPage = () => {
                 onOpenChange={() => toggleSection('videos')}
               >
                 <CollapsibleTrigger asChild>
-                  <CardHeader className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white">
+                  <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
+                      <div className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
                         <div className="w-2 h-8 bg-eden rounded-full"></div>
                         <Video className="w-6 h-6" />
                         <span>Videos</span>
-                      </CardTitle>
+                      </div>
                       <div className="flex items-center space-x-3">
                         <Badge variant="secondary" className="bg-eden/10 text-eden border-0 px-3 py-1">
                           {isVideosCategory(galleryCategories.videos) ? galleryCategories.videos.videos.length : 0} videos
@@ -439,12 +392,12 @@ const GalleryPage = () => {
                         }`} />
                       </div>
                     </div>
-                  </CardHeader>
+                  </div>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <CardContent className="pt-0 pb-6">
+                  <div className="px-6 pb-6">
                     {isVideosCategory(galleryCategories.videos) && renderVideoGrid(galleryCategories.videos.videos)}
-                  </CardContent>
+                  </div>
                 </CollapsibleContent>
               </Collapsible>
             </Card>
@@ -452,14 +405,53 @@ const GalleryPage = () => {
         </div>
       </main>
 
-      {/* Image Lightbox */}
+      {/* Enhanced Image Lightbox with Navigation */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden">
-          <img 
-            src={selectedImage} 
-            alt="Gallery image" 
-            className="w-full h-full object-contain"
-          />
+        <DialogContent className="max-w-6xl p-0 overflow-hidden bg-black/95">
+          <div className="relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute top-4 right-4 z-50 text-white hover:bg-white/20 rounded-full"
+              onClick={() => setIsOpen(false)}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+            
+            {currentImages.length > 1 && (
+              <>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20 rounded-full"
+                  onClick={() => navigateImage('prev')}
+                >
+                  <ChevronLeft className="h-8 w-8" />
+                </Button>
+                
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20 rounded-full"
+                  onClick={() => navigateImage('next')}
+                >
+                  <ChevronRight className="h-8 w-8" />
+                </Button>
+              </>
+            )}
+            
+            <img 
+              src={currentImages[selectedImageIndex]?.src} 
+              alt={currentImages[selectedImageIndex]?.alt} 
+              className="w-full h-[80vh] object-contain"
+            />
+            
+            {currentImages.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                {selectedImageIndex + 1} / {currentImages.length}
+              </div>
+            )}
+          </div>
         </DialogContent>
       </Dialog>
 
