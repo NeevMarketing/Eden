@@ -76,8 +76,11 @@ const ThreeBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        pricePerNight: 50000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
+        size: '1200-1600 sq ft',
+        guests: 6,
+        startingPrice: 50000,
+        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: '3bhk'
       },
       nights: 1,
       isPackage: false

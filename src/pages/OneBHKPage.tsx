@@ -76,8 +76,11 @@ const OneBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        pricePerNight: 25000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
+        size: '600-800 sq ft',
+        guests: 2,
+        startingPrice: 25000,
+        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: '1bhk'
       },
       nights: 1,
       isPackage: false

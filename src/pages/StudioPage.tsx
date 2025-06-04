@@ -76,8 +76,11 @@ const StudioPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        pricePerNight: 15000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
+        size: '400-500 sq ft',
+        guests: 1,
+        startingPrice: 15000,
+        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: 'studio'
       },
       nights: 1,
       isPackage: false

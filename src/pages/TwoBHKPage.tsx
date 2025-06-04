@@ -76,8 +76,11 @@ const TwoBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        pricePerNight: 35000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || []
+        size: '900-1200 sq ft',
+        guests: 4,
+        startingPrice: 35000,
+        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: '2bhk'
       },
       nights: 1,
       isPackage: false
