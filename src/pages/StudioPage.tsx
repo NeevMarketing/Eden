@@ -7,11 +7,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Users, Calendar, ArrowLeft } from 'lucide-react';
 import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
-import JourneyCTASection from '@/components/accommodations/JourneyCTASection';
+import DatePackageSelector from '@/components/accommodations/DateSelector';
 import { BookingDetails } from '@/types/accommodation';
 
 const StudioPage = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showDatePackage, setShowDatePackage] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
 
   const collections = [
@@ -52,6 +53,10 @@ const StudioPage = () => {
 
   const handleSelectSanctuary = (sanctuaryName: string) => {
     setSelectedSanctuary(sanctuaryName);
+    setShowDatePackage(true);
+  };
+
+  const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
     setShowForm(true);
   };
 
@@ -106,6 +111,34 @@ const StudioPage = () => {
     );
   }
 
+  if (showDatePackage) {
+    const mockRoomCategory = {
+      id: selectedSanctuary.toLowerCase(),
+      name: selectedSanctuary,
+      image: collections.find(c => c.name === selectedSanctuary)?.image || '',
+      description: collections.find(c => c.name === selectedSanctuary)?.description || '',
+      size: '400-500 sq ft',
+      guests: 1,
+      startingPrice: 15000,
+      amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+      roomTypeId: 'studio'
+    };
+
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="pt-20">
+          <DatePackageSelector
+            roomCategory={mockRoomCategory}
+            onSelect={handleDatePackageSelect}
+            onBack={() => setShowDatePackage(false)}
+          />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -140,7 +173,7 @@ const StudioPage = () => {
         <section className="container-custom space-y-16">
           {collections.map((collection, index) => (
             <div key={collection.name} className="space-y-8">
-              <Card className="overflow-hidden shadow-xl border-0">
+              <Card className="overflow-hidden border-0">
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0`}>
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <img
@@ -171,7 +204,7 @@ const StudioPage = () => {
                     <div className="flex space-x-4">
                       <Button 
                         size="lg"
-                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
@@ -193,8 +226,60 @@ const StudioPage = () => {
           ))}
         </section>
 
-        {/* New CTA Section */}
-        <JourneyCTASection onStartJourney={() => setShowForm(true)} />
+        {/* Safety & Accessibility Features Section */}
+        <section className="bg-gradient-to-r from-stone-50 to-stone-100 py-16 mt-20 rounded-3xl">
+          <div className="container-custom text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-stone-800">
+              Safety & Accessibility Features
+            </h2>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+            <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
+              All our residences are designed with senior safety and accessibility in mind.
+            </p>
+          </div>
+
+          <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Emergency Systems</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                All units equipped with emergency call systems that connect directly to our 24/7 medical team.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Accessible Design</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                Wider doorways, grab bars, and step-free entrances for ease of movement and enhanced accessibility.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Anti-Slip Flooring</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                High-quality anti-slip flooring throughout, particularly in bathrooms and other wet areas.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">24/7 Security</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                Round-the-clock security personnel, CCTV monitoring, and secure access to all areas of the property.
+              </p>
+            </Card>
+          </div>
+        </section>
       </main>
 
       <Footer />

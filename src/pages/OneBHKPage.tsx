@@ -1,16 +1,17 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Users, Calendar } from 'lucide-react';
+import { CheckCircle, Users, Calendar, ArrowLeft } from 'lucide-react';
 import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
+import DatePackageSelector from '@/components/accommodations/DateSelector';
 import { BookingDetails } from '@/types/accommodation';
 
 const OneBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
+  const [showDatePackage, setShowDatePackage] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
 
   const collections = [
@@ -51,12 +52,20 @@ const OneBHKPage = () => {
 
   const handleSelectSanctuary = (sanctuaryName: string) => {
     setSelectedSanctuary(sanctuaryName);
+    setShowDatePackage(true);
+  };
+
+  const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
     setShowForm(true);
   };
 
   const handleFormSubmit = (formData: any) => {
     console.log('Form submitted with sanctuary:', selectedSanctuary, formData);
     window.open('/thank-you', '_blank');
+  };
+
+  const handleBackToSanctuary = () => {
+    window.location.href = '/#accommodations';
   };
 
   if (showForm) {
@@ -101,6 +110,34 @@ const OneBHKPage = () => {
     );
   }
 
+  if (showDatePackage) {
+    const mockRoomCategory = {
+      id: selectedSanctuary.toLowerCase(),
+      name: selectedSanctuary,
+      image: collections.find(c => c.name === selectedSanctuary)?.image || '',
+      description: collections.find(c => c.name === selectedSanctuary)?.description || '',
+      size: '600-800 sq ft',
+      guests: 2,
+      startingPrice: 25000,
+      amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
+      roomTypeId: '1bhk'
+    };
+
+    return (
+      <div className="min-h-screen">
+        <Navbar />
+        <div className="pt-20">
+          <DatePackageSelector
+            roomCategory={mockRoomCategory}
+            onSelect={handleDatePackageSelect}
+            onBack={() => setShowDatePackage(false)}
+          />
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -119,11 +156,23 @@ const OneBHKPage = () => {
       </section>
 
       <main className="section-padding">
+        {/* Back Button */}
+        <div className="container-custom mb-8">
+          <Button 
+            variant="outline"
+            onClick={handleBackToSanctuary}
+            className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Choose Your Sanctuary
+          </Button>
+        </div>
+
         {/* Collections */}
         <section className="container-custom space-y-16">
           {collections.map((collection, index) => (
             <div key={collection.name} className="space-y-8">
-              <Card className="overflow-hidden shadow-xl border-0">
+              <Card className="overflow-hidden border-0">
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0`}>
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <img
@@ -154,7 +203,7 @@ const OneBHKPage = () => {
                     <div className="flex space-x-4">
                       <Button 
                         size="lg"
-                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
@@ -176,22 +225,58 @@ const OneBHKPage = () => {
           ))}
         </section>
 
-        {/* Call to Action Section */}
-        <section className="bg-gradient-to-r from-eden/5 to-emerald-50 py-16 mt-20 rounded-3xl">
-          <div className="container-custom text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-stone-800">
-              Ready to Begin Your Journey?
+        {/* Safety & Accessibility Features Section */}
+        <section className="bg-gradient-to-r from-stone-50 to-stone-100 py-16 mt-20 rounded-3xl">
+          <div className="container-custom text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-stone-800">
+              Safety & Accessibility Features
             </h2>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
-              Choose your perfect 1BHK sanctuary and let our wellness team create a personalized experience just for you.
+              All our residences are designed with senior safety and accessibility in mind.
             </p>
-            <Button 
-              size="lg"
-              className="bg-eden hover:bg-emerald-700 text-white px-12 py-4 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-              onClick={() => setShowForm(true)}
-            >
-              Start Your Wellness Journey
-            </Button>
+          </div>
+
+          <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Emergency Systems</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                All units equipped with emergency call systems that connect directly to our 24/7 medical team.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Accessible Design</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                Wider doorways, grab bars, and step-free entrances for ease of movement and enhanced accessibility.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Anti-Slip Flooring</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                High-quality anti-slip flooring throughout, particularly in bathrooms and other wet areas.
+              </p>
+            </Card>
+
+            <Card className="p-6 text-center bg-white border-0">
+              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">24/7 Security</h3>
+              <p className="text-stone-600 text-sm leading-relaxed">
+                Round-the-clock security personnel, CCTV monitoring, and secure access to all areas of the property.
+              </p>
+            </Card>
           </div>
         </section>
       </main>

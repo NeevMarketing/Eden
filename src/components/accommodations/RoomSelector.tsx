@@ -45,7 +45,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {availableRoomTypes.map((roomType) => (
-          <Card key={roomType.id} className="group hover:shadow-2xl transition-all duration-700 border-0 shadow-lg bg-white/80 backdrop-blur-sm overflow-hidden hover:-translate-y-2">
+          <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
             <div className="relative overflow-hidden">
               <img
                 src={roomType.image}
@@ -84,7 +84,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
               
               <div className="flex justify-center">
                 <Button 
-                  className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl"
+                  className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
                   onClick={() => handleKnowMore(roomType)}
                 >
                   Know More
