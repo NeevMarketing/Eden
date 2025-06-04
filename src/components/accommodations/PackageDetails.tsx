@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Check, Clock, Gift, ChevronLeft } from "lucide-react";
-import { packageData } from "../../data/packageData";
+import { packages } from "../../data/packageData";
 import { PackageInfo } from "@/types/accommodation";
 
 interface PackageDetailsProps {

@@ -19,6 +19,15 @@ export interface RoomCategory {
   guests: number;
   startingPrice: number;
   amenities: string[];
+  roomTypeId: string;
+}
+
+export interface Package {
+  id: string;
+  name: string;
+  duration: string;
+  price: number;
+  savings: number;
 }
 
 export interface PackageInfo {
@@ -39,7 +48,7 @@ export interface BookingDetails {
   checkOut?: Date;
   nights: number;
   isPackage: boolean;
-  package?: PackageInfo;
+  package?: Package;
   totalPrice?: number;
 }
 

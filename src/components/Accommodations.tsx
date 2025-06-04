@@ -75,6 +75,7 @@ type Step = "roomType" | "category" | "datePackage" | "inquiry";
 const AccommodationFlow = () => {
   const [currentStep, setCurrentStep] = useState<Step>("roomType");
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({
+    nights: 0,
     isPackage: false
   });
 
@@ -184,4 +185,3 @@ const AccommodationFlow = () => {
 };
 
 export default AccommodationFlow;
-
