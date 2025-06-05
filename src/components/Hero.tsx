@@ -14,7 +14,9 @@ const Hero: React.FC = () => {
         <div className="max-w-3xl mx-auto text-center">
           <h5 className="text-eden font-medium mb-4 animate-fade-in"></h5>
           <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-6 text-eden-dark animate-fade-in lg:text-5xl">Premium Stays, Thoughtfully Designed</h1>
-          <p className="text-lg md:text-xl text-eden-text mb-8 animate-fade-in">Flexible-length stays in premium apartments, with wellness amenities, privacy, and everything you need in the foothills of Dehradun.</p>
+          <p className="text-lg md:text-xl text-eden-text mb-8 animate-fade-in">Flexible, Private, and Peaceful Stays in the Valley of Dehradun
+
+        </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in">
             <Button className="btn-primary">
               Enquire Now
