@@ -30,32 +30,26 @@ const ThankYouPage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-eden font-semibold">1</span>
-                  </div>
+                  
                   <div className="text-left">
-                    <h4 className="font-medium text-stone-800">Review & Assessment</h4>
-                    <p className="text-stone-600 text-sm">Our wellness team will review your preferences and requirements</p>
+                    
+                    <p className="text-stone-600 text-sm">Our team will review your preferences and get in touch within 24 hours. In the meantime, feel free to explore more about our offerings. We’re here to ensure your stay is seamless, comfortable, and tailored to you.</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-eden font-semibold">2</span>
-                  </div>
+                  
                   <div className="text-left">
-                    <h4 className="font-medium text-stone-800">Personalized Consultation</h4>
-                    <p className="text-stone-600 text-sm">A dedicated specialist will contact you with tailored recommendations</p>
+                    
+                    
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-eden font-semibold">3</span>
-                  </div>
+                  
                   <div className="text-left">
-                    <h4 className="font-medium text-stone-800">Sanctuary Experience</h4>
-                    <p className="text-stone-600 text-sm">Begin your transformative wellness journey at Eden</p>
+                    
+                    
                   </div>
                 </div>
               </CardContent>
