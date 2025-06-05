@@ -30,33 +30,39 @@ const ThankYouPage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-4">
-                  
+                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-eden font-semibold">1</span>
+                  </div>
                   <div className="text-left">
-                    
-                    <p className="text-stone-600 text-sm">        Our team will review your preferences and get in touch within 24 hours.</p>
+                    <h4 className="font-medium text-stone-800">Review & Assessment</h4>
+                    <p className="text-stone-600 text-sm">Our wellness team will review your preferences and requirements</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  
+                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-eden font-semibold">2</span>
+                  </div>
                   <div className="text-left">
-                    
-                    
+                    <h4 className="font-medium text-stone-800">Personalized Consultation</h4>
+                    <p className="text-stone-600 text-sm">A dedicated specialist will contact you with tailored recommendations</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start space-x-4">
-                  
+                  <div className="w-8 h-8 bg-eden/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-eden font-semibold">3</span>
+                  </div>
                   <div className="text-left">
-                    
-                    
+                    <h4 className="font-medium text-stone-800">Sanctuary Experience</h4>
+                    <p className="text-stone-600 text-sm">Begin your transformative wellness journey at Eden</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             <div className="bg-emerald-50 p-6 rounded-xl border border-emerald-200 mb-8">
-              <h3 className="font-semibold text-emerald-800 mb-2">Need Immediate Assistance?</h3>
+              <h3 className="font-semibold text-emerald-800 mb-2">+91 7533909333</h3>
               <p className="text-emerald-700 text-sm mb-4">
                 If you have urgent questions or would like to speak with someone immediately, please don't hesitate to reach out.
               </p>
@@ -72,7 +78,10 @@ const ThankYouPage = () => {
                 <span>Return Home</span>
               </Button>
               
-              
+              <Button variant="outline" onClick={() => window.location.href = '/#accommodations'} className="border-eden text-eden hover:bg-eden hover:text-white px-8 py-3 rounded-xl flex items-center space-x-2">
+                <Calendar className="w-4 h-4" />
+                <span>Explore More Options</span>
+              </Button>
             </div>
           </div>
         </div>
