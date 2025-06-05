@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { BookingDetails, InquiryForm as InquiryFormType } from '@/types/accommodation';
 import DatePickerComponent from './DatePickerComponent';
+import { updatedRoomData } from '../../data/roomData';
 
 interface InquiryFormProps {
   bookingDetails: BookingDetails;
@@ -17,6 +18,16 @@ interface InquiryFormProps {
 }
 
 const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: InquiryFormProps) => {
+  // Get max guests based on room type
+  const getMaxGuests = () => {
+    if (!bookingDetails.roomType) return 6;
+    
+    const roomData = updatedRoomData[bookingDetails.roomType.id as keyof typeof updatedRoomData];
+    return roomData?.maxGuests || 6;
+  };
+
+  const maxGuests = getMaxGuests();
+
   return (
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
@@ -77,7 +88,7 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
                 <SelectValue placeholder="1 Guest" />
               </SelectTrigger>
               <SelectContent>
-                {[1, 2, 3, 4, 5, 6].map((num) => (
+                {Array.from({ length: maxGuests }, (_, i) => i + 1).map((num) => (
                   <SelectItem key={num} value={num.toString()}>
                     {num} {num === 1 ? 'Guest' : 'Guests'}
                   </SelectItem>

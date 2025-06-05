@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,6 +25,15 @@ const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: str
 };
 
 const Contact: React.FC = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    // Reset success message after 5 seconds
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
+
   return (
     <section id="contact" className="section-padding bg-eden-beige/30">
       <div className="container-custom">
@@ -40,7 +49,7 @@ const Contact: React.FC = () => {
           <Card className="border-eden-light/50 shadow-sm">
             <CardContent className="p-6">
               <h3 className="text-2xl font-serif text-eden-dark mb-6">Enquiry Form</h3>
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
@@ -97,6 +106,14 @@ const Contact: React.FC = () => {
                 <Button type="submit" className="btn-primary w-full">
                   Send Enquiry
                 </Button>
+                
+                {isSubmitted && (
+                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                    <p className="text-green-800 font-medium text-center">
+                      Thank You for contacting Eden, We will reach out to you shortly.
+                    </p>
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>
@@ -110,9 +127,9 @@ const Contact: React.FC = () => {
                   title="Location"
                   content={
                     <address className="not-italic">
-                      Eden Gracious Living<br />
-                      123 Peaceful Valley Road<br />
-                      Dehradun, Uttarakhand 248001
+                      Khasra 39 & 40, Near Vaibhav Farms,<br />
+                      Purkul Road, Bhagwantpur,<br />
+                      Dehradun 248 009, Uttarakhand, India
                     </address>
                   }
                 />
@@ -121,8 +138,8 @@ const Contact: React.FC = () => {
                   icon={<Phone />}
                   title="Phone"
                   content={
-                    <a href="tel:+919876543210" className="hover:text-eden">
-                      +91 98765 43210
+                    <a href="tel:+917533909333" className="hover:text-eden">
+                      +91-7533909333
                     </a>
                   }
                 />
@@ -131,9 +148,14 @@ const Contact: React.FC = () => {
                   icon={<Mail />}
                   title="Email"
                   content={
-                    <a href="mailto:info@edengraciousliving.com" className="hover:text-eden">
-                      info@edengraciousliving.com
-                    </a>
+                    <div className="space-y-1">
+                      <a href="mailto:info@edenseniors.com" className="hover:text-eden block">
+                        info@edenseniors.com
+                      </a>
+                      <a href="mailto:sales@edenseniors.com" className="hover:text-eden block">
+                        sales@edenseniors.com
+                      </a>
+                    </div>
                   }
                 />
               </div>

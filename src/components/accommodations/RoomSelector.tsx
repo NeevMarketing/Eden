@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Leaf } from "lucide-react";
 import { RoomType } from "@/types/accommodation";
 import { roomTypes } from "../../data/packageData";
+import { updatedRoomData } from "../../data/roomData";
 
 interface RoomTypeSelectorProps {
   onSelect: (roomType: RoomType) => void;
@@ -33,6 +34,14 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
     window.open(url, '_blank');
   };
 
+  const getRoomData = (roomId: string) => {
+    return updatedRoomData[roomId as keyof typeof updatedRoomData] || {
+      size: roomTypes.find(r => r.id === roomId)?.size || "",
+      guests: `${roomTypes.find(r => r.id === roomId)?.guests || 1} guests`,
+      maxGuests: roomTypes.find(r => r.id === roomId)?.guests || 1
+    };
+  };
+
   return (
     <div className="space-y-12">
       <div className="text-center">
@@ -44,55 +53,58 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {availableRoomTypes.map((roomType) => (
-          <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full">
-            <div className="relative overflow-hidden">
-              <img
-                src={roomType.image}
-                alt={roomType.name}
-                className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <Badge className="absolute top-6 left-6 bg-white/90 text-stone-700 hover:bg-white border-0 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-                {roomType.size}
-              </Badge>
-            </div>
-            
-            <CardHeader className="pb-4">
-              <CardTitle className="text-2xl font-serif font-bold text-stone-800">
-                {roomType.name}
-              </CardTitle>
-              <CardDescription className="text-stone-600 text-base leading-relaxed font-light">
-                {roomType.description}
-              </CardDescription>
-            </CardHeader>
-            
-            <CardContent className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2 text-stone-600">
-                  <Users className="w-5 h-5 text-eden" />
-                  <span className="font-medium">{roomType.guests} guests</span>
-                </div>
-                <div className="text-right">
-                  <p className="text-sm text-stone-500 font-medium">Starting from</p>
-                  <p className="text-3xl font-serif font-bold text-emerald-700">
-                    ₹{roomType.startingPrice.toLocaleString()}
-                  </p>
-                  <p className="text-sm text-stone-500">per night</p>
-                </div>
+        {availableRoomTypes.map((roomType) => {
+          const roomData = getRoomData(roomType.id);
+          return (
+            <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full">
+              <div className="relative overflow-hidden">
+                <img
+                  src={roomType.image}
+                  alt={roomType.name}
+                  className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <Badge className="absolute top-6 left-6 bg-white/90 text-stone-700 hover:bg-white border-0 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                  {roomData.size}
+                </Badge>
               </div>
               
-              <div className="flex justify-center">
-                <Button 
-                  className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
-                  onClick={() => handleKnowMore(roomType)}
-                >
-                  Know More
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+              <CardHeader className="pb-4">
+                <CardTitle className="text-2xl font-serif font-bold text-stone-800">
+                  {roomType.name}
+                </CardTitle>
+                <CardDescription className="text-stone-600 text-base leading-relaxed font-light">
+                  {roomType.description}
+                </CardDescription>
+              </CardHeader>
+              
+              <CardContent className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2 text-stone-600">
+                    <Users className="w-5 h-5 text-eden" />
+                    <span className="font-medium">{roomData.guests}</span>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-stone-500 font-medium">Starting from</p>
+                    <p className="text-3xl font-serif font-bold text-emerald-700">
+                      ₹{roomType.startingPrice.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-stone-500">per night</p>
+                  </div>
+                </div>
+                
+                <div className="flex justify-center">
+                  <Button 
+                    className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
+                    onClick={() => handleKnowMore(roomType)}
+                  >
+                    Know More
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

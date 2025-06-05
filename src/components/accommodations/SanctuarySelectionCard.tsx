@@ -4,15 +4,25 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, MapPin, Users } from 'lucide-react';
 import { BookingDetails } from '@/types/accommodation';
+import { updatedRoomData } from '../../data/roomData';
 
 interface SanctuarySelectionCardProps {
   bookingDetails: BookingDetails;
   displayNights: number;
   totalPrice: number;
+  selectedGuests?: number;
 }
 
-const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: SanctuarySelectionCardProps) => {
+const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice, selectedGuests }: SanctuarySelectionCardProps) => {
   console.log('SanctuarySelectionCard - displayNights:', displayNights, 'bookingDetails:', bookingDetails);
+  
+  const getRoomData = () => {
+    if (!bookingDetails.roomType) return null;
+    return updatedRoomData[bookingDetails.roomType.id as keyof typeof updatedRoomData];
+  };
+
+  const roomData = getRoomData();
+  const maxGuests = roomData?.maxGuests || bookingDetails.roomCategory?.guests || 1;
   
   return (
     <Card className="bg-white border-stone-200">
@@ -32,11 +42,11 @@ const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: S
             <div className="flex items-center text-sm text-stone-600 space-x-4">
               <span className="flex items-center">
                 <MapPin className="w-4 h-4 mr-1" />
-                {bookingDetails.roomCategory?.size}
+                {roomData?.size || bookingDetails.roomCategory?.size}
               </span>
               <span className="flex items-center">
                 <Users className="w-4 h-4 mr-1" />
-                {bookingDetails.roomCategory?.guests} guests
+                {selectedGuests ? `${selectedGuests} of ${maxGuests} guests` : `${maxGuests} guests`}
               </span>
             </div>
           </div>

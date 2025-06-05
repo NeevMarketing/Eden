@@ -51,7 +51,7 @@ const AccommodationFlow = () => {
   };
 
   return (
-    <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+    <section id="choose-your-sanctuary" className="space-y-8 sm:space-y-12 lg:space-y-16">
       {/* Step Content */}
       <div className="min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] px-4 sm:px-6 lg:px-8">
         {currentStep === "roomType" && (
@@ -82,7 +82,7 @@ const AccommodationFlow = () => {
           />
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

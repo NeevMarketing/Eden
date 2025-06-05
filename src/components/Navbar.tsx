@@ -26,6 +26,14 @@ const Navbar: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -43,7 +51,12 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="/#about" className="text-eden-text hover:text-eden transition-colors">About</a>
-          <a href="/#accommodations" className="text-eden-text hover:text-eden transition-colors">Accommodations</a>
+          <button 
+            onClick={() => scrollToSection('choose-your-sanctuary')} 
+            className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
+          >
+            Accommodations
+          </button>
           <a href="/#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
           <a href="/gallery" className="text-eden-text hover:text-eden transition-colors">Gallery</a>
           <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a>
@@ -67,7 +80,12 @@ const Navbar: React.FC = () => {
         <div className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4">
           <div className="container-custom flex flex-col space-y-4">
             <a href="/#about" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>About</a>
-            <a href="/#accommodations" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Accommodations</a>
+            <button 
+              onClick={() => scrollToSection('choose-your-sanctuary')} 
+              className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
+            >
+              Accommodations
+            </button>
             <a href="/#amenities" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Amenities</a>
             <a href="/gallery" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Gallery</a>
             <a href="/#faq" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>FAQs</a>
