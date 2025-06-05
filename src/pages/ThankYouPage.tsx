@@ -1,14 +1,11 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Home, Calendar, Phone } from 'lucide-react';
-
 const ThankYouPage = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
       
       <main className="section-padding">
@@ -23,9 +20,8 @@ const ThankYouPage = () => {
                 Thank You for Your Interest!
               </h1>
               
-              <p className="text-lg text-stone-600 leading-relaxed">
-                We're excited to help you begin your wellness journey at Eden. Our sanctuary specialists will review your inquiry and contact you within 24 hours.
-              </p>
+              <p className="text-lg text-stone-600 leading-relaxed">We’re glad to help you plan your stay at Eden!!!
+            </p>
             </div>
 
             <Card className="bg-white/80 backdrop-blur-sm border-stone-200 mb-8">
@@ -77,19 +73,12 @@ const ThankYouPage = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={() => window.location.href = '/'}
-                className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl flex items-center space-x-2"
-              >
+              <Button onClick={() => window.location.href = '/'} className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl flex items-center space-x-2">
                 <Home className="w-4 h-4" />
                 <span>Return Home</span>
               </Button>
               
-              <Button 
-                variant="outline"
-                onClick={() => window.location.href = '/#accommodations'}
-                className="border-eden text-eden hover:bg-eden hover:text-white px-8 py-3 rounded-xl flex items-center space-x-2"
-              >
+              <Button variant="outline" onClick={() => window.location.href = '/#accommodations'} className="border-eden text-eden hover:bg-eden hover:text-white px-8 py-3 rounded-xl flex items-center space-x-2">
                 <Calendar className="w-4 h-4" />
                 <span>Explore More Options</span>
               </Button>
@@ -99,8 +88,6 @@ const ThankYouPage = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default ThankYouPage;
