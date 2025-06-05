@@ -66,17 +66,7 @@ const ThankYouPage = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button onClick={() => window.location.href = '/'} className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl flex items-center space-x-2">
-                <Home className="w-4 h-4" />
-                <span>Return Home</span>
-              </Button>
-              
-              <Button variant="outline" onClick={() => window.location.href = '/#accommodations'} className="border-eden text-eden hover:bg-eden hover:text-white px-8 py-3 rounded-xl flex items-center space-x-2">
-                <Calendar className="w-4 h-4" />
-                <span>Explore More Options</span>
-              </Button>
-            </div>
+            
           </div>
         </div>
       </main>
