@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Accessibility, Headphones, Heart, Home, Users, Activity, Utensils } from "lucide-react";
+import { Accessibility, Headphones, Heart, Home, Activity, Utensils } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface AmenityProps {
@@ -28,32 +28,32 @@ const Amenities: React.FC = () => {
     {
       icon: <Activity size={24} />,
       title: "Wellness Centre",
-      description: "Daily yoga, meditation, and therapeutic sessions to nurture mind, body, and spirit."
+      description: "Start your mornings with yoga or meditation. Take part in guided wellness routines that help you care for your body and mind."
     },
     {
       icon: <Home size={24} />,
       title: "Housekeeping & Laundry",
-      description: "Regular housekeeping and laundry services to maintain a clean, comfortable living space."
+      description: "Enjoy the comfort of a clean, fresh space without lifting a finger. Our team takes care of the details, so your days stay light and relaxed."
     },
     {
       icon: <Headphones size={24} />,
       title: "Concierge Services",
-      description: "Attentive staff available to assist with requests, arrangements, and information."
+      description: "Need help arranging something? Our team is here to quietly assist, offer support when you need it, without ever intruding."
     },
     {
       icon: <Heart size={24} />,
       title: "On-Call Medical Support",
-      description: "Peace of mind with qualified medical professionals available when needed."
+      description: "With qualified professionals available, you can rest easy knowing help is nearby if needed. Offering peace of mind."
     },
     {
       icon: <Accessibility size={24} />,
       title: "Accessibility Features",
-      description: "Thoughtfully designed spaces with elevator access and wheelchair-friendly pathways."
+      description: "Every path, every apartment, every corner is designed with care from elevators to wheelchair-friendly spaces, so you can move freely and comfortably."
     },
     {
-      icon: <Users size={24} />,
+      icon: <Utensils size={24} />,
       title: "Dining Options",
-      description: "Enjoy chef-prepared meals in community dining or the privacy of your apartment."
+      description: "Enjoy freshly prepared meals, whether in the company of others or quietly in your own space. Thoughtful dining that suits your tastes and your moments."
     }
   ];
 
@@ -64,8 +64,7 @@ const Amenities: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Amenities & Services</h2>
           <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
           <p className="text-eden-text">
-            At Eden, we provide thoughtful amenities and attentive services to enhance your stay,
-            ensuring comfort, convenience, and enrichment in every aspect of daily life.
+            At Eden, every detail is shaped to bring calm, ease, and gentle enrichment to your everyday life. You'll find thoughtful spaces and attentive services designed not to impress, but to quietly support the way you want to live — in peace, comfort, and without distractions.
           </p>
         </div>
         

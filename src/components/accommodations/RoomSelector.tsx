@@ -43,9 +43,9 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
         <p className="text-stone-600 text-lg font-light">Select the accommodation that nurtures your well-being</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {availableRoomTypes.map((roomType) => (
-          <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden">
+          <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full">
             <div className="relative overflow-hidden">
               <img
                 src={roomType.image}

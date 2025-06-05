@@ -1,6 +1,9 @@
+
 import React from "react";
+
 const About: React.FC = () => {
-  return <section id="about" className="section-padding bg-eden-beige/30">
+  return (
+    <section id="about" className="section-padding bg-eden-beige/30">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Find the peace, comfort, and connection you've been seeking.</h2>
@@ -45,13 +48,19 @@ const About: React.FC = () => {
           
           <div className="order-1 md:order-2 relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80" alt="Eden Gracious Living peaceful environment" className="w-full h-full object-cover" />
+              <img 
+                src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80" 
+                alt="Eden Gracious Living peaceful environment" 
+                className="w-full h-64 md:h-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-eden-light rounded-lg -z-10"></div>
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-eden-accent/30 rounded-lg -z-10"></div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;
