@@ -451,9 +451,8 @@ const GalleryPage = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Life at Eden Through Lens
           </h2>
             <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
-            <p className="text-eden-text text-lg">
-              Discover every corner of our wellness sanctuary through our comprehensive gallery
-            </p>
+            <p className="text-eden-text text-lg">Get a closer look at the spaces, details, and experiences that define our stays
+          </p>
           </div>
 
           <div className="space-y-6 mb-16">
