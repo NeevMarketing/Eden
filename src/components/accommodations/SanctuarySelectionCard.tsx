@@ -12,6 +12,8 @@ interface SanctuarySelectionCardProps {
 }
 
 const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: SanctuarySelectionCardProps) => {
+  console.log('SanctuarySelectionCard - displayNights:', displayNights, 'bookingDetails:', bookingDetails);
+  
   return (
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
@@ -47,13 +49,16 @@ const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: S
             {bookingDetails.isPackage && bookingDetails.packageDetails ? (
               <>
                 <div className="font-medium text-stone-800 mb-1">{bookingDetails.packageDetails.name}</div>
-                <div className="text-sm text-stone-600">{displayNights} {displayNights === 1 ? 'night' : 'nights'}</div>
+                <div className="text-sm text-stone-600 mb-2">{displayNights} {displayNights === 1 ? 'night' : 'nights'} stay</div>
                 <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 mt-2">
                   Save {bookingDetails.packageDetails.savings}%
                 </Badge>
               </>
             ) : (
-              <div className="font-medium text-stone-800">{displayNights} {displayNights === 1 ? 'night' : 'nights'}</div>
+              <>
+                <div className="font-medium text-stone-800 mb-1">Custom Journey</div>
+                <div className="text-sm text-stone-600">{displayNights} {displayNights === 1 ? 'night' : 'nights'} stay</div>
+              </>
             )}
           </div>
         </div>
