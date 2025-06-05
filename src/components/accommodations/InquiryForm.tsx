@@ -17,6 +17,19 @@ interface InquiryFormProps {
 }
 
 const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: InquiryFormProps) => {
+  // Get max guests based on room type
+  const getMaxGuests = () => {
+    if (!bookingDetails.roomType) return 6;
+    
+    const roomName = bookingDetails.roomType.name.toLowerCase();
+    if (roomName.includes('studio')) return 2;
+    if (roomName.includes('1 bhk')) return 3;
+    if (roomName.includes('2 bhk')) return 4;
+    return 6;
+  };
+
+  const maxGuests = getMaxGuests();
+
   return (
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
@@ -77,7 +90,7 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
                 <SelectValue placeholder="1 Guest" />
               </SelectTrigger>
               <SelectContent>
-                {[1, 2, 3, 4, 5, 6].map((num) => (
+                {Array.from({ length: maxGuests }, (_, i) => i + 1).map((num) => (
                   <SelectItem key={num} value={num.toString()}>
                     {num} {num === 1 ? 'Guest' : 'Guests'}
                   </SelectItem>
@@ -86,20 +99,20 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
             </Select>
           </div>
 
-          {/* Conditional Check-in Date - Only show for packages */}
-          {bookingDetails.isPackage && (
-            <div>
-              <Label className="text-sm font-medium text-stone-700">Check-in Date</Label>
-              <div className="mt-1">
-                <DatePickerComponent
-                  title=""
-                  placeholder="Select your check-in date"
-                  selectedDate={formData.preferredCheckIn}
-                  onDateSelect={(date) => onInputChange('preferredCheckIn', date)}
-                />
-              </div>
+          {/* Check-in Date - Show for all bookings now */}
+          <div>
+            <Label className="text-sm font-medium text-stone-700">
+              {bookingDetails.isPackage ? 'Check-in Date *' : 'Preferred Check-in Date'}
+            </Label>
+            <div className="mt-1">
+              <DatePickerComponent
+                title=""
+                placeholder="Select your check-in date"
+                selectedDate={formData.preferredCheckIn}
+                onDateSelect={(date) => onInputChange('preferredCheckIn', date)}
+              />
             </div>
-          )}
+          </div>
 
           <div>
             <Label htmlFor="specialRequests" className="text-sm font-medium text-stone-700">Your Wellness Goals</Label>

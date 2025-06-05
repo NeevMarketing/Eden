@@ -9,11 +9,28 @@ interface SanctuarySelectionCardProps {
   bookingDetails: BookingDetails;
   displayNights: number;
   totalPrice: number;
+  formData?: {
+    numberOfGuests?: number;
+  };
 }
 
-const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: SanctuarySelectionCardProps) => {
+const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice, formData }: SanctuarySelectionCardProps) => {
   console.log('SanctuarySelectionCard - displayNights:', displayNights, 'bookingDetails:', bookingDetails);
   
+  // Get max guests for the room type
+  const getMaxGuests = () => {
+    if (!bookingDetails.roomType) return 0;
+    
+    const roomName = bookingDetails.roomType.name.toLowerCase();
+    if (roomName.includes('studio')) return 2;
+    if (roomName.includes('1 bhk')) return 3;
+    if (roomName.includes('2 bhk')) return 4;
+    return 0;
+  };
+
+  const maxGuests = getMaxGuests();
+  const selectedGuests = formData?.numberOfGuests || 1;
+
   return (
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
@@ -36,7 +53,10 @@ const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: S
               </span>
               <span className="flex items-center">
                 <Users className="w-4 h-4 mr-1" />
-                {bookingDetails.roomCategory?.guests} guests
+                {maxGuests > 0 && formData?.numberOfGuests ? 
+                  `${selectedGuests} of ${maxGuests} guests` : 
+                  `${bookingDetails.roomCategory?.guests} guests`
+                }
               </span>
             </div>
           </div>

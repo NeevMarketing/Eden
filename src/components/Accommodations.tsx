@@ -51,38 +51,42 @@ const AccommodationFlow = () => {
   };
 
   return (
-    <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-      {/* Step Content */}
-      <div className="min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] px-4 sm:px-6 lg:px-8">
-        {currentStep === "roomType" && (
-          <RoomTypeSelector onSelect={handleRoomTypeSelect} />
-        )}
-        
-        {currentStep === "category" && bookingDetails.roomType && (
-          <RoomCategorySelector
-            roomType={bookingDetails.roomType}
-            onSelect={handleCategorySelect}
-            onBack={handleBack}
-          />
-        )}
-        
-        {currentStep === "datePackage" && bookingDetails.roomCategory && (
-          <DatePackageSelector
-            roomCategory={bookingDetails.roomCategory}
-            onSelect={handleDatePackageSelect}
-            onBack={handleBack}
-          />
-        )}
-        
-        {currentStep === "inquiry" && (
-          <InquiryFormComponent
-            bookingDetails={bookingDetails}
-            onSubmit={handleInquirySubmit}
-            onBack={handleBack}
-          />
-        )}
+    <section id="accommodations" className="section-padding bg-white">
+      <div className="container-custom">
+        <div id="choose-your-sanctuary" className="space-y-8 sm:space-y-12 lg:space-y-16">
+          {/* Step Content */}
+          <div className="min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] px-4 sm:px-6 lg:px-8">
+            {currentStep === "roomType" && (
+              <RoomTypeSelector onSelect={handleRoomTypeSelect} />
+            )}
+            
+            {currentStep === "category" && bookingDetails.roomType && (
+              <RoomCategorySelector
+                roomType={bookingDetails.roomType}
+                onSelect={handleCategorySelect}
+                onBack={handleBack}
+              />
+            )}
+            
+            {currentStep === "datePackage" && bookingDetails.roomCategory && (
+              <DatePackageSelector
+                roomCategory={bookingDetails.roomCategory}
+                onSelect={handleDatePackageSelect}
+                onBack={handleBack}
+              />
+            )}
+            
+            {currentStep === "inquiry" && (
+              <InquiryFormComponent
+                bookingDetails={bookingDetails}
+                onSubmit={handleInquirySubmit}
+                onBack={handleBack}
+              />
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
