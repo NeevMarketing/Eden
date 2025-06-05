@@ -38,9 +38,7 @@ const About: React.FC = () => {
               </li>
             </ul>
             
-            <p className="text-eden-text italic">
-              No labels, no rush, just the freedom to experience life the way you want, for as long as you choose.
-            </p>
+            <p className="text-eden-text italic"></p>
           </div>
           
           <div className="order-1 md:order-2 relative">
