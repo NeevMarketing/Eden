@@ -26,7 +26,7 @@ const WhyChoose: React.FC = () => {
           </div>
           
           <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Why Choose Eden</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Why Choose Eden?</h2>
             <div className="w-20 h-1 bg-eden mb-6"></div>
             
             <p className="text-eden-text mb-8 italic">
