@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, MapPin, Calendar, Users, Phone, Mail, MessageSquare } from 'lucide-react';
+import { ArrowLeft, MapPin, Calendar, Users, Phone, Mail, MessageSquare, CheckCircle } from 'lucide-react';
 import { BookingDetails, InquiryForm } from '@/types/accommodation';
 import DatePickerComponent from './DatePickerComponent';
 import { format } from 'date-fns';
@@ -45,7 +46,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
       return packageNights;
     }
     
-    // For custom dates, check if it's a sanctuary between day 5-8
+    // For custom dates, calculate dynamically
     if (bookingDetails.checkInDate && bookingDetails.checkOutDate) {
       const timeDiff = bookingDetails.checkOutDate.getTime() - bookingDetails.checkInDate.getTime();
       const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
@@ -64,211 +65,222 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
 
   const displayNights = calculateNights();
 
-  const totalPrice = bookingDetails.isPackage 
-    ? bookingDetails.packageDetails?.price 
-    : bookingDetails.totalPrice || (bookingDetails.roomType?.startingPrice ? bookingDetails.roomType.startingPrice * displayNights : 0);
+  // Calculate total price
+  const calculateTotalPrice = () => {
+    if (bookingDetails.isPackage && bookingDetails.packageDetails) {
+      return bookingDetails.packageDetails.price;
+    }
+    
+    if (bookingDetails.roomCategory && bookingDetails.roomCategory.startingPrice) {
+      return bookingDetails.roomCategory.startingPrice * displayNights;
+    }
+    
+    return bookingDetails.totalPrice || 0;
+  };
+
+  const totalPrice = calculateTotalPrice();
 
   return (
-    <div className="section-padding">
-      <div className="container-custom max-w-4xl mx-auto">
-        <div className="mb-8">
-          <Button 
-            variant="outline"
-            onClick={onBack}
-            className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Journey Selection
-          </Button>
-        </div>
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-8">
+        <Button 
+          variant="outline"
+          onClick={onBack}
+          className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+        >
+          <ArrowLeft className="w-5 h-5 mr-2" />
+          Back to Journey Selection
+        </Button>
+      </div>
 
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
-            Connect With Us
-          </h2>
-          <p className="text-stone-600 font-light">
-            Complete your journey details and our wellness team will reach out to you
-          </p>
-        </div>
+      <div className="text-center mb-8">
+        <p className="text-stone-600 mb-8">
+          Our sanctuary specialists will contact you with personalized recommendations
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Retreat Details */}
-          <Card className="bg-gradient-to-br from-eden/5 to-emerald/5 border-eden/20">
-            <CardHeader>
-              <CardTitle className="text-xl font-serif text-stone-800 flex items-center">
-                <Calendar className="w-5 h-5 mr-2 text-eden" />
-                Retreat Details
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
-                <span className="text-sm text-stone-600">Sanctuary Type</span>
-                <Badge className="bg-eden/10 text-eden border-eden">
-                  {bookingDetails.roomType?.name}
-                </Badge>
-              </div>
-              
-              <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
-                <span className="text-sm text-stone-600">Collection</span>
-                <span className="font-medium text-stone-800">{bookingDetails.roomCategory?.name}</span>
-              </div>
-
-              <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
-                <span className="text-sm text-stone-600">Duration</span>
-                <span className="font-medium text-stone-800">{displayNights} nights</span>
-              </div>
-
-              {bookingDetails.isPackage && bookingDetails.packageDetails && (
-                <div className="p-3 bg-white/50 rounded-lg">
-                  <span className="text-sm text-stone-600 block mb-1">Package</span>
-                  <span className="font-medium text-stone-800">{bookingDetails.packageDetails.name}</span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Your Sanctuary Selection */}
+        <Card className="bg-white border-stone-200">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl font-medium text-stone-800 flex items-center">
+              <CheckCircle className="w-5 h-5 mr-2 text-emerald-600" />
+              Your Sanctuary Selection
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Accommodation */}
+            <div>
+              <h4 className="font-medium text-stone-800 mb-3">Accommodation</h4>
+              <div className="bg-stone-50 rounded-lg p-4">
+                <div className="font-medium text-stone-800 mb-1">{bookingDetails.roomCategory?.name}</div>
+                <div className="text-sm text-stone-600 mb-2">{bookingDetails.roomType?.name}</div>
+                <div className="flex items-center text-sm text-stone-600 space-x-4">
+                  <span className="flex items-center">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    {bookingDetails.roomCategory?.size}
+                  </span>
+                  <span className="flex items-center">
+                    <Users className="w-4 h-4 mr-1" />
+                    {bookingDetails.roomCategory?.guests} guests
+                  </span>
                 </div>
-              )}
-
-              {!bookingDetails.isPackage && bookingDetails.checkInDate && bookingDetails.checkOutDate && (
-                <>
-                  <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
-                    <span className="text-sm text-stone-600">Check-in</span>
-                    <span className="font-medium text-stone-800">{format(bookingDetails.checkInDate, 'PPP')}</span>
-                  </div>
-                  <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
-                    <span className="text-sm text-stone-600">Check-out</span>
-                    <span className="font-medium text-stone-800">{format(bookingDetails.checkOutDate, 'PPP')}</span>
-                  </div>
-                </>
-              )}
-
-              <div className="flex items-center justify-between p-4 bg-eden/10 rounded-lg border border-eden/20">
-                <span className="text-stone-800 font-medium">Total Investment</span>
-                <span className="text-xl font-bold text-eden">₹{totalPrice?.toLocaleString()}</span>
               </div>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Your Information */}
-          <Card className="bg-white/90 backdrop-blur-sm border-stone-200">
-            <CardHeader>
-              <CardTitle className="text-xl font-serif text-stone-800 flex items-center">
-                <MessageSquare className="w-5 h-5 mr-2 text-eden" />
-                Your Information
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name" className="text-stone-700 font-medium">Full Name *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => handleInputChange('name', e.target.value)}
-                      className="mt-1 border-stone-300 rounded-xl"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-stone-700 font-medium">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      className="mt-1 border-stone-300 rounded-xl"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <Label htmlFor="email" className="text-stone-700 font-medium">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="mt-1 border-stone-300 rounded-xl"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="numberOfGuests" className="text-stone-700 font-medium">Number of Guests *</Label>
-                  <Select
-                    value={formData.numberOfGuests?.toString()}
-                    onValueChange={(value) => handleInputChange('numberOfGuests', parseInt(value))}
-                  >
-                    <SelectTrigger className="mt-1 border-stone-300 rounded-xl">
-                      <SelectValue placeholder="Select number of guests" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <SelectItem key={num} value={num.toString()}>
-                          {num} {num === 1 ? 'Guest' : 'Guests'}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {bookingDetails.isPackage && (
-                  <div>
-                    <Label className="text-stone-700 font-medium">Preferred Check-in Date</Label>
-                    <div className="mt-1">
-                      <DatePickerComponent
-                        title=""
-                        placeholder="When would you like to start?"
-                        selectedDate={formData.preferredCheckIn}
-                        onDateSelect={(date) => handleInputChange('preferredCheckIn', date)}
-                      />
-                    </div>
-                  </div>
+            {/* Retreat Details */}
+            <div>
+              <h4 className="font-medium text-stone-800 mb-3">Retreat Details</h4>
+              <div className="bg-stone-50 rounded-lg p-4">
+                {bookingDetails.isPackage && bookingDetails.packageDetails ? (
+                  <>
+                    <div className="font-medium text-stone-800 mb-1">{bookingDetails.packageDetails.name}</div>
+                    <div className="text-sm text-stone-600">{displayNights} nights</div>
+                    <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 mt-2">
+                      Save {bookingDetails.packageDetails.savings}%
+                    </Badge>
+                  </>
+                ) : (
+                  <div className="font-medium text-stone-800">{displayNights} nights</div>
                 )}
+              </div>
+            </div>
 
-                <div>
-                  <Label htmlFor="emergencyContact" className="text-stone-700 font-medium">Emergency Contact</Label>
-                  <Input
-                    id="emergencyContact"
-                    value={formData.emergencyContact}
-                    onChange={(e) => handleInputChange('emergencyContact', e.target.value)}
-                    className="mt-1 border-stone-300 rounded-xl"
-                    placeholder="Name and phone number"
-                  />
-                </div>
+            {/* Sanctuary Features */}
+            <div>
+              <h4 className="font-medium text-stone-800 mb-3">Sanctuary Features</h4>
+              <div className="flex flex-wrap gap-2">
+                {bookingDetails.roomCategory?.amenities.map((amenity, index) => (
+                  <Badge key={index} variant="outline" className="text-xs">
+                    {amenity}
+                  </Badge>
+                ))}
+              </div>
+            </div>
 
-                <div>
-                  <Label htmlFor="medicalConditions" className="text-stone-700 font-medium">Medical Conditions</Label>
-                  <Textarea
-                    id="medicalConditions"
-                    value={formData.medicalConditions}
-                    onChange={(e) => handleInputChange('medicalConditions', e.target.value)}
-                    className="mt-1 border-stone-300 rounded-xl"
-                    placeholder="Please mention any medical conditions we should be aware of"
-                    rows={3}
-                  />
-                </div>
+            {/* Estimated Investment */}
+            <div>
+              <h4 className="font-medium text-stone-800 mb-2">Estimated Investment</h4>
+              <div className="text-2xl font-bold text-emerald-600">₹{totalPrice.toLocaleString()}</div>
+              <div className="text-xs text-stone-500 mt-1">
+                *Final pricing will be personalized by our wellness team
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-                <div>
-                  <Label htmlFor="specialRequests" className="text-stone-700 font-medium">Special Requests</Label>
-                  <Textarea
-                    id="specialRequests"
-                    value={formData.specialRequests}
-                    onChange={(e) => handleInputChange('specialRequests', e.target.value)}
-                    className="mt-1 border-stone-300 rounded-xl"
-                    placeholder="Any special requirements or preferences?"
-                    rows={3}
-                  />
-                </div>
+        {/* Share Your Details */}
+        <Card className="bg-white border-stone-200">
+          <CardHeader className="pb-4">
+            <CardTitle className="text-xl font-medium text-stone-800">
+              Share Your Details
+            </CardTitle>
+            <p className="text-sm text-stone-600 mt-2">
+              Let us know how to reach you for your personalized sanctuary experience
+            </p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Label htmlFor="name" className="text-sm font-medium text-stone-700">Full Name *</Label>
+                <Input
+                  id="name"
+                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  className="mt-1 border-stone-300"
+                  required
+                />
+              </div>
 
-                <Button 
-                  type="submit"
-                  className="w-full bg-eden hover:bg-emerald-700 text-white py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+              <div>
+                <Label htmlFor="email" className="text-sm font-medium text-stone-700">Email Address *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  className="mt-1 border-stone-300"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="phone" className="text-sm font-medium text-stone-700">Phone Number *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  className="mt-1 border-stone-300"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="numberOfGuests" className="text-sm font-medium text-stone-700">Number of Guests *</Label>
+                <Select
+                  value={formData.numberOfGuests?.toString()}
+                  onValueChange={(value) => handleInputChange('numberOfGuests', parseInt(value))}
                 >
-                  Submit Inquiry
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+                  <SelectTrigger className="mt-1 border-stone-300">
+                    <SelectValue placeholder="1 Guest" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[1, 2, 3, 4, 5, 6].map((num) => (
+                      <SelectItem key={num} value={num.toString()}>
+                        {num} {num === 1 ? 'Guest' : 'Guests'}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Conditional Check-in Date - Only show for packages */}
+              {bookingDetails.isPackage && (
+                <div>
+                  <Label className="text-sm font-medium text-stone-700">Check-in Date</Label>
+                  <div className="mt-1">
+                    <DatePickerComponent
+                      title=""
+                      placeholder="Select your check-in date"
+                      selectedDate={formData.preferredCheckIn}
+                      onDateSelect={(date) => handleInputChange('preferredCheckIn', date)}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <div>
+                <Label htmlFor="specialRequests" className="text-sm font-medium text-stone-700">Your Wellness Goals</Label>
+                <Textarea
+                  id="specialRequests"
+                  placeholder="Share any special requirements or wellness goals..."
+                  value={formData.specialRequests}
+                  onChange={(e) => handleInputChange('specialRequests', e.target.value)}
+                  className="mt-1 border-stone-300"
+                  rows={4}
+                />
+              </div>
+
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                <h4 className="font-medium text-emerald-800 mb-2">Your Wellness Journey Begins Here</h4>
+                <p className="text-sm text-emerald-700">
+                  Our sanctuary specialists will review your preferences and contact you within 24 hours with personalized recommendations and availability.
+                </p>
+              </div>
+
+              <Button 
+                type="submit"
+                className="w-full bg-stone-600 hover:bg-stone-700 text-white py-3 rounded-lg font-medium"
+              >
+                Begin Your Wellness Journey
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
