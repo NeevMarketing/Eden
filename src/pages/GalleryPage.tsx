@@ -448,9 +448,8 @@ const GalleryPage = () => {
       <main className="section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
-              Visual Journey Through Eden
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Life at Eden Through Lens
+          </h2>
             <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
             <p className="text-eden-text text-lg">
               Discover every corner of our wellness sanctuary through our comprehensive gallery
