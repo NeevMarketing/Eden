@@ -85,17 +85,17 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
   return (
     <div className="space-y-8 mb-16">
       <div className="text-center">
-        <h2 className="text-2xl md:text-3xl font-serif font-bold text-stone-800 mb-4">
+        <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
           Choose Your Wellness Package
         </h2>
-        <p className="text-stone-600 font-light text-sm md:text-base">
+        <p className="text-stone-600 font-light">
           Select a comprehensive wellness program designed for your transformation
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {packages.map((pkg, index) => (
-          <Card key={pkg.id} className={`hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm relative ${
+          <Card key={pkg.id} className={`hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm relative min-h-[600px] ${
             index === 1 ? 'border-2 border-eden shadow-lg' : ''
           }`}>
             {index === 1 && (
@@ -108,33 +108,33 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
             )}
             <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50 pb-4">
               <div className="flex items-center justify-between mb-2">
-                <Badge className="bg-eden/10 text-eden border-eden px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
+                <Badge className="bg-eden/10 text-eden border-eden px-3 py-1 rounded-full">
                   Save {pkg.savings}%
                 </Badge>
                 <div className="flex items-center text-stone-600">
-                  <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
-                  <span className="text-xs md:text-sm">{pkg.duration}</span>
+                  <Calendar className="w-4 h-4 mr-1" />
+                  <span className="text-sm">{pkg.duration}</span>
                 </div>
               </div>
-              <CardTitle className="text-lg md:text-xl font-serif text-stone-800">{pkg.name}</CardTitle>
-              <div className="text-2xl md:text-3xl font-bold text-emerald-700">
+              <CardTitle className="text-xl font-serif text-stone-800">{pkg.name}</CardTitle>
+              <div className="text-3xl font-bold text-emerald-700">
                 ₹{pkg.price.toLocaleString()}
               </div>
             </CardHeader>
-            <CardContent className="pt-4 md:pt-6 flex flex-col h-full">
-              <p className="text-stone-600 mb-4 md:mb-6 font-light text-sm md:text-base">{pkg.description}</p>
+            <CardContent className="pt-6 flex flex-col h-full">
+              <p className="text-stone-600 mb-6 font-light">{pkg.description}</p>
               
-              <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 flex-grow">
+              <div className="space-y-3 mb-6 flex-grow">
                 {pkg.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-eden mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-xs md:text-sm text-stone-600">{feature}</span>
+                    <CheckCircle className="w-4 h-4 text-eden mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-stone-600">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Button 
-                className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-2 md:py-3 mt-auto text-sm md:text-base"
+                className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-3 mt-auto"
                 onClick={() => onPackageSelect(pkg)}
               >
                 Select Package
@@ -148,7 +148,7 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
         <Button 
           variant="outline" 
           onClick={onBack}
-          className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 md:px-8 text-sm md:text-base"
+          className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-8"
         >
           Back to Journey Options
         </Button>

@@ -58,13 +58,8 @@ const Navbar: React.FC = () => {
             Accommodations
           </button>
           <a href="/#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
-          <button 
-            onClick={() => scrollToSection('faq')} 
-            className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
-          >
-            FAQs
-          </button>
           <a href="/gallery" className="text-eden-text hover:text-eden transition-colors">Gallery</a>
+          <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a>
           <a href="/#contact">
             <Button variant="outline" className="border-eden text-eden hover:bg-eden hover:text-white">Contact Us</Button>
           </a>
@@ -92,13 +87,8 @@ const Navbar: React.FC = () => {
               Accommodations
             </button>
             <a href="/#amenities" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Amenities</a>
-            <button 
-              onClick={() => scrollToSection('faq')} 
-              className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
-            >
-              FAQs
-            </button>
             <a href="/gallery" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Gallery</a>
+            <a href="/#faq" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>FAQs</a>
             <a href="/#contact" className="py-2 px-4" onClick={toggleMobileMenu}>
               <Button className="bg-eden text-white w-full">Contact Us</Button>
             </a>
