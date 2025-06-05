@@ -1,412 +1,262 @@
 
-// import React from "react";
-// import { Button } from "@/components/ui/button";
-// import { Calendar } from "@/components/ui/calendar";
-// import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-// import { CalendarIcon } from "lucide-react";
-// import { format, differenceInDays } from "date-fns";
-// import { cn } from "@/lib/utils";
-
-// interface DateSelectorProps {
-//   checkIn: Date | undefined;
-//   checkOut: Date | undefined;
-//   onCheckInChange: (date: Date | undefined) => void;
-//   onCheckOutChange: (date: Date | undefined) => void;
-// }
-
-// const DateSelector: React.FC<DateSelectorProps> = ({
-//   checkIn,
-//   checkOut,
-//   onCheckInChange,
-//   onCheckOutChange,
-// }) => {
-//   const getStayDuration = () => {
-//     if (checkIn && checkOut) {
-//       return differenceInDays(checkOut, checkIn);
-//     }
-//     return 0;
-//   };
-
-//   return (
-//     <div className="max-w-2xl mx-auto mb-12">
-//       <div className="bg-white rounded-lg shadow-lg p-8">
-//         <h3 className="text-xl font-serif text-eden-dark mb-6 text-center">Select Your Stay Dates</h3>
-//         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-//           <div>
-//             <label className="block text-eden-dark font-semibold mb-3 text-lg">Check-in Date</label>
-//             <Popover>
-//               <PopoverTrigger asChild>
-//                 <Button
-//                   variant="outline"
-//                   className={cn(
-//                     "w-full justify-start text-left font-normal h-14 text-lg",
-//                     !checkIn && "text-muted-foreground"
-//                   )}
-//                 >
-//                   <CalendarIcon className="mr-3 h-5 w-5" />
-//                   {checkIn ? format(checkIn, "PPP") : "Select check-in date"}
-//                 </Button>
-//               </PopoverTrigger>
-//               <PopoverContent className="w-auto p-0" align="start">
-//                 <Calendar
-//                   mode="single"
-//                   selected={checkIn}
-//                   onSelect={onCheckInChange}
-//                   disabled={(date) => date < new Date()}
-//                   initialFocus
-//                   className="pointer-events-auto"
-//                 />
-//               </PopoverContent>
-//             </Popover>
-//           </div>
-//           <div>
-//             <label className="block text-eden-dark font-semibold mb-3 text-lg">Check-out Date</label>
-//             <Popover>
-//               <PopoverTrigger asChild>
-//                 <Button
-//                   variant="outline"
-//                   className={cn(
-//                     "w-full justify-start text-left font-normal h-14 text-lg",
-//                     !checkOut && "text-muted-foreground"
-//                   )}
-//                 >
-//                   <CalendarIcon className="mr-3 h-5 w-5" />
-//                   {checkOut ? format(checkOut, "PPP") : "Select check-out date"}
-//                 </Button>
-//               </PopoverTrigger>
-//               <PopoverContent className="w-auto p-0" align="start">
-//                 <Calendar
-//                   mode="single"
-//                   selected={checkOut}
-//                   onSelect={onCheckOutChange}
-//                   disabled={(date) => date <= (checkIn || new Date())}
-//                   initialFocus
-//                   className="pointer-events-auto"
-//                 />
-//               </PopoverContent>
-//             </Popover>
-//           </div>
-//         </div>
-//         {checkIn && checkOut && (
-//           <div className="mt-6 p-4 bg-eden-light/30 rounded-lg text-center">
-//             <p className="text-lg font-semibold text-eden-dark">
-//               Stay Duration: {getStayDuration()} nights
-//             </p>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default DateSelector;
-
-
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, ChevronLeft, Package, Clock } from "lucide-react";
-import { format, differenceInDays } from "date-fns";
-import { cn } from "@/lib/utils";
-import { RoomCategory, BookingDetails, Package as PackageType } from "@/types/accommodation";
-import { packages } from "../../data/packageData";
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Calendar, Clock, ArrowLeft, CheckCircle } from 'lucide-react';
+import DatePickerComponent from './DatePickerComponent';
+import PackageSelector from './PackageSelector';
+import { RoomCategory } from '@/types/accommodation';
+import { differenceInDays, format } from 'date-fns';
 
 interface DatePackageSelectorProps {
   roomCategory: RoomCategory;
-  onSelect: (details: Partial<BookingDetails>) => void;
+  onSelect: (details: any) => void;
   onBack: () => void;
 }
 
 const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSelectorProps) => {
-  const [selectionType, setSelectionType] = useState<"custom" | "package" | null>(null);
-  const [checkIn, setCheckIn] = useState<Date>();
-  const [checkOut, setCheckOut] = useState<Date>();
-  const [selectedPackage, setSelectedPackage] = useState<PackageType>();
+  const [selectedOption, setSelectedOption] = useState<'dates' | 'package' | null>(null);
+  const [checkInDate, setCheckInDate] = useState<Date>();
+  const [checkOutDate, setCheckOutDate] = useState<Date>();
 
-  const calculateCustomPrice = () => {
-    if (!checkIn || !checkOut) return 0;
-    const nights = differenceInDays(checkOut, checkIn);
-    return nights * roomCategory.startingPrice;
+  const handleCustomDatesSelect = () => {
+    if (checkInDate && checkOutDate) {
+      const nights = differenceInDays(checkOutDate, checkInDate);
+      onSelect({
+        isPackage: false,
+        checkInDate,
+        checkOutDate,
+        nights: nights > 0 ? nights : 1,
+        totalPrice: roomCategory.startingPrice * (nights > 0 ? nights : 1)
+      });
+    }
   };
 
-  const calculatePackagePrice = (pkg: PackageType) => {
-    const nights = parseInt(pkg.duration.split(' ')[0]) * (pkg.duration.includes('Week') ? 7 : 1);
-    return nights * roomCategory.startingPrice * pkg.price;
-  };
-
-  const handleCustomDateContinue = () => {
-    if (!checkIn || !checkOut) return;
-    
-    const nights = differenceInDays(checkOut, checkIn);
-    const totalPrice = calculateCustomPrice();
-    
-    onSelect({
-      isPackage: false,
-      checkIn,
-      checkOut,
-      nights,
-      totalPrice
-    });
-  };
-
-  const handlePackageContinue = () => {
-    if (!selectedPackage) return;
-    
-    const totalPrice = calculatePackagePrice(selectedPackage);
-    
+  const handlePackageSelect = (packageData: any) => {
+    const nights = parseInt(packageData.duration.split(' ')[0]);
     onSelect({
       isPackage: true,
-      package: selectedPackage,
-      totalPrice
+      packageDetails: packageData,
+      nights,
+      totalPrice: packageData.price
     });
   };
 
-  return (
-    <div className="space-y-8">
-      <div className="flex items-center space-x-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={onBack}
-          className="flex items-center space-x-2 border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          <span>Back</span>
-        </Button>
+  if (selectedOption === 'package') {
+    return (
+      <div className="section-padding">
+        <div className="container-custom">
+          <div className="mb-8">
+            <Button 
+              variant="outline"
+              onClick={() => setSelectedOption(null)}
+              className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              Back to Journey Options
+            </Button>
+          </div>
+          <PackageSelector
+            onPackageSelect={handlePackageSelect}
+            onBack={() => setSelectedOption(null)}
+          />
+        </div>
       </div>
+    );
+  }
 
-      <div className="text-center">
-        <div className="flex items-center justify-center mb-6">
-          <Clock className="w-8 h-8 text-eden mr-3" />
-          <h2 className="text-3xl font-serif font-bold text-stone-800">
+  if (selectedOption === 'dates') {
+    return (
+      <div className="section-padding">
+        <div className="container-custom max-w-4xl mx-auto">
+          <div className="mb-8">
+            <Button 
+              variant="outline"
+              onClick={() => setSelectedOption(null)}
+              className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+            >
+              <ArrowLeft className="w-5 h-5 mr-2" />
+              Back to Journey Options
+            </Button>
+          </div>
+
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
+              Plan Your Custom Journey
+            </h2>
+            <p className="text-stone-600 font-light">
+              Choose your preferred arrival and departure dates for a personalized stay
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <DatePickerComponent
+              title="Arrival Date"
+              placeholder="Select check-in date"
+              selectedDate={checkInDate}
+              onDateSelect={setCheckInDate}
+            />
+            
+            <DatePickerComponent
+              title="Departure Date"
+              placeholder="Select check-out date"
+              selectedDate={checkOutDate}
+              onDateSelect={setCheckOutDate}
+            />
+          </div>
+
+          {checkInDate && checkOutDate && (
+            <Card className="bg-gradient-to-r from-eden/5 to-emerald/5 border-eden/20 mb-8">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-stone-800">Journey Summary</h3>
+                  <Badge className="bg-eden/10 text-eden border-eden">
+                    {differenceInDays(checkOutDate, checkInDate)} nights
+                  </Badge>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-stone-600">
+                  <div>
+                    <span className="font-medium">Check-in:</span><br />
+                    {format(checkInDate, 'PPP')}
+                  </div>
+                  <div>
+                    <span className="font-medium">Check-out:</span><br />
+                    {format(checkOutDate, 'PPP')}
+                  </div>
+                  <div>
+                    <span className="font-medium">Total Price:</span><br />
+                    ₹{(roomCategory.startingPrice * differenceInDays(checkOutDate, checkInDate)).toLocaleString()}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          <div className="text-center">
+            <Button 
+              onClick={handleCustomDatesSelect}
+              disabled={!checkInDate || !checkOutDate || differenceInDays(checkOutDate, checkInDate) <= 0}
+              className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Continue with Custom Dates
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="section-padding">
+      <div className="container-custom max-w-4xl mx-auto">
+        <div className="mb-8">
+          <Button 
+            variant="outline"
+            onClick={onBack}
+            className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Back to Collections
+          </Button>
+        </div>
+
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
             Plan Your Retreat
           </h2>
+          <p className="text-stone-600 font-light mb-6">
+            Choose between wellness packages or create your custom journey dates
+          </p>
+          <div className="bg-gradient-to-r from-eden/10 to-emerald/10 rounded-xl p-4 inline-block">
+            <p className="text-eden font-medium">
+              Selected: {roomCategory.name} • {roomCategory.size} • Starting from ₹{roomCategory.startingPrice.toLocaleString()}/night
+            </p>
+          </div>
         </div>
-        <p className="text-stone-600 font-light">
-          Selected: {roomCategory.name} - ₹{roomCategory.startingPrice.toLocaleString()}/night
-        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
+                onClick={() => setSelectedOption('package')}>
+            <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50">
+              <div className="flex items-center justify-between mb-2">
+                <Badge className="bg-eden/10 text-eden border-eden">Popular Choice</Badge>
+                <Clock className="w-5 h-5 text-eden" />
+              </div>
+              <CardTitle className="text-xl font-serif text-stone-800">Wellness Packages</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <p className="text-stone-600 mb-6 font-light">
+                Pre-designed wellness programs with comprehensive inclusions and structured activities.
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-eden mr-3" />
+                  <span className="text-sm text-stone-600">7, 14, or 30-day programs</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-eden mr-3" />
+                  <span className="text-sm text-stone-600">All-inclusive pricing</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-eden mr-3" />
+                  <span className="text-sm text-stone-600">Structured wellness activities</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-eden mr-3" />
+                  <span className="text-sm text-stone-600">Better value for money</span>
+                </div>
+              </div>
+
+              <Button className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-3">
+                Explore Packages
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
+                onClick={() => setSelectedOption('dates')}>
+            <CardHeader className="bg-gradient-to-br from-stone-50 to-slate-50">
+              <div className="flex items-center justify-between mb-2">
+                <Badge variant="outline" className="border-stone-300 text-stone-600">Flexible</Badge>
+                <Calendar className="w-5 h-5 text-stone-600" />
+              </div>
+              <CardTitle className="text-xl font-serif text-stone-800">Custom Journey</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <p className="text-stone-600 mb-6 font-light">
+                Create your own schedule with flexible check-in and check-out dates.
+              </p>
+              
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">Choose your own dates</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">Pay per night pricing</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">Access to all amenities</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">Complete flexibility</span>
+                </div>
+              </div>
+
+              <Button variant="outline" className="w-full border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl py-3">
+                Select Custom Dates
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-
-      {!selectionType && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <Card 
-            className="group hover:shadow-xl transition-all duration-500 cursor-pointer border-2 border-stone-200 hover:border-emerald-300 bg-white/80 backdrop-blur-sm"
-            onClick={() => setSelectionType("custom")}
-          >
-            <CardHeader className="text-center">
-              <CalendarIcon className="w-12 h-12 mx-auto text-eden mb-4" />
-              <CardTitle className="font-serif text-stone-800">Custom Journey</CardTitle>
-              <CardDescription className="font-light text-stone-600">
-                Choose your own arrival and departure dates
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-eden hover:bg-emerald-700 rounded-xl">Select Custom Dates</Button>
-            </CardContent>
-          </Card>
-
-          <Card 
-            className="group hover:shadow-xl transition-all duration-500 cursor-pointer border-2 border-stone-200 hover:border-teal-300 bg-white/80 backdrop-blur-sm"
-            onClick={() => setSelectionType("package")}
-          >
-            <CardHeader className="text-center">
-              <Package className="w-12 h-12 mx-auto text-teal-600 mb-4" />
-              <CardTitle className="font-serif text-stone-800">Wellness Packages</CardTitle>
-              <CardDescription className="font-light text-stone-600">
-                Extended stays with special wellness pricing
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-teal-600 hover:bg-teal-700 rounded-xl">View Packages</Button>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {selectionType === "custom" && (
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/80 backdrop-blur-sm border-stone-200">
-            <CardHeader>
-              <CardTitle className="font-serif text-stone-800">Select Your Journey Dates</CardTitle>
-              <CardDescription className="font-light text-stone-600">
-                Choose your arrival and departure dates
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-stone-700">Arrival Date</label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          "w-full justify-start text-left font-normal border-stone-300 rounded-xl",
-                          !checkIn && "text-muted-foreground"
-                        )}
-                      >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        {checkIn ? format(checkIn, "PPP") : "Pick a date"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={checkIn}
-                        onSelect={setCheckIn}
-                        disabled={(date) => date < new Date()}
-                        initialFocus
-                        className="p-3 pointer-events-auto"
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-stone-700">Departure Date</label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          "w-full justify-start text-left font-normal border-stone-300 rounded-xl",
-                          !checkOut && "text-muted-foreground"
-                        )}
-                      >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        {checkOut ? format(checkOut, "PPP") : "Pick a date"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={checkOut}
-                        onSelect={setCheckOut}
-                        disabled={(date) => !checkIn || date <= checkIn}
-                        initialFocus
-                        className="p-3 pointer-events-auto"
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
-
-              {checkIn && checkOut && (
-                <div className="bg-stone-50 p-6 rounded-xl border border-stone-200">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className="font-medium text-stone-800">
-                        {differenceInDays(checkOut, checkIn)} nights
-                      </p>
-                      <p className="text-sm text-stone-600 font-light">
-                        {format(checkIn, "MMM dd")} - {format(checkOut, "MMM dd")}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-serif font-bold text-emerald-700">
-                        ₹{calculateCustomPrice().toLocaleString()}
-                      </p>
-                      <p className="text-sm text-stone-600">Total</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex space-x-4">
-                <Button 
-                  variant="outline" 
-                  onClick={() => setSelectionType(null)}
-                  className="flex-1 border-stone-300 rounded-xl"
-                >
-                  Back to Options
-                </Button>
-                <Button 
-                  onClick={handleCustomDateContinue}
-                  disabled={!checkIn || !checkOut}
-                  className="flex-1 bg-eden hover:bg-emerald-700 rounded-xl"
-                >
-                  Continue
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {selectionType === "package" && (
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map((pkg) => (
-              <Card 
-                key={pkg.id}
-                className={cn(
-                  "cursor-pointer transition-all duration-500 hover:shadow-lg bg-white/80 backdrop-blur-sm",
-                  selectedPackage?.id === pkg.id 
-                    ? "border-2 border-emerald-500 shadow-lg shadow-emerald-100" 
-                    : "border border-stone-200 hover:border-emerald-300"
-                )}
-                onClick={() => setSelectedPackage(pkg)}
-              >
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle className="text-lg font-serif text-stone-800">{pkg.name}</CardTitle>
-                    {pkg.savings && (
-                      <Badge className="bg-teal-100 text-teal-800 rounded-full">
-                        Save {pkg.savings}%
-                      </Badge>
-                    )}
-                  </div>
-                  <CardDescription className="font-light text-stone-600">{pkg.duration}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-stone-600">Base Price:</span>
-                      <span className="line-through text-stone-500">
-                        ₹{(parseInt(pkg.duration.split(' ')[0]) * 7 * roomCategory.startingPrice).toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between font-bold text-lg">
-                      <span className="text-stone-800">Package Price:</span>
-                      <span className="text-emerald-700 font-serif">
-                        ₹{calculatePackagePrice(pkg).toLocaleString()}
-                      </span>
-                    </div>
-                    {pkg.savings && (
-                      <p className="text-sm text-teal-700 font-medium">
-                        You save ₹{((parseInt(pkg.duration.split(' ')[0]) * 7 * roomCategory.startingPrice) - calculatePackagePrice(pkg)).toLocaleString()}
-                      </p>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="flex space-x-4 mt-8">
-            <Button 
-              variant="outline" 
-              onClick={() => setSelectionType(null)}
-              className="flex-1 border-stone-300 rounded-xl"
-            >
-              Back to Options
-            </Button>
-            <Button 
-              onClick={handlePackageContinue}
-              disabled={!selectedPackage}
-              className="flex-1 bg-eden hover:bg-emerald-700 rounded-xl"
-            >
-              Continue with Package
-            </Button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
 
 export default DatePackageSelector;
-

@@ -31,7 +31,7 @@ const DatePickerComponent = ({
   };
 
   return (
-    <Card className="bg-white/80 backdrop-blur-sm border-stone-200">
+    <Card className="bg-white/80 backdrop-blur-sm border-stone-200 mb-8">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-stone-800 mb-4">{title}</h3>
         <Popover open={isOpen} onOpenChange={setIsOpen}>

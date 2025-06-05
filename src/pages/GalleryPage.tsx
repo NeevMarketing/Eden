@@ -187,6 +187,79 @@ const GalleryPage = () => {
         }
       }
     },
+    rooms: {
+      title: "Rooms",
+      images: [
+        { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "Modern living room" },
+        { src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80", alt: "Contemporary kitchen" },
+        { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80", alt: "Elegant bedroom" },
+        { src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80", alt: "Luxury bathroom" },
+        { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "Balcony view" },
+        { src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80", alt: "Cozy living space" }
+      ]
+    },
+    studio: {
+      title: "Studio",
+      images: [
+        { src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80", alt: "Modern studio apartment" },
+        { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "Studio living area" },
+        { src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80", alt: "Compact studio design" },
+        { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80", alt: "Studio bedroom area" }
+      ]
+    },
+    onebhk: {
+      title: "1BHK",
+      images: [
+        { src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80", alt: "1BHK living room" },
+        { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "1BHK bedroom" },
+        { src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80", alt: "1BHK kitchen" },
+        { src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80", alt: "1BHK bathroom" },
+        { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80", alt: "1BHK balcony" }
+      ]
+    },
+    twobhk: {
+      title: "2BHK",
+      images: [
+        { src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80", alt: "2BHK living room" },
+        { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "2BHK master bedroom" },
+        { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80", alt: "2BHK second bedroom" },
+        { src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80", alt: "2BHK kitchen" },
+        { src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80", alt: "2BHK bathroom" }
+      ]
+    },
+    videos: {
+      title: "Videos",
+      videos: [
+        {
+          id: "video1",
+          title: "Eden Gracious Living Tour",
+          thumbnail: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          description: "Take a comprehensive virtual tour of our peaceful wellness sanctuary"
+        },
+        {
+          id: "video2",
+          title: "Wellness Center Experience",
+          thumbnail: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          description: "Explore our state-of-the-art wellness facilities and amenities"
+        },
+        {
+          id: "video3",
+          title: "Community Living at Eden",
+          thumbnail: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          description: "Discover the warm community and social spaces at Eden"
+        },
+        {
+          id: "video4",
+          title: "Apartment Showcase",
+          thumbnail: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          description: "See our beautifully designed apartments and living spaces"
+        }
+      ]
+    },
     miscellaneous: {
       title: "Miscellaneous",
       images: [
@@ -198,17 +271,6 @@ const GalleryPage = () => {
       ]
     }
   };
-
-  const roomGalleryImages: GalleryImage[] = [
-    { src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80", alt: "Studio apartment" },
-    { src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80", alt: "1BHK apartment" },
-    { src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80", alt: "2BHK apartment" },
-    { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "Living room" },
-    { src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80", alt: "Kitchen view" },
-    { src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80", alt: "Bedroom" },
-    { src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80", alt: "Bathroom" },
-    { src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80", alt: "Balcony view" }
-  ];
 
   const openLightbox = (images: GalleryImage[], startIndex: number) => {
     setCurrentImages(images);
@@ -329,8 +391,11 @@ const GalleryPage = () => {
           </div>
 
           <div className="space-y-6 mb-16">
-            {/* Regular Categories */}
-            {Object.entries(galleryCategories).filter(([key]) => !['amenities', 'videos'].includes(key)).map(([key, category]) => (
+            {/* Regular Categories - ordered with miscellaneous at the end */}
+            {Object.entries(galleryCategories)
+              .filter(([key]) => !['amenities', 'videos', 'miscellaneous'].includes(key))
+              .concat([['miscellaneous', galleryCategories.miscellaneous]])
+              .map(([key, category]) => (
               <Card key={key} className="overflow-hidden shadow-lg border-0">
                 <Collapsible 
                   open={openSections.includes(key)} 
@@ -417,44 +482,39 @@ const GalleryPage = () => {
                 </CollapsibleContent>
               </Collapsible>
             </Card>
-          </div>
 
-          {/* Room Photo Gallery Section */}
-          <div className="mb-16">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
-                Room Photo Gallery
-              </h2>
-              <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
-              <p className="text-eden-text text-lg">
-                Explore our beautifully designed accommodations and living spaces
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {roomGalleryImages.map((image, index) => (
-                <div 
-                  key={index}
-                  className="relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer group shadow-lg hover:shadow-2xl transition-all duration-500"
-                  onClick={() => openLightbox(roomGalleryImages, index)}
-                >
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <p className="font-medium text-lg">{image.alt}</p>
-                  </div>
-                  <div className="absolute inset-0 bg-eden/0 group-hover:bg-eden/20 transition-all duration-500 flex items-center justify-center">
-                    <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Image size={32} />
+            {/* Videos Category */}
+            <Card className="overflow-hidden shadow-lg border-0">
+              <Collapsible 
+                open={openSections.includes('videos')} 
+                onOpenChange={() => toggleSection('videos')}
+              >
+                <CollapsibleTrigger asChild>
+                  <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="text-2xl font-serif text-stone-800 flex items-center space-x-3">
+                        <div className="w-2 h-8 bg-eden rounded-full"></div>
+                        <span>Videos</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <Badge variant="secondary" className="bg-eden/10 text-eden border-0 px-3 py-1">
+                          {isVideosCategory(galleryCategories.videos) ? 
+                            galleryCategories.videos.videos.length : 0} videos
+                        </Badge>
+                        <ChevronDown className={`w-5 h-5 text-stone-600 transition-transform duration-300 ${
+                          openSections.includes('videos') ? 'rotate-180' : ''
+                        }`} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="px-6 pb-6">
+                    {isVideosCategory(galleryCategories.videos) && renderVideoGrid(galleryCategories.videos.videos)}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            </Card>
           </div>
         </div>
       </main>

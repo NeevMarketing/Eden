@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Calendar, Users } from 'lucide-react';
+import { CheckCircle, Calendar, Users, Star } from 'lucide-react';
 
 interface Package {
   id: string;
@@ -34,7 +34,9 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
         '3 spa treatments included',
         'Personalized nutrition consultation',
         'Wellness workshop access',
-        'All meals included'
+        'All meals included',
+        'Airport transfers',
+        '24/7 concierge service'
       ]
     },
     {
@@ -50,7 +52,10 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
         'Health assessment and consultation',
         'Fitness training sessions',
         'Cooking workshops',
-        'All meals included'
+        'All meals included',
+        'Personal wellness coach',
+        'Medical check-ups',
+        'Nature excursions'
       ]
     },
     {
@@ -67,13 +72,18 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
         'Personal trainer sessions',
         'Nutritionist consultations',
         'Wellness lifestyle coaching',
-        'All meals included'
+        'All meals included',
+        'Weekly medical check-ups',
+        'Detox programs',
+        'Mindfulness workshops',
+        'Cultural activities',
+        'Guest speaker sessions'
       ]
     }
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 mb-16">
       <div className="text-center">
         <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
           Choose Your Wellness Package
@@ -84,8 +94,18 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {packages.map((pkg) => (
-          <Card key={pkg.id} className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm">
+        {packages.map((pkg, index) => (
+          <Card key={pkg.id} className={`hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm relative min-h-[600px] ${
+            index === 1 ? 'border-2 border-eden shadow-lg' : ''
+          }`}>
+            {index === 1 && (
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <Badge className="bg-eden text-white border-eden px-4 py-1 rounded-full flex items-center">
+                  <Star className="w-3 h-3 mr-1" />
+                  Recommended
+                </Badge>
+              </div>
+            )}
             <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50 pb-4">
               <div className="flex items-center justify-between mb-2">
                 <Badge className="bg-eden/10 text-eden border-eden px-3 py-1 rounded-full">
@@ -101,12 +121,12 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
                 ₹{pkg.price.toLocaleString()}
               </div>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-6 flex flex-col h-full">
               <p className="text-stone-600 mb-6 font-light">{pkg.description}</p>
               
-              <div className="space-y-3 mb-6">
-                {pkg.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
+              <div className="space-y-3 mb-6 flex-grow">
+                {pkg.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
                     <CheckCircle className="w-4 h-4 text-eden mr-3 mt-0.5 flex-shrink-0" />
                     <span className="text-sm text-stone-600">{feature}</span>
                   </div>
@@ -114,7 +134,7 @@ const PackageSelector = ({ onPackageSelect, onBack }: PackageSelectorProps) => {
               </div>
 
               <Button 
-                className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-3"
+                className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-3 mt-auto"
                 onClick={() => onPackageSelect(pkg)}
               >
                 Select Package
