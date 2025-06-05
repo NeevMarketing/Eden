@@ -47,13 +47,13 @@ const SanctuarySelectionCard = ({ bookingDetails, displayNights, totalPrice }: S
             {bookingDetails.isPackage && bookingDetails.packageDetails ? (
               <>
                 <div className="font-medium text-stone-800 mb-1">{bookingDetails.packageDetails.name}</div>
-                <div className="text-sm text-stone-600">{displayNights} nights</div>
+                <div className="text-sm text-stone-600">{displayNights} {displayNights === 1 ? 'night' : 'nights'}</div>
                 <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 mt-2">
                   Save {bookingDetails.packageDetails.savings}%
                 </Badge>
               </>
             ) : (
-              <div className="font-medium text-stone-800">{displayNights} nights</div>
+              <div className="font-medium text-stone-800">{displayNights} {displayNights === 1 ? 'night' : 'nights'}</div>
             )}
           </div>
         </div>

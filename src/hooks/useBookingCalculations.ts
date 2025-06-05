@@ -5,6 +5,12 @@ export const useBookingCalculations = (bookingDetails: BookingDetails) => {
   // Calculate nights dynamically based on booking details
   const calculateNights = () => {
     if (bookingDetails.isPackage && bookingDetails.packageDetails) {
+      // Extract nights from package duration string (e.g., "7 nights" -> 7)
+      const durationMatch = bookingDetails.packageDetails.duration.match(/(\d+)/);
+      if (durationMatch) {
+        return parseInt(durationMatch[1], 10);
+      }
+      // Fallback to original logic if pattern doesn't match
       const packageNights = parseInt(bookingDetails.packageDetails.duration.split(' ')[0]) || bookingDetails.nights;
       return packageNights;
     }

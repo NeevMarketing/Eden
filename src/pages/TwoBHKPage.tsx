@@ -172,13 +172,14 @@ const TwoBHKPage = () => {
         <section className="container-custom space-y-16">
           {collections.map((collection, index) => (
             <div key={collection.name} className="space-y-8">
-              <Card className="overflow-hidden border-0">
+              <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0`}>
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <img
                       src={collection.image}
                       alt={collection.name}
                       className="w-full h-96 lg:h-full object-cover"
+                      style={{ boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)' }}
                     />
                   </div>
                   <div className={`p-12 flex flex-col justify-center bg-gradient-to-br from-stone-50 to-white ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
