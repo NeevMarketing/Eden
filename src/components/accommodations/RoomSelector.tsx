@@ -44,7 +44,7 @@ const RoomTypeSelector = ({
           <Leaf className="w-8 h-8 text-eden mr-3" />
           <h2 className="text-4xl font-serif font-bold text-stone-800">Pick Your Apartment</h2>
         </div>
-        <p className="text-stone-600 text-lg font-light">Select the accommodation that nurtures your well-being</p>
+        <p className="text-stone-600 text-lg font-light">Browse our studio, 1BHK, and 2BHK Apartments to match your needs</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
