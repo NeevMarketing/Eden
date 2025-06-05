@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -14,6 +13,7 @@ const StudioPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDatePackage, setShowDatePackage] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
+  const [packageDetails, setPackageDetails] = useState<any>(null);
 
   const collections = [
     {
@@ -57,6 +57,8 @@ const StudioPage = () => {
   };
 
   const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
+    console.log('Package details selected:', details);
+    setPackageDetails(details);
     setShowForm(true);
   };
 
@@ -75,8 +77,8 @@ const StudioPage = () => {
         id: 'studio',
         name: 'Studio Apartment',
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        size: '400-500 sq ft',
-        guests: 1,
+        size: '650 sq ft',
+        guests: 2,
         startingPrice: 15000,
         description: 'Comfortable studio apartment',
         amenities: []
@@ -86,14 +88,16 @@ const StudioPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        size: '400-500 sq ft',
-        guests: 1,
+        size: '650 sq ft',
+        guests: 2,
         startingPrice: 15000,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: 'studio'
       },
-      nights: 1,
-      isPackage: false
+      nights: packageDetails?.nights || 1,
+      isPackage: packageDetails?.isPackage || false,
+      packageDetails: packageDetails?.packageDetails || undefined,
+      totalPrice: packageDetails?.totalPrice || 15000
     };
 
     return (
@@ -117,8 +121,8 @@ const StudioPage = () => {
       name: selectedSanctuary,
       image: collections.find(c => c.name === selectedSanctuary)?.image || '',
       description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-      size: '400-500 sq ft',
-      guests: 1,
+      size: '650 sq ft',
+      guests: 2,
       startingPrice: 15000,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: 'studio'
