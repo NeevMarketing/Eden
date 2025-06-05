@@ -46,9 +46,12 @@ export interface BookingDetails {
   roomCategory?: RoomCategory;
   checkIn?: Date;
   checkOut?: Date;
+  checkInDate?: Date;
+  checkOutDate?: Date;
   nights: number;
   isPackage: boolean;
   package?: Package;
+  packageDetails?: PackageInfo;
   totalPrice?: number;
 }
 
@@ -56,6 +59,10 @@ export interface InquiryForm {
   name: string;
   email: string;
   phone: string;
-  message: string;
-  numberOfGuests: number;
+  message?: string;
+  numberOfGuests?: number;
+  preferredCheckIn?: Date;
+  specialRequests: string;
+  emergencyContact: string;
+  medicalConditions: string;
 }
