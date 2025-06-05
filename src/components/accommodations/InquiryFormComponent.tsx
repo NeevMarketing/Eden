@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -42,7 +41,8 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
   // Calculate nights dynamically based on booking details
   const calculateNights = () => {
     if (bookingDetails.isPackage && bookingDetails.packageDetails) {
-      return bookingDetails.packageDetails.duration.split(' ')[0] || bookingDetails.nights;
+      const packageNights = parseInt(bookingDetails.packageDetails.duration.split(' ')[0]) || bookingDetails.nights;
+      return packageNights;
     }
     
     // For custom dates, check if it's a sanctuary between day 5-8
