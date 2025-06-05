@@ -60,7 +60,6 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
           bookingDetails={bookingDetails}
           displayNights={displayNights}
           totalPrice={totalPrice}
-          formData={formData}
         />
         
         <InquiryForm

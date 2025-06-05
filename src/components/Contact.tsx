@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,15 +25,6 @@ const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: str
 };
 
 const Contact: React.FC = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    // Reset after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
-
   return (
     <section id="contact" className="section-padding bg-eden-beige/30">
       <div className="container-custom">
@@ -49,22 +40,22 @@ const Contact: React.FC = () => {
           <Card className="border-eden-light/50 shadow-sm">
             <CardContent className="p-6">
               <h3 className="text-2xl font-serif text-eden-dark mb-6">Enquiry Form</h3>
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="Your name" required />
+                    <Input id="name" placeholder="Your name" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Your email" required />
+                    <Input id="email" type="email" placeholder="Your email" />
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" placeholder="Your phone number" required />
+                    <Input id="phone" placeholder="Your phone number" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="room-type">Preferred Room Type</Label>
@@ -106,14 +97,6 @@ const Contact: React.FC = () => {
                 <Button type="submit" className="btn-primary w-full">
                   Send Enquiry
                 </Button>
-                
-                {isSubmitted && (
-                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium text-center">
-                      Thank You for contacting Eden, We will reach out to you shortly.
-                    </p>
-                  </div>
-                )}
               </form>
             </CardContent>
           </Card>
@@ -127,9 +110,9 @@ const Contact: React.FC = () => {
                   title="Location"
                   content={
                     <address className="not-italic">
-                      Khasra 39 & 40, Near Vaibhav Farms,<br />
-                      Purkul Road, Bhagwantpur,<br />
-                      Dehradun 248 009, Uttarakhand, India
+                      Eden Gracious Living<br />
+                      123 Peaceful Valley Road<br />
+                      Dehradun, Uttarakhand 248001
                     </address>
                   }
                 />
@@ -138,8 +121,8 @@ const Contact: React.FC = () => {
                   icon={<Phone />}
                   title="Phone"
                   content={
-                    <a href="tel:+917533909333" className="hover:text-eden">
-                      +91-7533909333
+                    <a href="tel:+919876543210" className="hover:text-eden">
+                      +91 98765 43210
                     </a>
                   }
                 />
@@ -148,18 +131,9 @@ const Contact: React.FC = () => {
                   icon={<Mail />}
                   title="Email"
                   content={
-                    <div className="space-y-1">
-                      <div>
-                        <a href="mailto:info@edenseniors.com" className="hover:text-eden">
-                          info@edenseniors.com
-                        </a>
-                      </div>
-                      <div>
-                        <a href="mailto:sales@edenseniors.com" className="hover:text-eden">
-                          sales@edenseniors.com
-                        </a>
-                      </div>
-                    </div>
+                    <a href="mailto:info@edengraciousliving.com" className="hover:text-eden">
+                      info@edengraciousliving.com
+                    </a>
                   }
                 />
               </div>

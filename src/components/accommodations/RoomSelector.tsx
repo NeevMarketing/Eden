@@ -4,13 +4,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Users, Leaf } from "lucide-react";
 import { RoomType } from "@/types/accommodation";
-import { roomTypes } from "../../data/roomData";
+import { roomTypes } from "../../data/packageData";
 
 interface RoomTypeSelectorProps {
   onSelect: (roomType: RoomType) => void;
 }
 
 const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
+  // Filter out 3BHK option
+  const availableRoomTypes = roomTypes.filter(room => room.id !== '3bhk');
+
   const handleKnowMore = (roomType: RoomType) => {
     // Open in new tab based on room type
     let url = '';
@@ -41,7 +44,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {roomTypes.map((roomType) => (
+        {availableRoomTypes.map((roomType) => (
           <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full">
             <div className="relative overflow-hidden">
               <img
@@ -68,9 +71,7 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2 text-stone-600">
                   <Users className="w-5 h-5 text-eden" />
-                  <span className="font-medium">
-                    {roomType.guests === 2 ? "1-2" : roomType.guests} guests
-                  </span>
+                  <span className="font-medium">{roomType.guests} guests</span>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-stone-500 font-medium">Starting from</p>
@@ -84,9 +85,9 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
               <div className="flex justify-center">
                 <Button 
                   className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
-                  onClick={() => onSelect(roomType)}
+                  onClick={() => handleKnowMore(roomType)}
                 >
-                  Select Sanctuary
+                  Know More
                 </Button>
               </div>
             </CardContent>
