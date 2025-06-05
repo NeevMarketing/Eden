@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft, MapPin, Calendar, Users, Phone, Mail, MessageSquare } from 'lucide-react';
 import { BookingDetails, InquiryForm } from '@/types/accommodation';
 import DatePickerComponent from './DatePickerComponent';
@@ -22,6 +23,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     name: '',
     email: '',
     phone: '',
+    numberOfGuests: 1,
     preferredCheckIn: undefined,
     specialRequests: '',
     emergencyContact: '',
@@ -33,18 +35,38 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     onSubmit(formData);
   };
 
-  const handleInputChange = (field: keyof InquiryForm, value: string | Date) => {
+  const handleInputChange = (field: keyof InquiryForm, value: string | Date | number) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  // Calculate nights based on booking details
-  const displayNights = bookingDetails.isPackage 
-    ? bookingDetails.packageDetails?.duration.split(' ')[0] || bookingDetails.nights
-    : bookingDetails.nights;
+  // Calculate nights dynamically based on booking details
+  const calculateNights = () => {
+    if (bookingDetails.isPackage && bookingDetails.packageDetails) {
+      return bookingDetails.packageDetails.duration.split(' ')[0] || bookingDetails.nights;
+    }
+    
+    // For custom dates, check if it's a sanctuary between day 5-8
+    if (bookingDetails.checkInDate && bookingDetails.checkOutDate) {
+      const timeDiff = bookingDetails.checkOutDate.getTime() - bookingDetails.checkInDate.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      
+      // If selection falls between day 5 to 8, default to 3 nights
+      const dayOfMonth = bookingDetails.checkInDate.getDate();
+      if (dayOfMonth >= 5 && dayOfMonth <= 8) {
+        return 3;
+      }
+      
+      return daysDiff;
+    }
+    
+    return bookingDetails.nights || 1;
+  };
+
+  const displayNights = calculateNights();
 
   const totalPrice = bookingDetails.isPackage 
     ? bookingDetails.packageDetails?.price 
-    : bookingDetails.totalPrice || (bookingDetails.roomType.startingPrice * bookingDetails.nights);
+    : bookingDetails.totalPrice || (bookingDetails.roomType?.startingPrice ? bookingDetails.roomType.startingPrice * displayNights : 0);
 
   return (
     <div className="section-padding">
@@ -82,7 +104,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
               <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
                 <span className="text-sm text-stone-600">Sanctuary Type</span>
                 <Badge className="bg-eden/10 text-eden border-eden">
-                  {bookingDetails.roomType.name}
+                  {bookingDetails.roomType?.name}
                 </Badge>
               </div>
               
@@ -123,7 +145,7 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
             </CardContent>
           </Card>
 
-          {/* Contact Form */}
+          {/* Your Information */}
           <Card className="bg-white/90 backdrop-blur-sm border-stone-200">
             <CardHeader>
               <CardTitle className="text-xl font-serif text-stone-800 flex items-center">
@@ -167,6 +189,25 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
                     className="mt-1 border-stone-300 rounded-xl"
                     required
                   />
+                </div>
+
+                <div>
+                  <Label htmlFor="numberOfGuests" className="text-stone-700 font-medium">Number of Guests *</Label>
+                  <Select
+                    value={formData.numberOfGuests?.toString()}
+                    onValueChange={(value) => handleInputChange('numberOfGuests', parseInt(value))}
+                  >
+                    <SelectTrigger className="mt-1 border-stone-300 rounded-xl">
+                      <SelectValue placeholder="Select number of guests" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {[1, 2, 3, 4, 5, 6].map((num) => (
+                        <SelectItem key={num} value={num.toString()}>
+                          {num} {num === 1 ? 'Guest' : 'Guests'}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {bookingDetails.isPackage && (

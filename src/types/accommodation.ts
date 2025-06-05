@@ -34,6 +34,7 @@ export interface PackageInfo {
   id: string;
   name: string;
   duration: string;
+  price: number;
   savings: number;
   description: string;
   features: string[];
