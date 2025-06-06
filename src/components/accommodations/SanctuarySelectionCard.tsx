@@ -1,15 +1,18 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, MapPin, Users } from 'lucide-react';
 import { BookingDetails } from '@/types/accommodation';
 import { updatedRoomData } from '../../data/roomData';
+
 interface SanctuarySelectionCardProps {
   bookingDetails: BookingDetails;
   displayNights: number;
   totalPrice: number;
   selectedGuests?: number;
 }
+
 const SanctuarySelectionCard = ({
   bookingDetails,
   displayNights,
@@ -17,17 +20,21 @@ const SanctuarySelectionCard = ({
   selectedGuests
 }: SanctuarySelectionCardProps) => {
   console.log('SanctuarySelectionCard - displayNights:', displayNights, 'bookingDetails:', bookingDetails);
+  
   const getRoomData = () => {
     if (!bookingDetails.roomType) return null;
     return updatedRoomData[bookingDetails.roomType.id as keyof typeof updatedRoomData];
   };
+
   const roomData = getRoomData();
   const maxGuests = roomData?.maxGuests || bookingDetails.roomCategory?.guests || 1;
-  return <Card className="bg-white border-stone-200">
+
+  return (
+    <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
         <CardTitle className="text-xl font-medium text-stone-800 flex items-center">
           <CheckCircle className="w-5 h-5 mr-2 text-emerald-600" />
-          Your Sanctuary Selection
+          Your Stay Summary
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -84,6 +91,8 @@ const SanctuarySelectionCard = ({
           <div className="text-xs text-stone-500 mt-1">*Excluding GST</div>
         </div>
       </CardContent>
-    </Card>;
+    </Card>
+  );
 };
+
 export default SanctuarySelectionCard;
