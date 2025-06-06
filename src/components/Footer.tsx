@@ -45,6 +45,7 @@ const Footer: React.FC = () => {
               <li><a href="#amenities" className="text-eden-light/90 hover:text-white transition-colors">Amenities</a></li>
               <li><a href="#gallery" className="text-eden-light/90 hover:text-white transition-colors">Gallery</a></li>
               <li><a href="#faq" className="text-eden-light/90 hover:text-white transition-colors">FAQs</a></li>
+              <li><a href="/cancellation-policy" target="_blank" className="text-eden-light/90 hover:text-white transition-colors">Cancellation Policy</a></li>
             </ul>
           </div>
           
@@ -89,7 +90,6 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4 text-sm">
               <a href="/terms-privacy" target="_blank" className="text-eden-light/90 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="/cancellation-policy" target="_blank" className="text-eden-light/90 hover:text-white transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>
