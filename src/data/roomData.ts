@@ -7,12 +7,12 @@ export const updatedRoomData = {
   },
   "1bhk": {
     size: "1000 sq ft", 
-    guests: "Up to 3 guests",
+    guests: "2 + 1 guests",
     maxGuests: 3
   },
   "2bhk": {
     size: "1600 sq ft",
-    guests: "Up to 4 guests", 
+    guests: "4 guests", 
     maxGuests: 4
   }
 };

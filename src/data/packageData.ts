@@ -7,7 +7,7 @@ export const roomTypes: RoomType[] = [
     image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
     size: "400-500 sq ft",
     guests: 1,
-    startingPrice: 15000,
+    startingPrice: 7500,
     description: "Cozy studio apartment perfect for solo travelers seeking comfort and wellness",
     amenities: ["WiFi", "Kitchenette", "Balcony", "Air Conditioning"]
   },
@@ -17,7 +17,7 @@ export const roomTypes: RoomType[] = [
     image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
     size: "600-800 sq ft",
     guests: 2,
-    startingPrice: 25000,
+    startingPrice: 10000,
     description: "Spacious one-bedroom apartment ideal for couples or individuals",
     amenities: ["WiFi", "Full Kitchen", "Living Room", "Balcony", "Air Conditioning"]
   },
@@ -27,7 +27,7 @@ export const roomTypes: RoomType[] = [
     image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
     size: "900-1200 sq ft",
     guests: 4,
-    startingPrice: 35000,
+    startingPrice: 15000,
     description: "Premium two-bedroom apartment perfect for families",
     amenities: ["WiFi", "Full Kitchen", "Living Room", "Multiple Balconies", "Air Conditioning"]
   },
