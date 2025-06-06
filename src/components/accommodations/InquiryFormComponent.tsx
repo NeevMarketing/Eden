@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -6,14 +5,16 @@ import { BookingDetails, InquiryForm as InquiryFormType } from '@/types/accommod
 import SanctuarySelectionCard from './SanctuarySelectionCard';
 import InquiryForm from './InquiryForm';
 import { useBookingCalculations } from '@/hooks/useBookingCalculations';
-
 interface InquiryFormComponentProps {
   bookingDetails: BookingDetails;
   onSubmit: (formData: InquiryFormType) => void;
   onBack: () => void;
 }
-
-const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormComponentProps) => {
+const InquiryFormComponent = ({
+  bookingDetails,
+  onSubmit,
+  onBack
+}: InquiryFormComponentProps) => {
   const [formData, setFormData] = useState<InquiryFormType>({
     name: '',
     email: '',
@@ -24,55 +25,37 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
     emergencyContact: '',
     medicalConditions: ''
   });
-
-  const { displayNights, totalPrice } = useBookingCalculations(bookingDetails);
-
+  const {
+    displayNights,
+    totalPrice
+  } = useBookingCalculations(bookingDetails);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
   };
-
   const handleInputChange = (field: keyof InquiryFormType, value: string | Date | number) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
-  return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+  return <div className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-8">
-        <Button 
-          variant="outline"
-          onClick={onBack}
-          className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
-        >
+        <Button variant="outline" onClick={onBack} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Journey Selection
         </Button>
       </div>
 
       <div className="text-center mb-8">
-        <h4 className="font-medium text-stone-800 mb-3">Your Stay Summary</h4>
-        <p className="text-stone-600 mb-8">
-          We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.
-        </p>
+        <p className="text-stone-600 mb-8">We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <SanctuarySelectionCard 
-          bookingDetails={bookingDetails}
-          displayNights={displayNights}
-          totalPrice={totalPrice}
-          selectedGuests={formData.numberOfGuests}
-        />
+        <SanctuarySelectionCard bookingDetails={bookingDetails} displayNights={displayNights} totalPrice={totalPrice} selectedGuests={formData.numberOfGuests} />
         
-        <InquiryForm
-          bookingDetails={bookingDetails}
-          formData={formData}
-          onInputChange={handleInputChange}
-          onSubmit={handleSubmit}
-        />
+        <InquiryForm bookingDetails={bookingDetails} formData={formData} onInputChange={handleInputChange} onSubmit={handleSubmit} />
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default InquiryFormComponent;
