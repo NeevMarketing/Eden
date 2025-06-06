@@ -244,7 +244,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">More control, no fixed format.</span>
+                  <span className="text-sm text-stone-600">More control, no fixed format</span>
                 </div>
               </div>
 
