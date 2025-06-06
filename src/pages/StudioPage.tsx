@@ -169,7 +169,7 @@ const StudioPage = () => {
             className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Choose Your Sanctuary
+               Choose Your Apartments
           </Button>
         </div>
 
@@ -212,16 +212,16 @@ const StudioPage = () => {
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
-                        Select Sanctuary
+                        Check Availability
                       </Button>
-                      <Button 
+                      {/* <Button 
                         variant="outline"
                         size="lg"
                         className="flex-1 border-eden text-eden hover:bg-eden hover:text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
                       >
                         <Users className="w-5 h-5 mr-2" />
                         Virtual Tour
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </div>
