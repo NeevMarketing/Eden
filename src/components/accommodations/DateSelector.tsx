@@ -246,9 +246,6 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
                   <span className="text-sm text-stone-600">Complete flexibility</span>
                 </div>
-                  <div className="flex items-center">
-                  <span className="text-sm text-stone-600"></span>
-                </div>
               </div>
 
               <Button variant="outline" className="w-full border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl py-3">
