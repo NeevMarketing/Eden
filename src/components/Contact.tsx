@@ -8,6 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail } from "lucide-react";
 import '@/Styles/Contact.css'
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://pcrleaefqjoijrhydhis.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU')
 
 const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: string | React.ReactNode }> = ({ 
   icon, 
@@ -35,9 +39,21 @@ const Contact: React.FC = () => {
   const [duration, setDuration] = useState("");
   
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(() => {
+
+    const { data, error } = await supabase
+  .from('Contact Us')
+  .insert([
+    { name: Name, email: Email, message: Message, phone: phone, room_type: roomType, duration: duration },
+  ])
+  .select()
+
+    if (error) {
+      alert(error.message);
+    }else {
+      console.log(data);
+      
       setIsSubmitted(true);
       setName("");
       setEmail("");
@@ -45,8 +61,11 @@ const Contact: React.FC = () => {
       setPhone("");
       setRoomType("");
       setDuration("");
+    }
+    // setTimeout(() => {
       
-    }, 1000);
+
+    // }, 1000);
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };

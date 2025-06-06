@@ -10,6 +10,13 @@ import { BookingDetails, InquiryForm as InquiryFormType } from '@/types/accommod
 import DatePickerComponent from './DatePickerComponent';
 import { updatedRoomData } from '../../data/roomData';
 
+
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://pcrleaefqjoijrhydhis.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU')
+
+
 interface InquiryFormProps {
   bookingDetails: BookingDetails;
   formData: InquiryFormType;
@@ -19,6 +26,15 @@ interface InquiryFormProps {
 
 const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: InquiryFormProps) => {
   // Get max guests based on room type
+
+  // const [fullname, setFullname] = React.useState('');
+  // const [email, setEmail] = React.useState('');
+  // const [phone, setPhone] = React.useState('');
+  // const [guests, setGuests] = React.useState('');
+  // const [checkinDate , setCheckinDate] = React.useState('');
+  // const [wellness_Goals, setWellness_Goals] = React.useState('');
+
+
   const getMaxGuests = () => {
     if (!bookingDetails.roomType) return 6;
     
@@ -27,6 +43,33 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
   };
 
   const maxGuests = getMaxGuests();
+
+  async function handleDateSave(e:any) {
+    e.preventDefault();
+    console.log(formData);
+
+    const { data, error } = await supabase
+    .from('Accommodations Form')
+    .insert([
+      { 
+        full_name: formData.name,
+        email: formData.email,
+        number_of_guest: formData.numberOfGuests,
+        phone: formData.phone,
+        check_in: formData.preferredCheckIn.toDateString(),
+        wellness_goals:formData.specialRequests
+      },
+    ])
+    .select()
+  
+      if (error) {
+        alert(error.message);
+      }else {
+        console.log(data);
+        onSubmit(e)
+      }
+    
+  }
 
   return (
     <Card className="bg-white border-stone-200">
@@ -39,7 +82,7 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
         </p>
       </CardHeader>
       <CardContent>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form onSubmit={(e)=>handleDateSave(e)} className="space-y-4">
           <div>
             <Label htmlFor="name" className="text-sm font-medium text-stone-700">Full Name *</Label>
             <Input
