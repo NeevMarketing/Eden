@@ -27,10 +27,26 @@ const Navbar: React.FC = () => {
   };
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    let currentURL = window.location.href;
+    if(currentURL.includes('#') || currentURL.split('/')[3] == ""){
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }else {
+      window.location.href = window.location.origin+'/#'+sectionId;
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      }, 1000);
     }
+    
+    // setTimeout(() => {
+     
+    // }, 100);
+    
     setIsMobileMenuOpen(false);
   };
 
@@ -51,6 +67,7 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="/#about" className="text-eden-text hover:text-eden transition-colors">About</a>
+          {/* <a href="/#choose-your-sanctuary" className="text-eden-text hover:text-eden transition-colors">Accommodations</a> */}
           <button 
             onClick={() => scrollToSection('choose-your-sanctuary')} 
             className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
@@ -58,6 +75,7 @@ const Navbar: React.FC = () => {
             Accommodations
           </button>
           <a href="/#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
+          {/* <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a> */}
           <button 
             onClick={() => scrollToSection('faq')} 
             className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
