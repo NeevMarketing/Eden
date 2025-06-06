@@ -240,11 +240,11 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">Access to all amenities</span>
+                  <span className="text-sm text-stone-600">Access to all amenities Complete flexibility</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">Complete flexibility</span>
+                  <span className="text-sm text-stone-600"><b>Who it's for:</b>People who want flexibility, or want to fit it around their own schedule.</span>
                 </div>
               </div>
 
