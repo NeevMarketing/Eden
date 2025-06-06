@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,19 +8,18 @@ import DatePickerComponent from './DatePickerComponent';
 import PackageSelector from './PackageSelector';
 import { RoomCategory } from '@/types/accommodation';
 import { differenceInDays, format } from 'date-fns';
+
 interface DatePackageSelectorProps {
   roomCategory: RoomCategory;
   onSelect: (details: any) => void;
   onBack: () => void;
 }
-const DatePackageSelector = ({
-  roomCategory,
-  onSelect,
-  onBack
-}: DatePackageSelectorProps) => {
+
+const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSelectorProps) => {
   const [selectedOption, setSelectedOption] = useState<'dates' | 'package' | null>(null);
   const [checkInDate, setCheckInDate] = useState<Date>();
   const [checkOutDate, setCheckOutDate] = useState<Date>();
+
   const handleCustomDatesSelect = () => {
     if (checkInDate && checkOutDate) {
       const nights = differenceInDays(checkOutDate, checkInDate);
@@ -32,6 +32,7 @@ const DatePackageSelector = ({
       });
     }
   };
+
   const handlePackageSelect = (packageData: any) => {
     const nights = parseInt(packageData.duration.split(' ')[0]);
     onSelect({
@@ -41,24 +42,40 @@ const DatePackageSelector = ({
       totalPrice: packageData.price
     });
   };
+
   if (selectedOption === 'package') {
-    return <div className="section-padding">
+    return (
+      <div className="section-padding">
         <div className="container-custom">
           <div className="mb-8">
-            <Button variant="outline" onClick={() => setSelectedOption(null)} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
+            <Button 
+              variant="outline"
+              onClick={() => setSelectedOption(null)}
+              className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+            >
               <ArrowLeft className="w-5 h-5 mr-2" />
               Back to Journey Options
             </Button>
           </div>
-          <PackageSelector onPackageSelect={handlePackageSelect} onBack={() => setSelectedOption(null)} />
+          <PackageSelector
+            onPackageSelect={handlePackageSelect}
+            onBack={() => setSelectedOption(null)}
+          />
         </div>
-      </div>;
+      </div>
+    );
   }
+
   if (selectedOption === 'dates') {
-    return <div className="section-padding">
+    return (
+      <div className="section-padding">
         <div className="container-custom max-w-4xl mx-auto">
           <div className="mb-8">
-            <Button variant="outline" onClick={() => setSelectedOption(null)} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
+            <Button 
+              variant="outline"
+              onClick={() => setSelectedOption(null)}
+              className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+            >
               <ArrowLeft className="w-5 h-5 mr-2" />
               Back to Journey Options
             </Button>
@@ -74,12 +91,23 @@ const DatePackageSelector = ({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <DatePickerComponent title="Arrival Date" placeholder="Select check-in date" selectedDate={checkInDate} onDateSelect={setCheckInDate} />
+            <DatePickerComponent
+              title="Arrival Date"
+              placeholder="Select check-in date"
+              selectedDate={checkInDate}
+              onDateSelect={setCheckInDate}
+            />
             
-            <DatePickerComponent title="Departure Date" placeholder="Select check-out date" selectedDate={checkOutDate} onDateSelect={setCheckOutDate} />
+            <DatePickerComponent
+              title="Departure Date"
+              placeholder="Select check-out date"
+              selectedDate={checkOutDate}
+              onDateSelect={setCheckOutDate}
+            />
           </div>
 
-          {checkInDate && checkOutDate && <Card className="bg-gradient-to-r from-eden/5 to-emerald/5 border-eden/20 mb-8">
+          {checkInDate && checkOutDate && (
+            <Card className="bg-gradient-to-r from-eden/5 to-emerald/5 border-eden/20 mb-8">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-stone-800">Journey Summary</h3>
@@ -102,28 +130,44 @@ const DatePackageSelector = ({
                   </div>
                 </div>
               </CardContent>
-            </Card>}
+            </Card>
+          )}
 
           <div className="text-center">
-            <Button onClick={handleCustomDatesSelect} disabled={!checkInDate || !checkOutDate || differenceInDays(checkOutDate, checkInDate) <= 0} className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button 
+              onClick={handleCustomDatesSelect}
+              disabled={!checkInDate || !checkOutDate || differenceInDays(checkOutDate, checkInDate) <= 0}
+              className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            >
               Continue with Custom Dates
             </Button>
           </div>
         </div>
-      </div>;
+      </div>
+    );
   }
-  return <div className="section-padding">
+
+  return (
+    <div className="section-padding">
       <div className="container-custom max-w-4xl mx-auto">
         <div className="mb-8">
-          <Button variant="outline" onClick={onBack} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
+          <Button 
+            variant="outline"
+            onClick={onBack}
+            className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+          >
             <ArrowLeft className="w-5 h-5 mr-2" />
             Back to Collections
           </Button>
         </div>
 
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">Plan Your Stay</h2>
-          <p className="text-stone-600 font-light mb-6">Choose from curated stays or create a schedule that works for you.</p>
+          <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
+            Plan Your Retreat
+          </h2>
+          <p className="text-stone-600 font-light mb-6">
+            Choose between wellness packages or create your custom journey dates
+          </p>
           <div className="bg-gradient-to-r from-eden/10 to-emerald/10 rounded-xl p-4 inline-block">
             <p className="text-eden font-medium">
               Selected: {roomCategory.name} • {roomCategory.size} • Starting from ₹{roomCategory.startingPrice.toLocaleString()}/night
@@ -132,7 +176,8 @@ const DatePackageSelector = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer" onClick={() => setSelectedOption('package')}>
+          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
+                onClick={() => setSelectedOption('package')}>
             <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50">
               <div className="flex items-center justify-between mb-2">
                 <Badge className="bg-eden/10 text-eden border-eden">Popular Choice</Badge>
@@ -170,15 +215,16 @@ const DatePackageSelector = ({
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer" onClick={() => setSelectedOption('dates')}>
+          <Card className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
+                onClick={() => setSelectedOption('dates')}>
             <CardHeader className="bg-gradient-to-br from-stone-50 to-slate-50">
               <div className="flex items-center justify-between mb-2">
-                
+                <Badge variant="outline" className="border-stone-300 text-stone-600">Flexible</Badge>
                 <Calendar className="w-5 h-5 text-stone-600" />
               </div>
               <CardTitle className="text-xl font-serif text-stone-800">Custom Journey</CardTitle>
             </CardHeader>
-            <CardContent className="pt-9">
+            <CardContent className="pt-6">
               <p className="text-stone-600 mb-6 font-light">
                 Create your own schedule with flexible check-in and check-out dates.
               </p>
@@ -186,17 +232,23 @@ const DatePackageSelector = ({
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">Choose any start and end date</span>
+                  <span className="text-sm text-stone-600">Choose your own dates</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">Pay as per selected duration</span>
+                  <span className="text-sm text-stone-600">Pay per night pricing</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
-                  <span className="text-sm text-stone-600">Same furnished homes, just more flexible</span>
+                  <span className="text-sm text-stone-600">Access to all amenities</span>
                 </div>
-                
+                <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">Complete flexibility</span>
+                </div>
+                  <div className="flex items-center">
+                  <span className="text-sm text-stone-600"></span>
+                </div>
               </div>
 
               <Button variant="outline" className="w-full border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl py-3">
@@ -206,6 +258,8 @@ const DatePackageSelector = ({
           </Card>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default DatePackageSelector;
