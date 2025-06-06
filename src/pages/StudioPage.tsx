@@ -19,7 +19,7 @@ const StudioPage = () => {
     {
       name: "CREST",
       image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-      description: "Modern studio with panoramic city views and premium amenities for the ultimate urban sanctuary experience. Designed for those who appreciate contemporary luxury.",
+      description: "Located on the lower levels, this thoughtfully curated studio is perfect for those who appreciate convenience without compromise. Large windows bring in natural light while elegant interiors create a warm, inviting atmosphere. Whether you're staying a few nights or a few months, Crest offers a seamless functionality, just steps away from everything you need.",
       features: [
         "Spacious layouts with modern finishes",
         "Full access to all amenities", 
