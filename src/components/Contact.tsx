@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail } from "lucide-react";
+import '@/Styles/Contact.css'
 
 const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: string | React.ReactNode }> = ({ 
   icon, 
@@ -26,10 +27,26 @@ const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: str
 
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [roomType, setRoomType] = useState("");
+  const [duration, setDuration] = useState("");
+  
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsSubmitted(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setPhone("");
+      setRoomType("");
+      setDuration("");
+      
+    }, 1000);
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
@@ -53,23 +70,23 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" placeholder="Your name" />
+                    <Input id="name" value={Name} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="Your email" />
+                    <Input id="email" value={Email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Your email" />
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" placeholder="Your phone number" />
+                    <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your phone number" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="room-type">Preferred Room Type</Label>
-                    <Select>
-                      <SelectTrigger>
+                    <Select value={roomType} onValueChange={setRoomType}>
+                      <SelectTrigger >
                         <SelectValue placeholder="Select room type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -84,7 +101,7 @@ const Contact: React.FC = () => {
                 <div className="grid grid-cols-1 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="duration">Preferred Duration</Label>
-                    <Select>
+                    <Select value={duration} onValueChange={setDuration}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select duration" />
                       </SelectTrigger>
@@ -100,20 +117,18 @@ const Contact: React.FC = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Your message or specific requirements" rows={4} />
+                  <Textarea id="message" value={Message} onChange={(e) => setMessage(e.target.value)} placeholder="Your message or specific requirements" rows={4} />
                 </div>
                 
                 <Button type="submit" className="btn-primary w-full">
                   Send Enquiry
                 </Button>
                 
-                {isSubmitted && (
-                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className={isSubmitted ? "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg active" : "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg inactive"}>
                     <p className="text-green-800 font-medium text-center">
                       Thank You for contacting Eden, We will reach out to you shortly.
                     </p>
                   </div>
-                )}
               </form>
             </CardContent>
           </Card>
