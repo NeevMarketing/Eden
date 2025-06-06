@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -16,37 +17,32 @@ const TwoBHKPage = () => {
 
   const collections = [
     {
-      name: "CREST",
+      name: "VICTORIA",
       image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
-      description: "Luxurious 2BHK with expansive living spaces and premium wellness amenities for ultimate comfort. Perfect for families or those who appreciate generous living space.",
+      description: "Victoria is a well-appointed 2 BHK apartment designed for families looking for practical comfort during short or extended stays. Each bedroom includes a private bathroom, while the living area features a cozy setup with sofas, a dining table, and a workspace. With all the essential amenities and modern furnishing, Victoria offers the right balance of space, functionality, and ease, ideal for a relaxed, worry-free family experience.",
       features: [
-        "Spacious layouts with modern finishes",
-        "Full access to all amenities", 
-        "Elegant modular kitchens",
-        "Spacious private balconies"
-      ]
+        "Fully Furnished Apartment",
+        "Air Conditioning (Hot & Cold)",
+        "Fully Equipped Kitchen",
+        "Well-Appointed Bathroom",
+        "Complimentary Wi-Fi",
+        "Laundry Service"
+      ],
+      recommendation: "Recommended for: Small families or groups seeking a comfortable, reliable apartment with clearly separated living and sleeping areas."
     },
     {
-      name: "HAMILTON",
-      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
-      description: "Elegant 2BHK featuring sophisticated design and comprehensive wellness facilities for refined living. Designed with accessibility and comfort in mind.",
-      features: [
-        "Emergency call systems",
-        "Spacious private balconies", 
-        "Senior-friendly accessibility design",
-        "Elegant modular kitchens"
-      ]
-    },
-    {
-      name: "SKYLINE",
+      name: "RENAISSANCE",
       image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-      description: "Premium 2BHK with breathtaking views and integrated wellness amenities for exceptional tranquility. The pinnacle of luxury two-bedroom living.",
+      description: "Renaissance is the most premium offering in our 2 BHK collection, a spacious, high-end suite. With two elegantly designed bedrooms and a richly furnished common area, this suite blends comfort, style, and practicality. From plush seating and refined interiors to private workspaces and dining areas, Renaissance delivers a sophisticated home environment for longer stays and indulgent escapes.",
       features: [
-        "Spacious layouts with modern finishes",
-        "Full access to all amenities",
-        "Elegant modular kitchens", 
-        "Spacious private balconies"
-      ]
+        "Fully Furnished Apartment",
+        "Air Conditioning (Hot & Cold)",
+        "Fully Equipped Kitchen",
+        "Well-Appointed Bathroom",
+        "Complimentary Wi-Fi",
+        "Laundry Service"
+      ],
+      recommendation: "Recommended for: Families who want top-tier design, extra room to unwind, and a more luxurious living experience for longer stays."
     }
   ];
 
@@ -200,6 +196,12 @@ const TwoBHKPage = () => {
                         </div>
                       ))}
                     </div>
+                    
+                    {collection.recommendation && (
+                      <p className="text-center text-stone-600 mb-8 text-sm italic">
+                        <span className="font-bold">Recommended for:</span> {collection.recommendation.replace('Recommended for: ', '')}
+                      </p>
+                    )}
                     
                     <div className="flex space-x-4">
                       <Button 
