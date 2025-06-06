@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -13,40 +14,50 @@ const OneBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDatePackage, setShowDatePackage] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
+  const [packageDetails, setPackageDetails] = useState<any>(null);
 
   const collections = [
     {
       name: "CREST",
       image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
-      description: "Spacious 1BHK with separate living area and premium wellness amenities for enhanced comfort. Perfect for couples or individuals who value space and luxury.",
+      description: "Located on the lower levels, this thoughtfully curated 1BHK is perfect for those who appreciate convenience without compromise. Large windows bring in natural light while elegant interiors create a warm, inviting atmosphere. Whether you're staying a few nights or a few months, Crest offers a seamless functionality, just steps away from everything you need.",
       features: [
-        "Spacious layouts with modern finishes",
-        "Full access to all amenities", 
-        "Elegant modular kitchens",
-        "Spacious private balconies"
-      ]
+        "Fully Furnished Apartment",
+        "Air Conditioning (Hot & Cold)",
+        "Fully Equipped Kitchen",
+        "Well-Appointed Bathroom",
+        "Complimentary Wi-Fi",
+        "Laundry Service"
+      ],
+      recommendation: "Recommended for: Guests who value quick access to amenities, minimal stair or lift use, and a seamless living experience."
     },
     {
       name: "HAMILTON", 
       image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
-      description: "Contemporary 1BHK featuring modern design and integrated wellness facilities for mindful living. Designed with senior-friendly accessibility in mind.",
+      description: "Positioned on higher floors, Hamilton 1BHK apartments offer expansive views along with refined privacy. These premium residences are perfect for guests seeking a tranquil yet connected experience. With spacious layouts and curated interiors, Hamilton provides a sophisticated retreat for longer or more peaceful stays.",
       features: [
-        "Emergency call systems",
-        "Spacious private balconies", 
-        "Senior-friendly accessibility design",
-        "Elegant modular kitchens"
-      ]
+        "Fully Furnished Apartment",
+        "Air Conditioning (Hot & Cold)",
+        "Fully Equipped Kitchen",
+        "Well-Appointed Bathroom",
+        "Complimentary Wi-Fi",
+        "Laundry Service"
+      ],
+      recommendation: "Recommended for: Individuals or couples who enjoy open views, a quiet setting, and a balance between luxury and convenience."
     },
     {
       name: "SKYLINE",
       image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-      description: "Luxury 1BHK with stunning views and comprehensive wellness amenities for complete tranquility. The epitome of sophisticated one-bedroom living.",
+      description: "Located at the highest level of the property, Skyline 1BHK apartments offer unmatched panoramic views and a heightened sense of serenity. Designed for those who appreciate exclusivity and elevation, Skyline delivers a luxurious, quiet sanctuary ideal for unwinding, reflecting, or working in peace.",
       features: [
-        "Spacious layouts with modern finishes",
-        "Full access to all amenities",
-        "Elegant modular kitchens", 
-        "Spacious private balconies"
-      ]
+        "Fully Furnished Apartment",
+        "Air Conditioning (Hot & Cold)",
+        "Fully Equipped Kitchen",
+        "Well-Appointed Bathroom",
+        "Complimentary Wi-Fi",
+        "Laundry Service"
+      ],
+      recommendation: "Recommended for: Guests seeking a top-floor location with unobstructed views of the skyline, flooded with natural light throughout the day"
     }
   ];
 
@@ -56,6 +67,8 @@ const OneBHKPage = () => {
   };
 
   const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
+    console.log('Package details selected:', details);
+    setPackageDetails(details);
     setShowForm(true);
   };
 
@@ -74,8 +87,8 @@ const OneBHKPage = () => {
         id: '1bhk',
         name: '1 BHK Apartment',
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        size: '600-800 sq ft',
-        guests: 2,
+        size: '1000 sq ft',
+        guests: 3,
         startingPrice: 25000,
         description: 'Spacious 1BHK apartment',
         amenities: []
@@ -85,14 +98,16 @@ const OneBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        size: '600-800 sq ft',
-        guests: 2,
+        size: '1000 sq ft',
+        guests: 3,
         startingPrice: 25000,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: '1bhk'
       },
-      nights: 1,
-      isPackage: false
+      nights: packageDetails?.nights || 1,
+      isPackage: packageDetails?.isPackage || false,
+      packageDetails: packageDetails?.packageDetails || undefined,
+      totalPrice: packageDetails?.totalPrice || 25000
     };
 
     return (
@@ -116,8 +131,8 @@ const OneBHKPage = () => {
       name: selectedSanctuary,
       image: collections.find(c => c.name === selectedSanctuary)?.image || '',
       description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-      size: '600-800 sq ft',
-      guests: 2,
+      size: '1000 sq ft',
+      guests: 3,
       startingPrice: 25000,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: '1bhk'
@@ -164,7 +179,7 @@ const OneBHKPage = () => {
             className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Choose Your Sanctuary
+            Choose Your Apartments
           </Button>
         </div>
 
@@ -201,6 +216,12 @@ const OneBHKPage = () => {
                       ))}
                     </div>
                     
+                    {collection.recommendation && (
+                      <p className="text-center text-stone-600 mb-8 text-sm italic">
+                        {collection.recommendation}
+                      </p>
+                    )}
+                    
                     <div className="flex space-x-4">
                       <Button 
                         size="lg"
@@ -208,7 +229,7 @@ const OneBHKPage = () => {
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
-                        Select Sanctuary
+                        Check Availability
                       </Button>
                       <Button 
                         variant="outline"
