@@ -50,8 +50,9 @@ const InquiryFormComponent = ({ bookingDetails, onSubmit, onBack }: InquiryFormC
       </div>
 
       <div className="text-center mb-8">
+        <h4 className="font-medium text-stone-800 mb-3">Your Stay Summary</h4>
         <p className="text-stone-600 mb-8">
-          Our sanctuary specialists will contact you with personalized recommendations
+          We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.
         </p>
       </div>
 
