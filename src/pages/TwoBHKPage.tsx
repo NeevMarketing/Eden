@@ -14,6 +14,7 @@ const TwoBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDatePackage, setShowDatePackage] = useState(false);
   const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
+  const [packageDetails, setPackageDetails] = useState<any>(null);
 
   const collections = [
     {
@@ -52,6 +53,8 @@ const TwoBHKPage = () => {
   };
 
   const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
+    console.log('Package details selected:', details);
+    setPackageDetails(details);
     setShowForm(true);
   };
 
@@ -87,8 +90,10 @@ const TwoBHKPage = () => {
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: '2bhk'
       },
-      nights: 1,
-      isPackage: false
+      nights: packageDetails?.nights || 1,
+      isPackage: packageDetails?.isPackage || false,
+      packageDetails: packageDetails?.packageDetails || packageDetails,
+      totalPrice: packageDetails?.totalPrice || 15000
     };
 
     return (
@@ -210,7 +215,7 @@ const TwoBHKPage = () => {
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
-                        Select Sanctuary
+                        Choose stay options
                       </Button>
                       {/* <Button 
                         variant="outline"

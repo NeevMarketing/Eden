@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Calendar, Users, Star } from 'lucide-react';
+import { accomodation_data } from '../Data';
 
 interface Package {
   id: string;
@@ -17,43 +18,17 @@ interface Package {
 }
 
 interface PackageSelectorProps {
+  values: any;
   onPackageSelect: (packageData: Package) => void;
   onBack: () => void;
 }
 
 const PackageSelector = ({
+  values,
   onPackageSelect,
   onBack
 }: PackageSelectorProps) => {
-  const packages: Package[] = [{
-    id: 'night-7',
-    name: '7 Night Plans',
-    duration: '7 Days',
-    price: 50000,
-    savings: 15,
-    description: 'Perfect for short getaways',
-    avgPerNight: '₹7,143',
-    features: ['Private room with daily breakfast', '₹3,000 food vouchers', '₹3,000 spa credit', '4 yoga sessions', 'Access to all amenities including:', 'Swimming pool', 'Library', 'Movie theatre', 'Pool table']
-  }, {
-    id: 'night-14',
-    name: '14 Night Plans',
-    duration: '14 Days',
-    price: 95000,
-    savings: 20,
-    description: 'Perfect for longer renewal',
-    avgPerNight: '₹6,786',
-    features: ['Everything in 7-Night Plan, plus more:', '₹6,000 food vouchers', '₹6,000 spa credit', 'Airport/Railway Pickup & Drop']
-  }, {
-    id: 'night-30',
-    name: '30 Night Plans',
-    duration: '30 Days',
-    price: 170000,
-    savings: 25,
-    description: 'Ideal for deep restoration',
-    avgPerNight: '₹5,667',
-    features: ['Everything in 14-Night Plan, plus more:', '₹6,000 food vouchers', '₹6,000 spa credit', 'Airport/Railway Pickup & Drop']
-  }];
-
+  let packages:any = accomodation_data[values.roomTypeId][values.id];
   return (
     <div className="space-y-8 mb-16">
       <div className="text-center">
@@ -66,9 +41,9 @@ const PackageSelector = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {packages.map((pkg, index) => (
+        {Object.keys(packages).map((pkg, index) => (
           <Card 
-            key={pkg.id} 
+            key={index} 
             className={`hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm relative min-h-[500px] md:min-h-[600px] flex flex-col ${index === 1 ? 'border-2 border-eden shadow-lg' : ''}`}
           >
             {index === 1 && (
@@ -82,26 +57,37 @@ const PackageSelector = ({
             <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50 pb-4">
               <div className="flex items-center justify-between mb-2">
                 <Badge className="bg-eden/10 text-eden border-eden px-2 md:px-3 py-1 rounded-full text-xs md:text-sm">
-                  Save {pkg.savings}%
+                  Save {Math.ceil((
+                    ((parseInt(packages[pkg].orignal_per_night) *packages[pkg].days)
+                     - (parseInt(packages[pkg].price) - parseInt(packages[pkg].voucher)))
+                     /(parseInt(packages[pkg].orignal_per_night) *parseInt(pkg.split(" ")[0])))*100)}%
                 </Badge>
+                {/* ((packages[pkg].days* packages[pkg].orignal_per_night) + packages[pkg].voucher)/packages[pkg].orignal_per_night  */}
                 <div className="flex items-center text-stone-600">
                   <Calendar className="w-3 h-3 md:w-4 md:h-4 mr-1" />
-                  <span className="text-xs md:text-sm">{pkg.duration}</span>
+                  <span className="text-xs md:text-sm">{packages[pkg].days} Days</span>
                 </div>
               </div>
-              <CardTitle className="text-lg md:text-xl font-serif text-stone-800">{pkg.name}</CardTitle>
+              <CardTitle className="text-lg md:text-xl font-serif text-stone-800">{pkg} Plan</CardTitle>
               <div className="text-2xl md:text-3xl font-bold text-emerald-700">
-                ₹{pkg.price.toLocaleString()}
+                ₹{packages[pkg].price.toLocaleString()}
               </div>
               <div className="text-xs md:text-sm text-stone-600">
-                Avg. per night: {pkg.avgPerNight}
+               Savings worth <b>
+               ₹{(((parseInt(packages[pkg].orignal_per_night) *packages[pkg].days)
+                     - (parseInt(packages[pkg].price) - parseInt(packages[pkg].voucher)))).toLocaleString()}
+               </b>
               </div>
             </CardHeader>
             <CardContent className="pt-4 md:pt-6 flex flex-col flex-grow px-4 md:px-6">
-              <p className="text-stone-600 mb-4 md:mb-6 font-light text-sm md:text-base">{pkg.description}</p>
+              <p className="text-stone-600 mb-4 md:mb-6 font-light text-sm md:text-base">
+                {packages[pkg].days== 7 ? "Perfect for short getaways" : ""  }
+                {packages[pkg].days== 14 ? "Perfect for longer renewal" : ""  }
+                {packages[pkg].days== 30 ? "Ideal for deep restoration" : ""  }
+              </p>
               
               <div className="space-y-2 md:space-y-3 mb-4 md:mb-6 flex-grow">
-                {pkg.features.map((feature, idx) => (
+                {packages[pkg].features.map((feature:any, idx:any) => (
                   <div key={idx} className="flex items-start">
                     <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-eden mr-2 md:mr-3 mt-0.5 flex-shrink-0" />
                     <span className="text-xs md:text-sm text-stone-600 leading-relaxed">{feature}</span>
@@ -111,7 +97,7 @@ const PackageSelector = ({
 
               <Button 
                 className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-2 md:py-3 mt-auto text-sm md:text-base font-medium" 
-                onClick={() => onPackageSelect(pkg)}
+                onClick={() => onPackageSelect(packages[pkg])}
               >
                 Select Package
               </Button>

@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { BookingDetails, InquiryForm as InquiryFormType } from '@/types/accommodation';
-import DatePickerComponent from './DatePickerComponent';
+import DatePickerComponent from '../ui/DatePickerComponent';
 import { updatedRoomData } from '../../data/roomData';
 
 
@@ -18,7 +18,7 @@ const supabase = createClient('https://pcrleaefqjoijrhydhis.supabase.co', 'eyJhb
 
 
 interface InquiryFormProps {
-  bookingDetails: BookingDetails;
+  bookingDetails: any;
   formData: InquiryFormType;
   onInputChange: (field: keyof InquiryFormType, value: string | Date | number) => void;
   onSubmit: (e: React.FormEvent) => void;
@@ -47,17 +47,46 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
   async function handleDateSave(e:any) {
     e.preventDefault();
     console.log(formData);
-
-    const { data, error } = await supabase
-    .from('Accommodations Form')
+    if(bookingDetails?.isPackage){
+      const { data, error } = await supabase
+      .from('Leads')
+      .insert([
+        { 
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          number_of_guests: formData.numberOfGuests,
+          check_in: formData.preferredCheckIn.toDateString(),
+          stay_package: bookingDetails?.packageDetails.duration,
+          room_type: bookingDetails.roomType?.name,
+          room_description: bookingDetails.roomCategory?.name,
+          special_request:formData.specialRequests
+        },
+      ])
+      .select()
+    
+        if (error) {
+          alert(error.message);
+        }else {
+          console.log(data);
+          onSubmit(e)
+        }
+      
+    }else{
+      const { data, error } = await supabase
+    .from('Leads')
     .insert([
       { 
-        full_name: formData.name,
+        name: formData.name,
         email: formData.email,
-        number_of_guest: formData.numberOfGuests,
         phone: formData.phone,
-        check_in: formData.preferredCheckIn.toDateString(),
-        wellness_goals:formData.specialRequests
+        number_of_guests: formData.numberOfGuests,
+        check_in: bookingDetails?.packageDetails.checkInDate,
+        check_out: bookingDetails?.packageDetails.checkOutDate,
+        stay_package:'Custom',
+        room_type: bookingDetails.roomType?.name,
+        room_description: bookingDetails.roomCategory?.name,
+        special_request:formData.specialRequests
       },
     ])
     .select()
@@ -69,7 +98,14 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
         onSubmit(e)
       }
     
+    }
+
+    
   }
+
+  console.log("bookingDetails on form");
+  console.log(bookingDetails);
+  
 
   return (
     <Card className="bg-white border-stone-200">

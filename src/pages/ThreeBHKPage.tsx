@@ -158,7 +158,7 @@ const ThreeBHKPage = () => {
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
-                        Select Sanctuary
+                        Choose stay options
                       </Button>
                       <Button 
                         variant="outline"

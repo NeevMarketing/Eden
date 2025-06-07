@@ -201,7 +201,7 @@ const OneBHKPage = () => {
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
-                        Check Availability
+                        Choose stay options
                       </Button>
                       {/* <Button 
                         variant="outline"

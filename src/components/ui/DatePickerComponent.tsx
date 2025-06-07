@@ -54,6 +54,7 @@ const DatePickerComponent = ({
               onSelect={handleDateSelect}
               disabled={(date) => date < new Date()}
               initialFocus
+              weekStartsOn={0}
               className="pointer-events-auto"
             />
           </PopoverContent>

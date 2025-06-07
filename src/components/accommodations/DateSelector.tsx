@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, Clock, ArrowLeft, CheckCircle } from 'lucide-react';
-import DatePickerComponent from './DatePickerComponent';
+import DatePickerComponent from '../ui/DatePickerComponent';
 import PackageSelector from './PackageSelector';
 import { RoomCategory } from '@/types/accommodation';
 import { differenceInDays, format } from 'date-fns';
@@ -34,7 +34,9 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
   };
 
   const handlePackageSelect = (packageData: any) => {
-    const nights = parseInt(packageData.duration.split(' ')[0]);
+    console.log('Package selected:', packageData);
+    
+    const nights = parseInt(packageData.days);
     onSelect({
       isPackage: true,
       packageDetails: packageData,
@@ -58,6 +60,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
             </Button>
           </div>
           <PackageSelector
+            values = {roomCategory}
             onPackageSelect={handlePackageSelect}
             onBack={() => setSelectedOption(null)}
           />
@@ -170,7 +173,7 @@ const DatePackageSelector = ({ roomCategory, onSelect, onBack }: DatePackageSele
           </p>
           <div className="bg-gradient-to-r from-eden/10 to-emerald/10 rounded-xl p-4 inline-block">
             <p className="text-eden font-medium">
-              Selected: {roomCategory.name} • {roomCategory.size} • Starting from ₹{roomCategory.startingPrice.toLocaleString()}/night
+              Selected: {} • {roomCategory.size} • Starting from ₹{roomCategory.startingPrice.toLocaleString()}/night
             </p>
           </div>
         </div>
