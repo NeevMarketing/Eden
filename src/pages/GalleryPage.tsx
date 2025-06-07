@@ -66,22 +66,7 @@ const GalleryPage = () => {
         alt: "Courtyard"
       }]
     },
-    corridors: {
-      title: "Corridors",
-      images: [{
-        src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
-        alt: "Main corridor"
-      }, {
-        src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-        alt: "Wellness corridor"
-      }, {
-        src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
-        alt: "Residential corridor"
-      }, {
-        src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80",
-        alt: "Hallway design"
-      }]
-    },
+
     lobby: {
       title: "Lobby",
       images: [{
@@ -250,28 +235,7 @@ const GalleryPage = () => {
         }
       }
     },
-    rooms: {
-      title: "Rooms",
-      images: [{
-        src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
-        alt: "Modern living room"
-      }, {
-        src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80",
-        alt: "Contemporary kitchen"
-      }, {
-        src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80",
-        alt: "Elegant bedroom"
-      }, {
-        src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80",
-        alt: "Luxury bathroom"
-      }, {
-        src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
-        alt: "Balcony view"
-      }, {
-        src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-        alt: "Cozy living space"
-      }]
-    },
+
     studio: {
       title: "Studio",
       images: [{
@@ -440,7 +404,7 @@ const GalleryPage = () => {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
           <h1 className="text-5xl font-serif font-bold mb-4">Gallery</h1>
-          <p className="text-xl font-light">Explore the elegance and charm of Eden through curated images and videos
+          <p className="text-xl font-light">Explore the elegance and charm of Eden through curated images and videos.
         </p>
         </div>
       </section>
@@ -448,7 +412,7 @@ const GalleryPage = () => {
       <main className="section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Life at Eden Through The Lens</h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">What Life at Eden Looks Like</h2>
             <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
             <p className="text-eden-text text-lg">Get a closer look at the spaces, details, and experiences that define our stays
           </p>

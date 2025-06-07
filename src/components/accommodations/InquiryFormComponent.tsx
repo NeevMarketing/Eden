@@ -48,7 +48,7 @@ const InquiryFormComponent = ({
       </div>
 
       <div className="text-center mb-8">
-        <p className="text-stone-600 mb-8">We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.</p>
+        {/* <p className="text-stone-600 mb-8">We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.</p> */}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

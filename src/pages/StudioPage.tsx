@@ -27,7 +27,6 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
-        "Laundry Service"
       ],
       recommendation: "Recommended for: Guests who value quick access to amenities, minimal stair or lift use, and a seamless living experience."
     },
@@ -41,7 +40,6 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
-        "Laundry Service"
       ],
       recommendation: "Recommended for: Individuals or couples who enjoy open views, a quiet setting, and a balance between luxury and convenience."
     },
@@ -55,7 +53,6 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
-        "Laundry Service"
       ],
       recommendation: "Recommended for: Guests seeking a top-floor location with unobstructed views of the skyline, flooded with natural light throughout the day"
     }
@@ -89,7 +86,7 @@ const StudioPage = () => {
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         size: '650 sq ft',
         guests: 2,
-        startingPrice: 15000,
+        startingPrice: 7500,
         description: 'Comfortable studio apartment',
         amenities: []
       },
@@ -100,13 +97,13 @@ const StudioPage = () => {
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
         size: '650 sq ft',
         guests: 2,
-        startingPrice: 15000,
+        startingPrice: 7500,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: 'studio'
       },
       nights: packageDetails?.nights || 1,
       isPackage: packageDetails?.isPackage || false,
-      packageDetails: packageDetails?.packageDetails || undefined,
+      packageDetails: packageDetails?.packageDetails || packageDetails,
       totalPrice: packageDetails?.totalPrice || 15000
     };
 
@@ -133,7 +130,7 @@ const StudioPage = () => {
       description: collections.find(c => c.name === selectedSanctuary)?.description || '',
       size: '650 sq ft',
       guests: 2,
-      startingPrice: 15000,
+      startingPrice: 7500,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: 'studio'
     };

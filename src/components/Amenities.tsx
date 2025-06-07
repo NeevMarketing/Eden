@@ -25,27 +25,27 @@ const Amenities: React.FC = () => {
   const amenities = [{
     icon: <Activity size={24} />,
     title: "Wellness Centre",
-    description: "Start your mornings with yoga or meditation. Take part in guided wellness routines that help you care for your body and mind."
+    description: "Start your mornings with yoga or meditation. "
   }, {
     icon: <Home size={24} />,
     title: "Housekeeping & Laundry",
-    description: "Enjoy the comfort of a clean, fresh space without lifting a finger. Our team takes care of the details, so your days stay light and relaxed."
+    description: "Enjoy the comfort of a clean, fresh space without lifting a finger."
   }, {
     icon: <Headphones size={24} />,
     title: "Concierge Services",
-    description: "Need help arranging something? Our team is here to quietly assist, offer support when you need it, without ever intruding."
+    description: "Need help arranging something? Our team is here to quietly assist."
   }, {
     icon: <Heart size={24} />,
     title: "On-Call Medical Support",
-    description: "With qualified professionals available, you can rest easy knowing help is nearby if needed. Offering peace of mind."
+    description: "With qualified professionals available, you can rest easy knowing help is nearby if needed."
   }, {
     icon: <Accessibility size={24} />,
     title: "Accessibility Features",
-    description: "Every path, every apartment, every corner is designed with care from elevators to wheelchair-friendly spaces, so you can move freely and comfortably."
+    description: " Our space is well suited for senior residents with wheelchair friendly accessibility features."
   }, {
     icon: <Utensils size={24} />,
     title: "Dining Options",
-    description: "Enjoy freshly prepared meals, whether in the company of others or quietly in your own space. Thoughtful dining that suits your tastes and your moments."
+    description: "Enjoy freshly prepared meals, whether in the company of others or quietly in your own space."
   }];
   return <section id="amenities" className="section-padding bg-eden-beige/30">
       <div className="container-custom">

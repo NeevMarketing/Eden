@@ -27,7 +27,6 @@ const TwoBHKPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
-        "Laundry Service"
       ],
       recommendation: "Recommended for: Small families or groups seeking a comfortable, reliable apartment with clearly separated living and sleeping areas."
     },
@@ -41,7 +40,6 @@ const TwoBHKPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
-        "Laundry Service"
       ],
       recommendation: "Recommended for: Families who want top-tier design, extra room to unwind, and a more luxurious living experience for longer stays."
     }
@@ -73,9 +71,9 @@ const TwoBHKPage = () => {
         id: '2bhk',
         name: '2 BHK Apartment',
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        size: '900-1200 sq ft',
+        size: '1600 sq ft',
         guests: 4,
-        startingPrice: 35000,
+        startingPrice: 15000,
         description: 'Spacious 2BHK apartment',
         amenities: []
       },
@@ -84,9 +82,9 @@ const TwoBHKPage = () => {
         name: selectedSanctuary,
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        size: '900-1200 sq ft',
+        size: '1600 sq ft',
         guests: 4,
-        startingPrice: 35000,
+        startingPrice: 15000,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: '2bhk'
       },
@@ -117,9 +115,9 @@ const TwoBHKPage = () => {
       name: selectedSanctuary,
       image: collections.find(c => c.name === selectedSanctuary)?.image || '',
       description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-      size: '900-1200 sq ft',
+      size: '1600 sq ft',
       guests: 4,
-      startingPrice: 35000,
+      startingPrice: 15000,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: '2bhk'
     };

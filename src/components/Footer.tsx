@@ -53,17 +53,18 @@ const Footer: React.FC = () => {
             <h5 className="font-serif text-lg mb-4 text-white">Contact</h5>
             <ul className="space-y-2">
               <li className="text-eden-light/90">
-                123 Peaceful Valley Road<br />
-                Dehradun, Uttarakhand 248001
+              Khasra 39 & 40, Near Vaibhav Farms, <br/>
+Purkul Road, Bhagwantpur,<br/>
+Dehradun 248 009, Uttarakhand, India
               </li>
               <li>
-                <a href="tel:+919876543210" className="text-eden-light/90 hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+917533909333" className="text-eden-light/90 hover:text-white transition-colors">
+                  +91-7533909333
                 </a>
               </li>
               <li>
-                <a href="mailto:info@edengraciousliving.com" className="text-eden-light/90 hover:text-white transition-colors">
-                  info@edengraciousliving.com
+                <a href="mailto:info@edenseniors.com" className="text-eden-light/90 hover:text-white transition-colors">
+                  info@edenseniors.com
                 </a>
               </li>
             </ul>

@@ -53,7 +53,6 @@ const Contact: React.FC = () => {
       alert(error.message);
     }else {
       console.log(data);
-      
       setIsSubmitted(true);
       setName("");
       setEmail("");
@@ -61,6 +60,8 @@ const Contact: React.FC = () => {
       setPhone("");
       setRoomType("");
       setDuration("");
+    window.open('/thank-you', '_blank');
+
     }
     // setTimeout(() => {
       

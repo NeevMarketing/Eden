@@ -129,7 +129,7 @@ const SanctuarySelectionCard = ({
         {/* Sanctuary Features */}
         <div>
           <h4 className="font-medium text-stone-800 mb-3">
-            Sanctuary Features
+          Your Stay Includes
           </h4>
           <div className="flex flex-wrap gap-2">
             {bookingDetails.roomCategory?.amenities.map((amenity, index) => (

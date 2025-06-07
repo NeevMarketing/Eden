@@ -26,8 +26,7 @@ const OneBHKPage = () => {
         "Air Conditioning (Hot & Cold)",
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
-        "Complimentary Wi-Fi",
-        "Laundry Service"
+        "Complimentary Wi-Fi"
       ],
       recommendation: "Recommended for: Guests who want the feel of a full apartment, prefer clearly defined living spaces, or plan to stay longer."
     }
@@ -61,7 +60,7 @@ const OneBHKPage = () => {
         image: collections.find(c => c.name === selectedSanctuary)?.image || '',
         size: '1000 sq ft',
         guests: 3,
-        startingPrice: 25000,
+        startingPrice: 10000,
         description: 'Spacious 1BHK apartment',
         amenities: []
       },
@@ -72,13 +71,13 @@ const OneBHKPage = () => {
         description: collections.find(c => c.name === selectedSanctuary)?.description || '',
         size: '1000 sq ft',
         guests: 3,
-        startingPrice: 25000,
+        startingPrice: 10000,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: '1bhk'
       },
       nights: packageDetails?.nights || 1,
       isPackage: packageDetails?.isPackage || false,
-      packageDetails: packageDetails?.packageDetails || undefined,
+      packageDetails: packageDetails?.packageDetails || packageDetails,
       totalPrice: packageDetails?.totalPrice || 25000
     };
 
@@ -105,7 +104,7 @@ const OneBHKPage = () => {
       description: collections.find(c => c.name === selectedSanctuary)?.description || '',
       size: '1000 sq ft',
       guests: 3,
-      startingPrice: 25000,
+      startingPrice: 10000,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: '1bhk'
     };

@@ -81,8 +81,8 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
         email: formData.email,
         phone: formData.phone,
         number_of_guests: formData.numberOfGuests,
-        check_in: bookingDetails?.packageDetails.checkInDate,
-        check_out: bookingDetails?.packageDetails.checkOutDate,
+        check_in: bookingDetails?.packageDetails.checkInDate.toDateString(),
+        check_out: bookingDetails?.packageDetails.checkOutDate.toDateString(),
         stay_package:'Custom',
         room_type: bookingDetails.roomType?.name,
         room_description: bookingDetails.roomCategory?.name,
@@ -103,18 +103,18 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
     
   }
 
-  console.log("bookingDetails on form");
-  console.log(bookingDetails);
+
   
 
   return (
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
         <CardTitle className="text-xl font-medium text-stone-800">
-          Connect With Us
+        Your Stay Summary
+
         </CardTitle>
         <p className="text-sm text-stone-600 mt-2">
-          Let us know how to reach you for your personalized sanctuary experience
+        We’ve noted your preferences. Fill in your details and we’ll help you plan the rest.
         </p>
       </CardHeader>
       <CardContent>
@@ -179,7 +179,7 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
           {/* Conditional Check-in Date - Only show for packages */}
           {bookingDetails.isPackage && (
             <div>
-              <Label className="text-sm font-medium text-stone-700">Check-in Date</Label>
+              <Label className="text-sm font-medium text-stone-700">Preferred Check-in Date</Label>
               <div className="mt-1">
                 <DatePickerComponent
                   title=""
@@ -192,10 +192,10 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
           )}
 
           <div>
-            <Label htmlFor="specialRequests" className="text-sm font-medium text-stone-700">Your Wellness Goals</Label>
+            <Label htmlFor="specialRequests" className="text-sm font-medium text-stone-700">Any preferences or notes? (optional)</Label>
             <Textarea
               id="specialRequests"
-              placeholder="Share any special requirements or wellness goals..."
+              placeholder="Share any special requirements here.."
               value={formData.specialRequests}
               onChange={(e) => onInputChange('specialRequests', e.target.value)}
               className="mt-1 border-stone-300"
@@ -204,17 +204,17 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
           </div>
 
           <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-            <h4 className="font-medium text-emerald-800 mb-2">Your Wellness Journey Begins Here</h4>
+            {/* <h4 className="font-medium text-emerald-800 mb-2">Your Wellness Journey Begins Here</h4> */}
             <p className="text-sm text-emerald-700">
-              Our sanctuary specialists will review your preferences and contact you within 24 hours with personalized recommendations and availability.
+            We’ll get back to you within 24 hours with a plan based on availability.
             </p>
           </div>
 
           <Button 
             type="submit"
-            className="w-full bg-stone-600 hover:bg-stone-700 text-white py-3 rounded-lg font-medium"
+            className="w-full bg-green-800 hover:bg-green-900 text-white py-3 rounded-lg font-medium"
           >
-            Begin Your Wellness Journey
+            Complete Your Enquiry
           </Button>
         </form>
       </CardContent>

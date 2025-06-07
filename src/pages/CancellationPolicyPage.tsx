@@ -59,7 +59,7 @@ const CancellationPolicyPage = () => {
 
             <h3 className="text-2xl font-serif font-semibold text-stone-800 mb-4">5. Package & Long-term Stay Cancellations</h3>
             <p className="text-stone-600 mb-6">
-              Special cancellation terms may apply to wellness packages and extended stays. These terms will be clearly 
+              Special cancellation terms may apply to Easy Stay Packages and extended stays. These terms will be clearly 
               communicated at the time of booking and included in your confirmation email.
             </p>
 
@@ -75,7 +75,7 @@ const CancellationPolicyPage = () => {
               <br />
               Email: reservations@edengraciousliving.com
               <br />
-              Phone: +91 98765 43210
+              Phone: +91-7533909333
               <br />
               Online: Through your booking confirmation link
             </p>

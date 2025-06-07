@@ -68,11 +68,11 @@ const TermsPrivacyPage = () => {
             <p className="text-stone-600 mb-6">
               If you have any questions about this Privacy Policy, please contact us at:
               <br />
-              Email: privacy@edengraciousliving.com
+              Email: info@edenseniors.com
               <br />
-              Phone: +91 98765 43210
+              Phone: +91-7533909333
               <br />
-              Address: 123 Peaceful Valley Road, Dehradun, Uttarakhand 248001
+              Address: Khasra 39 & 40, Near Vaibhav Farms, Purkul Road, Bhagwantpur, Dehradun 248 009, Uttarakhand, India
             </p>
 
             <p className="text-stone-500 text-sm mt-8">
