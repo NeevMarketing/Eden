@@ -19,7 +19,7 @@ const WhyChoose: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80" alt="Eden Gracious Living" className="w-full h-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80" alt="Eden Gracious Living" className="w-full h-full object-cover" />
             </div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-eden-accent/30 rounded-lg -z-10"></div>
             <div className="absolute -top-6 -left-6 w-32 h-32 bg-eden-light rounded-lg -z-10"></div>

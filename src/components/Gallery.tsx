@@ -22,7 +22,7 @@ const Gallery: React.FC = () => {
       alt: "Peaceful surroundings"
     },
     {
-      src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
+      src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
       alt: "Studio apartment"
     },
     {

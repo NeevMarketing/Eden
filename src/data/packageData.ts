@@ -4,7 +4,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "studio",
     name: "Studio Apartment",
-    image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
     size: "400-500 sq ft",
     guests: 1,
     startingPrice: 7500,
