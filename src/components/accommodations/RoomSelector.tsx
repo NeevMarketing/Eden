@@ -5,6 +5,8 @@ import { Users, Leaf } from "lucide-react";
 import { RoomType } from "@/types/accommodation";
 import { roomTypes } from "../../data/packageData";
 import { updatedRoomData } from "../../data/roomData";
+import '@/Styles/Contact.css'
+
 interface RoomTypeSelectorProps {
   onSelect: (roomType: RoomType) => void;
 }
@@ -40,7 +42,7 @@ const RoomTypeSelector = ({
   };
   return <div className="space-y-12 pt-24" >
       <div className="text-center">
-        <div className="flex items-center justify-center mb-6">
+        <div className=" customflex  mb-6">
           <Leaf className="w-8 h-8 text-eden mr-3" />
           <h2 className="font-serif font-bold text-stone-800 text-5xl">Pick Your Apartment</h2>
         </div>

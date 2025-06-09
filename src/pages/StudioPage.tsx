@@ -231,7 +231,7 @@ const StudioPage = () => {
                     <div className="flex space-x-4">
                       <Button 
                         size="lg"
-                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
+                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-4 py-4 rounded-xl  font-medium transition-all duration-300"
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />

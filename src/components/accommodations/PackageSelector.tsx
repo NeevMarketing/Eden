@@ -30,7 +30,7 @@ const PackageSelector = ({
 }: PackageSelectorProps) => {
   let packages:any = accomodation_data[values.roomTypeId][values.id];
   return (
-    <div className="space-y-8 mb-16">
+    <div className="space-y-8 mb-16" id='pick_plans'>
       <div className="text-center">
         <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
           Pick Your Perfect Stay Plan
@@ -97,7 +97,15 @@ const PackageSelector = ({
 
               <Button 
                 className="w-full bg-eden hover:bg-emerald-700 text-white rounded-xl py-2 md:py-3 mt-auto text-sm md:text-base font-medium" 
-                onClick={() => onPackageSelect(packages[pkg])}
+                onClick={() =>{
+                  onPackageSelect(packages[pkg])
+                  setTimeout(() => {
+                    let element = document.getElementById("book-now");
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }, 300);
+                }}
               >
                 Select Package
               </Button>
