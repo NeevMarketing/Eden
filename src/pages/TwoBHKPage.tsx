@@ -153,7 +153,7 @@ const TwoBHKPage = () => {
       <section className="relative h-96 flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Cover%20-%20to%20be%20extracted%20fom%20the%20video.png?updatedAt=1749455197415')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
@@ -163,7 +163,7 @@ const TwoBHKPage = () => {
       </section>
 
       <main className="section-padding">
-        {/* Back Button */}
+        {/* Back Button */} 
         <div className="container-custom mb-8">
           <Button 
             variant="outline"
