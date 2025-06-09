@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -13,6 +13,18 @@ import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 const Index = () => {
+
+
+  useEffect(()=>{
+    let url =(window.location.href).split('#')[1];
+    if(url){
+      const element = document.getElementById(url);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  })
+
   return (
     <div className="min-h-screen">
       <Navbar />

@@ -4,6 +4,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Image } from "lucide-react";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 const Gallery: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
@@ -52,6 +55,27 @@ const Gallery: React.FC = () => {
     window.open('/gallery', '_blank');
   };
 
+
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
   return (
     <section id="gallery" className="section-padding">
       <div className="container-custom">
@@ -62,18 +86,17 @@ const Gallery: React.FC = () => {
             Take a visual journey through our thoughtfully designed spaces and serene environments.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-          {galleryImages.map((image, index) => (
+        <Carousel responsive={responsive}>
+        {galleryImages.map((image, index) => (
             <div 
               key={index}
-              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group"
+              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group p-8"
               onClick={() => openLightbox(image.src)}
             >
               <img 
                 src={image.src} 
                 alt={image.alt} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className=" rounded-xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-eden-dark/0 group-hover:bg-eden-dark/30 transition-all duration-300 flex items-center justify-center">
                 <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -82,7 +105,7 @@ const Gallery: React.FC = () => {
               </div>
             </div>
           ))}
-        </div>
+        </Carousel>
 
         <div className="text-center">
           <Button 

@@ -52,6 +52,14 @@ const ThreeBHKPage = () => {
   const handleSelectSanctuary = (sanctuaryName: string) => {
     setSelectedSanctuary(sanctuaryName);
     setShowForm(true);
+    setTimeout(() => {
+      console.log("scrolling...");
+    
+      const element = document.getElementById("Stay_Packages");
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 300);
   };
 
   const handleFormSubmit = (formData: any) => {

@@ -1,6 +1,6 @@
 import React from "react";
 const About: React.FC = () => {
-  return <section id="about" className="section-padding bg-eden-beige/30">
+  return <section id="about" className=" bg-eden-beige/30">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-serif font-semibold mb-4 text-eden-dark md:text-5xl">Your Hill Stay Awaits</h2>
