@@ -13,35 +13,35 @@ const Gallery: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6670.jpg?updatedAt=1749466476489",
       alt: "Garden pathway at Eden"
     },
     {
-      src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1837%20(1).jpg?updatedAt=1749466435951",
       alt: "Wellness center"
     },
     {
-      src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1620.JPG?updatedAt=1749466373617",
       alt: "Peaceful surroundings"
     },
     {
-      src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/vlcsnap-2025-06-09-06h36m15s474.png?updatedAt=1749466771216",
       alt: "Studio apartment"
     },
     {
-      src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6746.jpg?updatedAt=1749466721083",
       alt: "1BHK apartment"
     },
     {
-      src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1217.JPG?updatedAt=1749466176042",
       alt: "2BHK apartment"
     },
     {
-      src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1491.JPG?updatedAt=1749466311713",
       alt: "Nature view from Eden"
     },
     {
-      src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80", 
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1259%20(1).jpg?updatedAt=1749466276851", 
       alt: "Community living area"
     },
   ];

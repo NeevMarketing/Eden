@@ -14,7 +14,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "1bhk",
     name: "1 BHK Apartment",
-    image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/1%20BHK%201.1.jpg?updatedAt=1749461379159",
     size: "600-800 sq ft",
     guests: 2,
     startingPrice: 10000,
@@ -24,7 +24,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "2bhk",
     name: "2 BHK Apartment",
-    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Cover%20(1).jpg?updatedAt=1749314529675",
+    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/2BHK%20(2)%20(1).jpg?updatedAt=1749461337818",
     size: "900-1200 sq ft",
     guests: 4,
     startingPrice: 15000,
