@@ -19,7 +19,7 @@ const StudioPage = () => {
   const collections = [
     {
       name: "CREST",
-      image: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Crest/Cover%20(2)%20(1).jpg?updatedAt=1749314768246",
       description: "Located on the lower levels, this thoughtfully curated studio is perfect for those who appreciate convenience without compromise. Large windows bring in natural light while elegant interiors create a warm, inviting atmosphere. Whether you're staying a few nights or a few months, Crest offers a seamless functionality, just steps away from everything you need.",
       features: [
         "Fully Furnished Apartment",
@@ -32,7 +32,7 @@ const StudioPage = () => {
     },
     {
       name: "HAMILTON",
-      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Hamilton/_DSC1521.JPG?updatedAt=1749314829964",
       description: "Positioned on higher floors, Hamilton studio apartments offer expansive views along with refined privacy. These premium residences are perfect for guests seeking a tranquil yet connected experience. With spacious layouts and curated interiors, Hamilton provides a sophisticated retreat for longer or more peaceful stays.",
       features: [
         "Fully Furnished Apartment",
@@ -45,7 +45,7 @@ const StudioPage = () => {
     },
     {
       name: "SKYLINE",
-      image: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Skyline/_DSC1512.JPG?updatedAt=1749314892138",
       description: "Located at the highest level of the property, Skyline studio apartments offer unmatched panoramic views and a heightened sense of serenity. Designed for those who appreciate exclusivity and elevation, Skyline delivers a luxurious, quiet sanctuary ideal for unwinding, reflecting, or working in peace.",
       features: [
         "Fully Furnished Apartment",
