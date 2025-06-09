@@ -52,11 +52,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white shadow-md py-3"
-          : "bg-transparent py-5"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md py-3 "
     >
       <div className="container-custom flex items-center justify-between">
         <a href="/" className="flex items-center">
