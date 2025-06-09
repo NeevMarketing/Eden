@@ -169,7 +169,7 @@ const DatePackageSelector = ({
   }
 
   return (
-    <div className="section-padding">
+    <div className="section-padding" id="Stay_Packages">
       <div className="container-custom max-w-4xl mx-auto">
         <div className="mb-8">
           <Button

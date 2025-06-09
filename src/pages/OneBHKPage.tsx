@@ -35,6 +35,14 @@ const OneBHKPage = () => {
   const handleSelectSanctuary = (sanctuaryName: string) => {
     setSelectedSanctuary(sanctuaryName);
     setShowDatePackage(true);
+    setTimeout(() => {
+      console.log("scrolling...");
+    
+      const element = document.getElementById("Stay_Packages");
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 300);
   };
 
   const handleDatePackageSelect = (details: Partial<BookingDetails>) => {

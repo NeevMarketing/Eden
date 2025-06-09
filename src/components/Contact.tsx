@@ -1,23 +1,42 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail } from "lucide-react";
-import '@/Styles/Contact.css'
-import { createClient } from '@supabase/supabase-js'
+import "@/Styles/Contact.css";
+import { createClient } from "@supabase/supabase-js";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+
+const containerStyle = {
+  width: "400px",
+  height: "400px",
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523,
+};
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('https://pcrleaefqjoijrhydhis.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU')
+const supabase = createClient(
+  "https://pcrleaefqjoijrhydhis.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU"
+);
 
-const ContactInfo: React.FC<{ icon: React.ReactNode; title: string; content: string | React.ReactNode }> = ({ 
-  icon, 
-  title, 
-  content 
-}) => {
+const ContactInfo: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  content: string | React.ReactNode;
+}> = ({ icon, title, content }) => {
   return (
     <div className="flex items-start">
       <div className="text-eden mr-4">{icon}</div>
@@ -37,21 +56,27 @@ const Contact: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [roomType, setRoomType] = useState("");
   const [duration, setDuration] = useState("");
-  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const { data, error } = await supabase
-  .from('Contact Us')
-  .insert([
-    { name: Name, email: Email, message: Message, phone: phone, room_type: roomType, duration: duration },
-  ])
-  .select()
+      .from("Contact Us")
+      .insert([
+        {
+          name: Name,
+          email: Email,
+          message: Message,
+          phone: phone,
+          room_type: roomType,
+          duration: duration,
+        },
+      ])
+      .select();
 
     if (error) {
       alert(error.message);
-    }else {
+    } else {
       console.log(data);
       setIsSubmitted(true);
       setName("");
@@ -60,53 +85,91 @@ const Contact: React.FC = () => {
       setPhone("");
       setRoomType("");
       setDuration("");
-    window.open('/thank-you', '_blank');
-
+      window.open("/thank-you", "_blank");
     }
     // setTimeout(() => {
-      
 
     // }, 1000);
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
 
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "YOUR_API_KEY",
+  });
+
+  const [map, setMap] = React.useState(null);
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map);
+  }, []);
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
   return (
     <section id="contact" className="section-padding bg-eden-beige/30">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">Contact Us</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
+            Contact Us
+          </h2>
           <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
           <p className="text-eden-text">
-            Have questions or ready to explore Eden? We'd love to hear from you and help plan your stay.
+            Have questions or ready to explore Eden? We'd love to hear from you
+            and help plan your stay.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <Card className="border-eden-light/50 shadow-sm">
             <CardContent className="p-6">
-              <h3 className="text-2xl font-serif text-eden-dark mb-6">Enquiry Form</h3>
+              <h3 className="text-2xl font-serif text-eden-dark mb-6">
+                Enquiry Form
+              </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" value={Name} onChange={(e) => setName(e.target.value)} placeholder="Your name" />
+                    <Input
+                      id="name"
+                      value={Name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your name"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" value={Email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Your email" />
+                    <Input
+                      id="email"
+                      value={Email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      placeholder="Your email"
+                    />
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
-                    <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your phone number" />
+                    <Input
+                      id="phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Your phone number"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="room-type">Preferred Room Type</Label>
                     <Select value={roomType} onValueChange={setRoomType}>
-                      <SelectTrigger >
+                      <SelectTrigger>
                         <SelectValue placeholder="Select room type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -117,7 +180,7 @@ const Contact: React.FC = () => {
                     </Select>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="duration">Preferred Duration</Label>
@@ -134,41 +197,58 @@ const Contact: React.FC = () => {
                     </Select>
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" value={Message} onChange={(e) => setMessage(e.target.value)} placeholder="Your message or specific requirements" rows={4} />
+                  <Textarea
+                    id="message"
+                    value={Message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Your message or specific requirements"
+                    rows={4}
+                  />
                 </div>
-                
+
                 <Button type="submit" className="btn-primary w-full">
                   Send Enquiry
                 </Button>
-                
-                  <div className={isSubmitted ? "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg active" : "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg inactive"}>
-                    <p className="text-green-800 font-medium text-center">
-                      Thank You for contacting Eden, We will reach out to you shortly.
-                    </p>
-                  </div>
+
+                <div
+                  className={
+                    isSubmitted
+                      ? "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg active"
+                      : "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg inactive"
+                  }
+                >
+                  <p className="text-green-800 font-medium text-center">
+                    Thank You for contacting Eden, We will reach out to you
+                    shortly.
+                  </p>
+                </div>
               </form>
             </CardContent>
           </Card>
-          
+
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-serif text-eden-dark mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-serif text-eden-dark mb-6">
+                Get in Touch
+              </h3>
               <div className="space-y-6">
                 <ContactInfo
                   icon={<MapPin />}
                   title="Location"
                   content={
                     <address className="not-italic">
-                      Khasra 39 & 40, Near Vaibhav Farms,<br />
-                      Purkul Road, Bhagwantpur,<br />
+                      Khasra 39 & 40, Near Vaibhav Farms,
+                      <br />
+                      Purkul Road, Bhagwantpur,
+                      <br />
                       Dehradun 248 009, Uttarakhand, India
                     </address>
                   }
                 />
-                
+
                 <ContactInfo
                   icon={<Phone />}
                   title="Phone"
@@ -178,16 +258,22 @@ const Contact: React.FC = () => {
                     </a>
                   }
                 />
-                
+
                 <ContactInfo
                   icon={<Mail />}
                   title="Email"
                   content={
                     <div className="space-y-1">
-                      <a href="mailto:info@edenseniors.com" className="hover:text-eden block">
+                      <a
+                        href="mailto:info@edenseniors.com"
+                        className="hover:text-eden block"
+                      >
                         info@edenseniors.com
                       </a>
-                      <a href="mailto:sales@edenseniors.com" className="hover:text-eden block">
+                      <a
+                        href="mailto:sales@edenseniors.com"
+                        className="hover:text-eden block"
+                      >
                         sales@edenseniors.com
                       </a>
                     </div>
@@ -195,15 +281,22 @@ const Contact: React.FC = () => {
                 />
               </div>
             </div>
-            
+
             <div className="overflow-hidden rounded-lg h-80 shadow-md">
               {/* This is a placeholder for a map. In a real implementation, you would use Google Maps or similar */}
               <div className="w-full h-full bg-eden-light/50 flex items-center justify-center">
-                <div className="text-center p-6">
+                {/* <div className="text-center p-6">
                   <MapPin className="mx-auto mb-4 text-eden" size={32} />
                   <h4 className="text-xl font-serif text-eden-dark mb-1">Eden Gracious Living</h4>
                   <p className="text-eden-text">Dehradun, Uttarakhand</p>
-                </div>
+                </div> */}
+                {/* <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={10}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                ></GoogleMap> */}
               </div>
             </div>
           </div>

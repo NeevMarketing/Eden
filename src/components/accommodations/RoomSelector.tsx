@@ -38,7 +38,7 @@ const RoomTypeSelector = ({
       maxGuests: roomTypes.find(r => r.id === roomId)?.guests || 1
     };
   };
-  return <div className="space-y-12">
+  return <div className="space-y-12 pt-24" >
       <div className="text-center">
         <div className="flex items-center justify-center mb-6">
           <Leaf className="w-8 h-8 text-eden mr-3" />

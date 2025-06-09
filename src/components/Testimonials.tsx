@@ -2,6 +2,8 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { CircleUser } from "lucide-react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 interface TestimonialProps {
   quote: string;
@@ -47,6 +49,26 @@ const Testimonials: React.FC = () => {
     }
   ];
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
   return (
     <section className="section-padding bg-eden-beige/30">
       <div className="container-custom">
@@ -58,16 +80,19 @@ const Testimonials: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <Carousel responsive={responsive}>
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={index}
-              quote={testimonial.quote}
-              name={testimonial.name}
-              title={testimonial.title}
-            />
-          ))}
-        </div>
+              <TestimonialCard
+                key={index}
+                quote={testimonial.quote}
+                name={testimonial.name}
+                title={testimonial.title}
+              />
+            ))}
+        </Carousel>
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+        </div> */}
       </div>
     </section>
   );
