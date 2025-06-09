@@ -11,14 +11,14 @@ const Hero: React.FC = () => {
   }
   return <section className="relative pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20 lg:pb-32 overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20 z-0" style={{
-      backgroundImage: "url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80')"
-    }} />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-eden-beige/70 to-eden-light/70 z-0"></div>
-      
-      <div className="container-custom relative z-10">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 z-0" style={{
+  backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Home-Page-Cover.png?updatedAt=1749462492625')"
+}} />
+
+<div className="absolute inset-0 bg-gradient-to-b from-eden-beige/10 to-eden-light/70 z-10"></div>
+
+        
+        <div className="container-custom relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h5 className="text-eden font-medium mb-4 animate-fade-in"></h5>
           <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-6 text-eden-dark animate-fade-in lg:text-5xl">Premium Stays Designed for <br/> Peace, Space, and Comfort </h1>

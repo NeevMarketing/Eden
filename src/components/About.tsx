@@ -1,6 +1,6 @@
 import React from "react";
 const About: React.FC = () => {
-  return <section id="about" className=" bg-eden-beige/30">
+  return <section id="about" className=" bg-eden-beige/30 mt-10">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl font-serif font-semibold mb-4 text-eden-dark md:text-5xl">Your Hill Stay Awaits</h2>
@@ -43,7 +43,14 @@ const About: React.FC = () => {
           
           <div className="order-1 md:order-2 relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
-              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80" alt="Eden Gracious Living peaceful environment" className="w-full h-64 md:h-full object-cover" />
+            <video
+            src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Your%20Hill%20Stay%20Awaits%20Final%20.mp4?updatedAt=1749465480958" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="w-full h-64 md:h-full object-cover rounded-lg"
+            ></video>
             </div>
             <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-eden-light rounded-lg -z-10"></div>
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-eden-accent/30 rounded-lg -z-10"></div>
