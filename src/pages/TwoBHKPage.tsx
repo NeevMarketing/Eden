@@ -19,7 +19,7 @@ const TwoBHKPage = () => {
   const collections = [
     {
       name: "VICTORIA",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Renaissance/_DSC1945%20(4).jpg?updatedAt=1749313874961",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Victoria/_DSC1929%20(1).JPG?updatedAt=1749468620071",
       description: "Victoria is a well-appointed 2 BHK apartment designed for families looking for practical comfort during short or extended stays. Each bedroom includes a private bathroom, while the living area features a cozy setup with sofas, a dining table, and a workspace. With all the essential amenities and modern furnishing, Victoria offers the right balance of space, functionality, and ease, ideal for a relaxed, worry-free family experience.",
       features: [
         "Fully Furnished Apartment",
@@ -32,7 +32,7 @@ const TwoBHKPage = () => {
     },
     {
       name: "RENAISSANCE",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Victoria/_DSC1945%20(4).jpg?updatedAt=1749314429481",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Renaissance/_DSC1946.jpg?updatedAt=1749468555424",
       description: "Renaissance is the most premium offering in our 2 BHK collection, a spacious, high-end suite. With two elegantly designed bedrooms and a richly furnished common area, this suite blends comfort, style, and practicality. From plush seating and refined interiors to private workspaces and dining areas, Renaissance delivers a sophisticated home environment for longer stays and indulgent escapes.",
       features: [
         "Fully Furnished Apartment",
