@@ -19,7 +19,7 @@ const OneBHKPage = () => {
   const collections = [
     {
       name: "REGENCY",
-      image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686.jpg?updatedAt=1749454852397",
       description: "Regency offers the space and comfort of home, thoughtfully designed for guests who value a more expansive living environment. With a separate living room, private bedroom, and a fully equipped kitchen, this 1 BHK is ideal for longer stays, work-from-home flexibility, or simply enjoying a more relaxed and roomy setup.",
       features: [
         "Fully Furnished Apartment",
@@ -132,7 +132,7 @@ const OneBHKPage = () => {
       <section className="relative h-96 flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1.jpg?updatedAt=1749454883825')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">

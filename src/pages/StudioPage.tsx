@@ -158,7 +158,7 @@ const StudioPage = () => {
       <section className="relative h-96 flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Cover%20(3).JPG?updatedAt=1749454413354')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
@@ -168,7 +168,7 @@ const StudioPage = () => {
       </section>
 
       <main className="section-padding">
-        {/* Back Button */}
+        {/* Back Button */} 
         <div className="container-custom mb-8">
           <Button 
             variant="outline"
