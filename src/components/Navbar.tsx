@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
         <a href="/" className="flex items-center">
           {/* <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
           <span className="text-md text-eden ml-1 font-light">Gracious Living</span> */}
-          <img src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249" alt="logo" className="w-32 h-10" />
+          <img src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249" alt="logo" className="w-20 h-10" />
         </a>
 
         {/* Desktop Menu */}
