@@ -251,50 +251,100 @@ const StudioPage = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-stone-800">
               Safety & Accessibility Features
             </h2>
-            <div className="w-20 h-1 bg-eden mx-auto mb-6"><ShieldCheck color='#fff'  /></div>
+            <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <ShieldCheck />
+                </div>
+              </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
-              All our residences are designed with senior safety and accessibility in mind.
+              All our residences are designed with senior safety and
+              accessibility in mind.
             </p>
           </div>
 
           <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"><Activity color='#fff' /></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <Activity />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Emergency Systems</h3>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Emergency Systems
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                All units equipped with emergency call systems that connect directly to our 24/7 medical team.
+                All units equipped with emergency call systems that connect
+                directly to our 24/7 medical team.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"><Accessibility color='#fff'  /></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <Accessibility />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Accessible Design</h3>
+                <div className="w-6 h-6 bg-eden rounded-sm">
+                </div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Accessible Design
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Wider doorways, grab bars, and step-free entrances for ease of movement and enhanced accessibility.
+                Wider doorways, grab bars, and step-free entrances for ease of
+                movement and enhanced accessibility.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"><svg xmlns="http://www.w3.org/2000/svg" color='#fff' width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-droplet-off-icon lucide-droplet-off"><path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586"/><path d="m2 2 20 20"/><path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208"/></svg></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-droplet-off-icon lucide-droplet-off"
+                  >
+                    <path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586" />
+                    <path d="m2 2 20 20" />
+                    <path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
+                  </svg>
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Anti-Slip Flooring</h3>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Anti-Slip Flooring
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                High-quality anti-slip flooring throughout, particularly in bathrooms and other wet areas.
+                High-quality anti-slip flooring throughout, particularly in
+                bathrooms and other wet areas.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              {/* <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-6 h-6 bg-eden rounded-sm"><ShieldCheck color='#fff'  /></div>
+              </div> */}
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                  <ShieldCheck />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">24/7 Security</h3>
+
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                24/7 Security
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Round-the-clock security personnel, CCTV monitoring, and secure access to all areas of the property.
+                Round-the-clock security personnel, CCTV monitoring, and secure
+                access to all areas of the property.
               </p>
             </Card>
           </div>
