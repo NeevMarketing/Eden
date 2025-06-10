@@ -60,8 +60,9 @@ const Navbar: React.FC = () => {
     >
       <div className="container-custom flex items-center justify-between">
         <a href="/" className="flex items-center">
-          <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
-          <span className="text-md text-eden ml-1 font-light">Gracious Living</span>
+          {/* <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
+          <span className="text-md text-eden ml-1 font-light">Gracious Living</span> */}
+          <img src="/public/Images/Eden-logo.png" alt="logo" className="w-64 h-10" />
         </a>
 
         {/* Desktop Menu */}
