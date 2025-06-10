@@ -20,26 +20,28 @@ const TwoBHKPage = () => {
     {
       name: "VICTORIA",
       image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Victoria/_DSC1929%20(1).JPG?updatedAt=1749468620071",
-      description: "Victoria is a well-appointed 2 BHK apartment designed for families looking for practical comfort during short or extended stays. Each bedroom includes a private bathroom, while the living area features a cozy setup with sofas, a dining table, and a workspace. With all the essential amenities and modern furnishing, Victoria offers the right balance of space, functionality, and ease, ideal for a relaxed, worry-free family experience.",
+      description: "Victoria is a well-planned apartment that offers all the essentials for a smooth stay. Each bedroom comes with its own bathroom. There’s a cozy living area with a dining space, a workspace, and a fully equipped kitchen. It’s perfect for families or small groups who want a clean, functional, and easy-to-settle-in space with everything you need, and nothing you don’t.",
       features: [
-        "Fully Furnished Apartment",
+        "2 Bedrooms with Bathrooms",
+        "Fully Furnished",
+        "Equipped Kitchen",
+        "Wi-Fi",
         "Air Conditioning (Hot & Cold)",
-        "Fully Equipped Kitchen",
-        "Well-Appointed Bathroom",
-        "Complimentary Wi-Fi",
+        "Laundry Service",
       ],
       recommendation: "Recommended for: Small families or groups seeking a comfortable, reliable apartment with clearly separated living and sleeping areas."
     },
     {
       name: "RENAISSANCE",
       image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Renaissance/_DSC1946.jpg?updatedAt=1749468555424",
-      description: "Renaissance is the most premium offering in our 2 BHK collection, a spacious, high-end suite. With two elegantly designed bedrooms and a richly furnished common area, this suite blends comfort, style, and practicality. From plush seating and refined interiors to private workspaces and dining areas, Renaissance delivers a sophisticated home environment for longer stays and indulgent escapes.",
+      description: "Renaissance is a larger, high-end suite that gives you more space, more comfort, and a beautiful view from the balcony. It includes two spacious bedrooms, a stylish living area, and separate spaces to relax, eat, or work. If you’re looking to stay longer or want something extra special, Renaissance gives you the best of everything with peace, privacy, and the mountains right outside.",
       features: [
-        "Fully Furnished Apartment",
+        "2 Bedrooms with Bathrooms",
+        "Fully Furnished",
+        "Equipped Kitchen",
+        "Wi-Fi",
         "Air Conditioning (Hot & Cold)",
-        "Fully Equipped Kitchen",
-        "Well-Appointed Bathroom",
-        "Complimentary Wi-Fi",
+        "Laundry Service",
       ],
       recommendation: "Recommended for: Families who want top-tier design, extra room to unwind, and a more luxurious living experience for longer stays."
     }

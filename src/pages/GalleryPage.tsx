@@ -353,9 +353,13 @@ const GalleryPage = () => {
             src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/Screenshot%202025-06-06%20180147.png?updatedAt=1749492961943",
             alt: "Pool table area"
           }, {
-            src: "hhttps://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6618.png?updatedAt=1749493032485",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6614.jpg?updatedAt=1749538308854",
             alt: "Billiards room"
-          }]
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6618.png?updatedAt=1749493032485",
+            alt: "Billiards room"
+          }
+        ]
         }
       }
     },
@@ -504,7 +508,7 @@ const GalleryPage = () => {
             </div>
           </div>
           <CardContent className="p-4">
-            <h4 className="font-semibold text-stone-800 mb-2">{video.title}</h4>
+            {/* <h4 className="font-semibold text-stone-800 mb-2">{video.title}</h4> */}
             <p className="text-sm text-stone-600 line-clamp-2">{video.description}</p>
           </CardContent>
         </Card>)}
@@ -524,7 +528,7 @@ const GalleryPage = () => {
       {/* Banner Section */}
       <section className="relative h-96 flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center" style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80')"
+        backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gallery%20Cover.jpg?updatedAt=1749545326027')"
       }} />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
@@ -597,17 +601,17 @@ const GalleryPage = () => {
                             {subcategory.title}
                             <Badge variant="outline" className="ml-3 border-eden/50 text-eden">
                               {subcategory.images.length} photos
-                              {subcategory.videos && ` • ${subcategory.videos.length} videos`}
+                              {/* {subcategory.videos && ` • ${subcategory.videos.length} videos`} */}
                             </Badge>
                           </h3>
                           {renderImageGrid(subcategory.images)}
-                          {subcategory.videos && subcategory.videos.length > 0 && <div>
+                          {/* {subcategory.videos && subcategory.videos.length > 0 && <div>
                               <h4 className="text-md font-medium text-stone-700 mb-3 flex items-center">
                                 <Video className="w-4 h-4 mr-2" />
                                 Videos
                               </h4>
                               {renderVideoGrid(subcategory.videos)}
-                            </div>}
+                            </div>} */}
                         </div>)}
                   </div>
                 </CollapsibleContent>
@@ -615,7 +619,7 @@ const GalleryPage = () => {
             </Card>
 
             {/* Videos Category */}
-            <Card className="overflow-hidden shadow-lg border-0">
+            {/* <Card className="overflow-hidden shadow-lg border-0">
               <Collapsible open={openSections.includes('videos')} onOpenChange={() => toggleSection('videos')}>
                 <CollapsibleTrigger asChild>
                   <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">
@@ -639,7 +643,7 @@ const GalleryPage = () => {
                   </div>
                 </CollapsibleContent>
               </Collapsible>
-            </Card>
+            </Card> */}
           </div>
         </div>
       </main>

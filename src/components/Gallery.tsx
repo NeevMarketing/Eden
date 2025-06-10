@@ -13,35 +13,35 @@ const Gallery: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6670.jpg?updatedAt=1749466476489",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/vlcsnap-2025-06-09-06h36m15s474.png?updatedAt=1749466771216",
       alt: "Garden pathway at Eden"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1837%20(1).jpg?updatedAt=1749466435951",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6746.jpg?updatedAt=1749466721083",
       alt: "Wellness center"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1620.JPG?updatedAt=1749466373617",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6670.jpg?updatedAt=1749466476489",
       alt: "Peaceful surroundings"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/vlcsnap-2025-06-09-06h36m15s474.png?updatedAt=1749466771216",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1837%20(1).jpg?updatedAt=1749466435951",
       alt: "Studio apartment"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC6746.jpg?updatedAt=1749466721083",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1620.JPG?updatedAt=1749466373617",
       alt: "1BHK apartment"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1217.JPG?updatedAt=1749466176042",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1491.JPG?updatedAt=1749466311713",
       alt: "2BHK apartment"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1491.JPG?updatedAt=1749466311713",
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1259%20(1).jpg?updatedAt=1749466276851",
       alt: "Nature view from Eden"
     },
     {
-      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1259%20(1).jpg?updatedAt=1749466276851", 
+      src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Gallery/_DSC1217.JPG?updatedAt=1749466176042", 
       alt: "Community living area"
     },
   ];

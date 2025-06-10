@@ -44,7 +44,7 @@ const About: React.FC = () => {
           <div className="order-1 md:order-2 relative ">
             <div className="rounded-lg overflow-hidden shadow-xl">
             <video
-            src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/0609(3).mp4?updatedAt=1749473100731" 
+            src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Hill-Stay-Awaits.mp4?updatedAt=1749543563712" 
             autoPlay 
             muted 
             loop 

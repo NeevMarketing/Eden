@@ -33,7 +33,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ quote, name, title }) => 
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      quote: "Eden Gracious Living has given my father a beautiful place to stay during his visits to Dehradun. The attention to detail and care from the staff is exceptional.",
+      quote: "Eden has given my father a beautiful place to stay during his visits to Dehradun. The attention to detail and care from the staff is exceptional.",
       name: "Priya Sharma",
       title: "Daughter of a Resident"
     },
@@ -46,6 +46,21 @@ const Testimonials: React.FC = () => {
       quote: "My wife and I enjoy our monthly visits to Eden. The wellness programs and serene environment help us rejuvenate completely.",
       name: "Amrit Singh",
       title: "Recurring Guest"
+    },
+    {
+      quote: "I booked Eden for my parents' anniversary trip. They’ve done hotels before, but I wanted this to feel special. They called me every day raving about the pool, the spa, the staff, even the breakfast. My dad literally said, ‘I didn’t know places like this existed.",
+      name: "Sameer",
+      title: "Booked for Parents"
+    },
+    {
+      quote: "We don’t usually go on ‘stays’ like this, but our daughter booked Eden for us as a surprise. The apartment had everything we needed. It was peaceful, green, and quiet, we ended up extending by another week.",
+      name: "Farida & Anwar",
+      title: "Late 50s"
+    },
+    {
+      quote: "I booked Eden to finish a writing project. The apartment was well-designed, there was no noise, no rush. I could write in the morning, walk in the evening, and just be. It’s rare to find places that respect silence like this.",
+      name: "Rakesh",
+      title: "Writer"
     }
   ];
 

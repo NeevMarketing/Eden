@@ -229,33 +229,32 @@ const DatePackageSelector = ({
             </CardHeader>
             <CardContent className="pt-6">
               <p className="text-stone-600 mb-6 font-light">
-                Pre-designed wellness programs with comprehensive inclusions and
-                structured activities.
+              Pick from pre-designed stays just choose your duration, everything else is taken care of.
               </p>
 
               <div className="space-y-3 mb-6">
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-eden mr-3" />
                   <span className="text-sm text-stone-600">
-                    7, 14, or 30-day programs
+                  7, 14, or 30-night options
                   </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-eden mr-3" />
                   <span className="text-sm text-stone-600">
-                    All-inclusive pricing
+                  All-inclusive pricing
                   </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-eden mr-3" />
                   <span className="text-sm text-stone-600">
-                    Structured wellness activities
+                  Great for short or extended stays
                   </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-eden mr-3" />
                   <span className="text-sm text-stone-600">
-                    Better value for money
+                  Extra benefits included in every plan
                   </span>
                 </div>
               </div>
@@ -279,13 +278,13 @@ const DatePackageSelector = ({
             }}
           >
             <CardHeader className="bg-gradient-to-br from-stone-50 to-slate-50">
-              <div className="flex items-center justify-between mb-2">
-                <Badge
+              <div className="flex items-end mb-2 justify-end">
+                {/* <Badge
                   variant="outline"
                   className="border-stone-300 text-stone-600"
                 >
                   Flexible
-                </Badge>
+                </Badge> */}
                 <Calendar className="w-5 h-5 text-stone-600" />
               </div>
               <CardTitle className="text-xl font-serif text-stone-800">
@@ -308,21 +307,27 @@ const DatePackageSelector = ({
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
                   <span className="text-sm text-stone-600">
-                    Pay per night pricing
+                  Pay as per selected duration
                   </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
                   <span className="text-sm text-stone-600">
-                    Access to all amenities Complete flexibility
+                  Same furnished homes, just more flexible
                   </span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
                   <span className="text-sm text-stone-600">
-                    More control, no fixed format
+                  Ideal for both short and long stays
                   </span>
                 </div>
+                {/* <div className="flex items-center">
+                  <CheckCircle className="w-4 h-4 text-stone-600 mr-3" />
+                  <span className="text-sm text-stone-600">
+                  More control, no fixed format
+                  </span>
+                </div> */}
               </div>
 
               <Button

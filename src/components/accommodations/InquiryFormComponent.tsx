@@ -43,7 +43,7 @@ const InquiryFormComponent = ({
       <div className="mb-8">
         <Button variant="outline" onClick={onBack} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
           <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Journey Selection
+          Back to Stay Options
         </Button>
       </div>
 
