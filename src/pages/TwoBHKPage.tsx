@@ -275,13 +275,9 @@ const TwoBHKPage = () => {
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center">
                 <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
                 <Accessibility />
-                </div>
-              </div>
-                <div className="w-6 h-6 bg-eden rounded-sm">
                 </div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
@@ -294,8 +290,7 @@ const TwoBHKPage = () => {
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center">
                 <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +309,6 @@ const TwoBHKPage = () => {
                     <path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
                   </svg>
                 </div>
-              </div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
                 Anti-Slip Flooring
