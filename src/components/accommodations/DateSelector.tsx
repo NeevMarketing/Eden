@@ -97,7 +97,7 @@ const DatePackageSelector = ({
 
           <div className="text-center mb-12">
             <h2 className="text-3xl font-serif font-bold text-stone-800 mb-4">
-              Plan Your Custom Journey
+              Plan Your Stay
             </h2>
             <p className="text-stone-600 font-light">
               Choose your preferred arrival and departure dates for a
@@ -166,7 +166,7 @@ const DatePackageSelector = ({
               }
               className="bg-eden hover:bg-emerald-700 text-white px-4 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              Continue with Custom Dates
+              Continue
             </Button>
           </div>
         </div>
@@ -288,7 +288,7 @@ const DatePackageSelector = ({
                 <Calendar className="w-5 h-5 text-stone-600" />
               </div>
               <CardTitle className="text-xl font-serif text-stone-800">
-                Custom Journey
+              Custom Stays
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6">
@@ -334,7 +334,7 @@ const DatePackageSelector = ({
                 variant="outline"
                 className="w-full border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl py-3"
               >
-                Select Custom Dates
+                Select Dates
               </Button>
             </CardContent>
           </Card>

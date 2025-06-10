@@ -110,7 +110,7 @@ const InquiryForm = ({ bookingDetails, formData, onInputChange, onSubmit }: Inqu
     <Card className="bg-white border-stone-200">
       <CardHeader className="pb-4">
         <CardTitle className="text-xl font-medium text-stone-800">
-        Your Stay Summary
+        Fill Your Information
 
         </CardTitle>
         <p className="text-sm text-stone-600 mt-2">

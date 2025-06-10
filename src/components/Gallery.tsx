@@ -89,6 +89,7 @@ const Gallery: React.FC = () => {
         <Carousel
          responsive={responsive}
          autoPlay
+         infinite
          autoPlaySpeed={2000}
          arrows={false}
         //  showDots

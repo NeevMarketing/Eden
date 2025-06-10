@@ -48,7 +48,7 @@ const Testimonials: React.FC = () => {
       title: "Recurring Guest"
     },
     {
-      quote: "I booked Eden for my parents' anniversary trip. They’ve done hotels before, but I wanted this to feel special. They called me every day raving about the pool, the spa, the staff, even the breakfast. My dad literally said, ‘I didn’t know places like this existed.",
+      quote: "I booked Eden for my parents' anniversary trip. They’ve done hotels before, but I wanted this to feel special. They called me every day raving about the pool, the spa, the staff, even the breakfast.",
       name: "Sameer",
       title: "Booked for Parents"
     },
