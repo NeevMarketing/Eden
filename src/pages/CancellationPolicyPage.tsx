@@ -16,7 +16,7 @@ const CancellationPolicyPage = () => {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-serif font-bold mb-4">Cancellation Policy</h1>
+          <h1 className="text-5xl font-serif font-bold mb-4">Cancellation & Refund Policy</h1>
           <p className="text-xl font-light">Fair and transparent cancellation terms</p>
         </div>
       </section>

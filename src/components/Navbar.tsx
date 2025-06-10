@@ -52,13 +52,13 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-md py-3 "
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white py-3`}
     >
       <div className="container-custom flex items-center justify-between">
         <a href="/" className="flex items-center">
           {/* <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
           <span className="text-md text-eden ml-1 font-light">Gracious Living</span> */}
-          <img src="/public/Images/Eden-logo.png" alt="logo" className="w-64 h-10" />
+          <img src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249" alt="logo" className="w-32 h-10" />
         </a>
 
         {/* Desktop Menu */}
