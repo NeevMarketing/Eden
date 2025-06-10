@@ -39,7 +39,7 @@ const InquiryFormComponent = ({
       [field]: value
     }));
   };
-  return <div className="max-w-6xl mx-auto px-4 py-8">
+  return <div className="max-w-6xl mx-auto px-4 py-8" id='book-now'>
       <div className="mb-8">
         <Button variant="outline" onClick={onBack} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
           <ArrowLeft className="w-5 h-5 mr-2" />

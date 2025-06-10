@@ -86,7 +86,13 @@ const Gallery: React.FC = () => {
             Take a visual journey through our thoughtfully designed spaces and serene environments.
           </p>
         </div>
-        <Carousel responsive={responsive}>
+        <Carousel
+         responsive={responsive}
+         autoPlay
+         autoPlaySpeed={2000}
+         arrows={false}
+        //  showDots
+         >
         {galleryImages.map((image, index) => (
             <div 
               key={index}
@@ -110,7 +116,7 @@ const Gallery: React.FC = () => {
         <div className="text-center">
           <Button 
             onClick={handleExploreGallery}
-            className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 md:mt-8"
           >
             Explore Gallery
           </Button>

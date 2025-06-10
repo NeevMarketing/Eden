@@ -36,6 +36,12 @@ const DatePackageSelector = ({
         totalPrice: roomCategory.startingPrice * (nights > 0 ? nights : 1),
       });
     }
+    setTimeout(() => {
+      let element = document.getElementById("book-now");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 300);
   };
 
   const handlePackageSelect = (packageData: any) => {
@@ -76,7 +82,7 @@ const DatePackageSelector = ({
 
   if (selectedOption === "dates") {
     return (
-      <div className="section-padding">
+      <div className="section-padding" id="pick_dates">
         <div className="container-custom max-w-4xl mx-auto">
           <div className="mb-8">
             <Button
@@ -158,7 +164,7 @@ const DatePackageSelector = ({
                 !checkOutDate ||
                 differenceInDays(checkOutDate, checkInDate) <= 0
               }
-              className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-eden hover:bg-emerald-700 text-white px-4 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Continue with Custom Dates
             </Button>
@@ -200,7 +206,15 @@ const DatePackageSelector = ({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           <Card
             className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
-            onClick={() => setSelectedOption("package")}
+            onClick={() => {
+              setSelectedOption("package")
+              setTimeout(() => {
+                let element = document.getElementById("pick_plans");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+              }, 400);
+            }}
           >
             <CardHeader className="bg-gradient-to-br from-emerald-50 to-teal-50">
               <div className="flex items-center justify-between mb-2">
@@ -254,7 +268,15 @@ const DatePackageSelector = ({
 
           <Card
             className="hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm cursor-pointer"
-            onClick={() => setSelectedOption("dates")}
+            onClick={() => {
+              setSelectedOption("dates")
+              setTimeout(() => {
+                let element = document.getElementById("pick_dates");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+              }, 300);
+            }}
           >
             <CardHeader className="bg-gradient-to-br from-stone-50 to-slate-50">
               <div className="flex items-center justify-between mb-2">

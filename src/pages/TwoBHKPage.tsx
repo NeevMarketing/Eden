@@ -5,10 +5,10 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Users, Calendar, ArrowLeft } from 'lucide-react';
 import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
 import DatePackageSelector from '@/components/accommodations/DateSelector';
 import { BookingDetails } from '@/types/accommodation';
+import { CheckCircle, Users, Calendar, ArrowLeft, ShieldCheck, Accessibility, Activity } from 'lucide-react';
 
 const TwoBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
@@ -245,7 +245,7 @@ const TwoBHKPage = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-stone-800">
               Safety & Accessibility Features
             </h2>
-            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"><ShieldCheck color='#fff'  /></div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
               All our residences are designed with senior safety and accessibility in mind.
             </p>
@@ -254,7 +254,7 @@ const TwoBHKPage = () => {
           <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+                <div className="w-6 h-6 bg-eden rounded-sm"><Activity color='#fff' /></div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Emergency Systems</h3>
               <p className="text-stone-600 text-sm leading-relaxed">
@@ -264,7 +264,7 @@ const TwoBHKPage = () => {
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+                <div className="w-6 h-6 bg-eden rounded-sm"><Accessibility color='#fff'  /></div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Accessible Design</h3>
               <p className="text-stone-600 text-sm leading-relaxed">
@@ -274,7 +274,7 @@ const TwoBHKPage = () => {
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+                <div className="w-6 h-6 bg-eden rounded-sm"><svg xmlns="http://www.w3.org/2000/svg" color='#fff' width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-droplet-off-icon lucide-droplet-off"><path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586"/><path d="m2 2 20 20"/><path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208"/></svg></div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Anti-Slip Flooring</h3>
               <p className="text-stone-600 text-sm leading-relaxed">
@@ -284,7 +284,7 @@ const TwoBHKPage = () => {
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+                <div className="w-6 h-6 bg-eden rounded-sm"><ShieldCheck color='#fff'  /></div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">24/7 Security</h3>
               <p className="text-stone-600 text-sm leading-relaxed">

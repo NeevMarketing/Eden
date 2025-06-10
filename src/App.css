@@ -27,6 +27,23 @@
   }
 }
 
+
+.video-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-30px);
+  }
+  60% {
+      transform: translateY(-15px);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -40,3 +57,5 @@
 .read-the-docs {
   color: #888;
 }
+
+

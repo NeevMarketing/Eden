@@ -66,7 +66,7 @@ const AccommodationFlow = () => {
   };
   return <section id="choose-your-sanctuary" className="space-y-8 sm:space-y-12 lg:space-y-16 ">
       {/* Step Content */}
-      <div className="min-h-[400px] mt-12 sm:min-h-[500px] lg:min-h-[600px] px-4 sm:px-6 lg:px-8 mx-0 my-[50px]">
+      <div className="min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] px-4 sm:px-6 lg:px-8 mx-0 my-[50px]">
         {currentStep === "roomType" && <RoomTypeSelector onSelect={handleRoomTypeSelect} />}
         
         {currentStep === "category" && bookingDetails.roomType && <RoomCategorySelector roomType={bookingDetails.roomType} onSelect={handleCategorySelect} onBack={handleBack} />}

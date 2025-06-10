@@ -1,35 +1,45 @@
-
-import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Users, Calendar, ArrowLeft } from 'lucide-react';
-import InquiryFormComponent from '@/components/accommodations/InquiryFormComponent';
-import DatePackageSelector from '@/components/accommodations/DateSelector';
-import { BookingDetails } from '@/types/accommodation';
+import React, { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  CheckCircle,
+  Users,
+  Calendar,
+  ArrowLeft,
+  ShieldCheck,
+  Accessibility,
+  Activity,
+} from "lucide-react";
+import InquiryFormComponent from "@/components/accommodations/InquiryFormComponent";
+import DatePackageSelector from "@/components/accommodations/DateSelector";
+import { BookingDetails } from "@/types/accommodation";
 
 const OneBHKPage = () => {
   const [showForm, setShowForm] = useState(false);
   const [showDatePackage, setShowDatePackage] = useState(false);
-  const [selectedSanctuary, setSelectedSanctuary] = useState<string>('');
+  const [selectedSanctuary, setSelectedSanctuary] = useState<string>("");
   const [packageDetails, setPackageDetails] = useState<any>(null);
 
   const collections = [
     {
       name: "REGENCY",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686.jpg?updatedAt=1749454852397",
-      description: "Regency offers the space and comfort of home, thoughtfully designed for guests who value a more expansive living environment. With a separate living room, private bedroom, and a fully equipped kitchen, this 1 BHK is ideal for longer stays, work-from-home flexibility, or simply enjoying a more relaxed and roomy setup.",
+      image:
+        "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+      description:
+        "Regency offers the space and comfort of home, thoughtfully designed for guests who value a more expansive living environment. With a separate living room, private bedroom, and a fully equipped kitchen, this 1 BHK is ideal for longer stays, work-from-home flexibility, or simply enjoying a more relaxed and roomy setup.",
       features: [
         "Fully Furnished Apartment",
         "Air Conditioning (Hot & Cold)",
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
-        "Complimentary Wi-Fi"
+        "Complimentary Wi-Fi",
       ],
-      recommendation: "Recommended for: Guests who want the feel of a full apartment, prefer clearly defined living spaces, or plan to stay longer."
-    }
+      recommendation:
+        "Recommended for: Guests who want the feel of a full apartment, prefer clearly defined living spaces, or plan to stay longer.",
+    },
   ];
 
   const handleSelectSanctuary = (sanctuaryName: string) => {
@@ -37,56 +47,61 @@ const OneBHKPage = () => {
     setShowDatePackage(true);
     setTimeout(() => {
       console.log("scrolling...");
-    
+
       const element = document.getElementById("Stay_Packages");
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }, 300);
   };
 
   const handleDatePackageSelect = (details: Partial<BookingDetails>) => {
-    console.log('Package details selected:', details);
+    console.log("Package details selected:", details);
     setPackageDetails(details);
     setShowForm(true);
   };
 
   const handleFormSubmit = (formData: any) => {
-    console.log('Form submitted with sanctuary:', selectedSanctuary, formData);
-    window.open('/thank-you', '_blank');
+    console.log("Form submitted with sanctuary:", selectedSanctuary, formData);
+    window.open("/thank-you", "_blank");
   };
 
   const handleBackToSanctuary = () => {
-    window.location.href = '/#accommodations';
+    window.location.href = "/#accommodations";
   };
 
   if (showForm) {
     const mockBookingDetails: BookingDetails = {
       roomType: {
-        id: '1bhk',
-        name: '1 BHK Apartment',
-        image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        size: '1000 sq ft',
+        id: "1bhk",
+        name: "1 BHK Apartment",
+        image:
+          collections.find((c) => c.name === selectedSanctuary)?.image || "",
+        size: "1000 sq ft",
         guests: 3,
         startingPrice: 10000,
-        description: 'Spacious 1BHK apartment',
-        amenities: []
+        description: "Spacious 1BHK apartment",
+        amenities: [],
       },
       roomCategory: {
         id: selectedSanctuary.toLowerCase(),
         name: selectedSanctuary,
-        image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-        description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-        size: '1000 sq ft',
+        image:
+          collections.find((c) => c.name === selectedSanctuary)?.image || "",
+        description:
+          collections.find((c) => c.name === selectedSanctuary)?.description ||
+          "",
+        size: "1000 sq ft",
         guests: 3,
         startingPrice: 10000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
-        roomTypeId: '1bhk'
+        amenities:
+          collections.find((c) => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: "1bhk",
       },
       nights: packageDetails?.nights || 1,
       isPackage: packageDetails?.isPackage || false,
       packageDetails: packageDetails?.packageDetails || packageDetails,
-      totalPrice: packageDetails?.totalPrice || 25000
+      totalPrice: packageDetails?.totalPrice || 25000,
     };
 
     return (
@@ -108,13 +123,16 @@ const OneBHKPage = () => {
     const mockRoomCategory = {
       id: selectedSanctuary.toLowerCase(),
       name: selectedSanctuary,
-      image: collections.find(c => c.name === selectedSanctuary)?.image || '',
-      description: collections.find(c => c.name === selectedSanctuary)?.description || '',
-      size: '1000 sq ft',
+      image: collections.find((c) => c.name === selectedSanctuary)?.image || "",
+      description:
+        collections.find((c) => c.name === selectedSanctuary)?.description ||
+        "",
+      size: "1000 sq ft",
       guests: 3,
       startingPrice: 10000,
-      amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
-      roomTypeId: '1bhk'
+      amenities:
+        collections.find((c) => c.name === selectedSanctuary)?.features || [],
+      roomTypeId: "1bhk",
     };
 
     return (
@@ -135,24 +153,32 @@ const OneBHKPage = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Banner Section */}
       <section className="relative h-96 flex items-center justify-center">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1.jpg?updatedAt=1749454883825')" }}
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80')",
+          }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-serif font-bold mb-4">Choose Your 1BHK Collection</h1>
-          <p className="text-xl font-light">Discover our spacious 1BHK collections designed for comfortable living</p>
+          <h1 className="text-5xl font-serif font-bold mb-4">
+            Choose Your 1BHK Collection
+          </h1>
+          <p className="text-xl font-light">
+            Discover our spacious 1BHK collections designed for comfortable
+            living
+          </p>
         </div>
       </section>
 
       <main className="section-padding">
         {/* Back Button */}
         <div className="container-custom mb-8">
-          <Button 
+          <Button
             variant="outline"
             onClick={handleBackToSanctuary}
             className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
@@ -168,43 +194,57 @@ const OneBHKPage = () => {
             <div key={collection.name} className="space-y-8">
               <Card className="overflow-hidden border-0 bg-transparent shadow-none">
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0`}>
-                  <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
                     <img
                       src={collection.image}
                       alt={collection.name}
                       className="w-full h-96 lg:h-full object-cover"
-                      style={{ boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.15)' }}
+                      style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)" }}
                     />
                   </div>
-                  <div className={`p-12 flex flex-col justify-center bg-gradient-to-br from-stone-50 to-white ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <div
+                    className={`p-12 flex flex-col justify-center bg-gradient-to-br from-stone-50 to-white ${
+                      index % 2 === 1 ? "lg:order-1" : ""
+                    }`}
+                  >
                     <div className="flex items-center mb-6">
                       <Badge className="bg-eden/10 text-eden border-eden px-4 py-2 rounded-full mr-4 text-sm font-medium">
                         1BHK Collection
                       </Badge>
                     </div>
-                    
-                    <h2 className="text-4xl font-serif font-bold text-stone-800 mb-6">{collection.name}</h2>
-                    <p className="text-stone-600 leading-relaxed mb-8 text-lg font-light">{collection.description}</p>
-                    
+
+                    <h2 className="text-4xl font-serif font-bold text-stone-800 mb-6">
+                      {collection.name}
+                    </h2>
+                    <p className="text-stone-600 leading-relaxed mb-8 text-lg font-light">
+                      {collection.description}
+                    </p>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                       {collection.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center text-stone-600">
+                        <div
+                          key={idx}
+                          className="flex items-center text-stone-600"
+                        >
                           <CheckCircle className="w-5 h-5 text-eden mr-3 flex-shrink-0" />
                           <span className="text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
-                    
+
                     {collection.recommendation && (
                       <p className="text-center text-stone-600 mb-8 text-sm italic">
-                        <span className="font-bold">Recommended for:</span> {collection.recommendation.replace('Recommended for: ', '')}
+                        <span className="font-bold">Recommended for:</span>{" "}
+                        {collection.recommendation.replace(
+                          "Recommended for: ",
+                          ""
+                        )}
                       </p>
                     )}
-                    
+
                     <div className="flex space-x-4">
-                      <Button 
-                        size="lg"
-                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300"
+                      <Button
+                        className="flex-1 bg-eden hover:bg-emerald-700 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 "
                         onClick={() => handleSelectSanctuary(collection.name)}
                       >
                         <Calendar className="w-5 h-5 mr-2" />
@@ -232,50 +272,100 @@ const OneBHKPage = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-stone-800">
               Safety & Accessibility Features
             </h2>
-            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+            <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <ShieldCheck />
+                </div>
+              </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
-              All our residences are designed with senior safety and accessibility in mind.
+              All our residences are designed with senior safety and
+              accessibility in mind.
             </p>
           </div>
 
           <div className="container-custom grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <Activity />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Emergency Systems</h3>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Emergency Systems
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                All units equipped with emergency call systems that connect directly to our 24/7 medical team.
+                All units equipped with emergency call systems that connect
+                directly to our 24/7 medical team.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <Accessibility />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Accessible Design</h3>
+                <div className="w-6 h-6 bg-eden rounded-sm">
+                </div>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Accessible Design
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Wider doorways, grab bars, and step-free entrances for ease of movement and enhanced accessibility.
+                Wider doorways, grab bars, and step-free entrances for ease of
+                movement and enhanced accessibility.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="lucide lucide-droplet-off-icon lucide-droplet-off"
+                  >
+                    <path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586" />
+                    <path d="m2 2 20 20" />
+                    <path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
+                  </svg>
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">Anti-Slip Flooring</h3>
+              </div>
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                Anti-Slip Flooring
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                High-quality anti-slip flooring throughout, particularly in bathrooms and other wet areas.
+                High-quality anti-slip flooring throughout, particularly in
+                bathrooms and other wet areas.
               </p>
             </Card>
 
             <Card className="p-6 text-center bg-white border-0">
-              <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-6 h-6 bg-eden rounded-sm"></div>
+              {/* <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-6 h-6 bg-eden rounded-sm"><ShieldCheck color='#fff'  /></div>
+              </div> */}
+              <div className="w-full flex justify-center">
+                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                  <ShieldCheck />
+                </div>
               </div>
-              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">24/7 Security</h3>
+
+              <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
+                24/7 Security
+              </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Round-the-clock security personnel, CCTV monitoring, and secure access to all areas of the property.
+                Round-the-clock security personnel, CCTV monitoring, and secure
+                access to all areas of the property.
               </p>
             </Card>
           </div>
