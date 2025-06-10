@@ -58,7 +58,7 @@ const Testimonials: React.FC = () => {
       title: "Late 50s"
     },
     {
-      quote: "I booked Eden to finish a writing project. The apartment was well-designed, there was no noise, no rush. I could write in the morning, walk in the evening, and just be. It’s rare to find places that respect silence like this.",
+      quote: "I booked Eden to finish a writing project. The apartment was well-designed, there was no noise, no rush. It’s rare to find places that respect silence like this.",
       name: "Rakesh",
       title: "Writer"
     }

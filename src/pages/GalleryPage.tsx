@@ -285,9 +285,6 @@ const GalleryPage = () => {
           }, {
             src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1269%20(1).jpg?updatedAt=1749526909584",
             alt: "Restaurant seating"
-          }, {
-            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1324.JPG?updatedAt=1749550756982",
-            alt: "Restaurant seating"
           }]
         },
         saloon: {

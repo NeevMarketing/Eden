@@ -22,8 +22,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -3.745,
-  lng: -38.523,
+  lat: 30.4022508,
+  lng: 78.069287,
 };
 
 // Create a single supabase client for interacting with your database
@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "YOUR_API_KEY",
+    googleMapsApiKey: "AIzaSyB6DVvGOPJ8bJfYYxvy3v451U2jXj-ubxk", 
   });
 
   const [map, setMap] = React.useState(null);
@@ -265,13 +265,15 @@ const Contact: React.FC = () => {
                   content={
                     <div className="space-y-1">
                       <a
-                        href="mailto:info@edenseniors.com"
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=info@edenseniors.com"
+                        target="_blank" 
                         className="hover:text-eden block"
                       >
                         info@edenseniors.com
                       </a>
                       <a
-                        href="mailto:sales@edenseniors.com"
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=sales@edenseniors.com"
+                      target="_blank" 
                         className="hover:text-eden block"
                       >
                         sales@edenseniors.com
