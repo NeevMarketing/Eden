@@ -47,23 +47,27 @@ const GalleryPage = () => {
     exterior: {
       title: "Exterior",
       images: [{
-        src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Exterior/_DSC1209%20(1).jpg?updatedAt=1749486972610",
         alt: "Garden pathway"
       }, {
-        src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Exterior/DJI_0657.jpg?updatedAt=1749487103646",
         alt: "Exterior view"
       }, {
-        src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Exterior/_DSC1212.JPG?updatedAt=1749487139291",
         alt: "Landscape view"
+      }]
+    },
+    corridors: {
+      title: "Corridors",
+      images: [{
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Corridors/_DSC1237.JPG?updatedAt=1749486628604",
+        alt: "Garden pathway"
       }, {
-        src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80",
-        alt: "Building exterior"
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Corridors/_DSC1241%20(2).jpg?updatedAt=1749486672844",
+        alt: "Exterior view"
       }, {
-        src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
-        alt: "Garden view"
-      }, {
-        src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
-        alt: "Courtyard"
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Corridors/_DSC1329%20(1).jpg?updatedAt=1749486828383",
+        alt: "Landscape view"
       }]
     },
 
@@ -89,18 +93,25 @@ const GalleryPage = () => {
         gym: {
           title: "Gym",
           images: [{
-            src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1216.png?updatedAt=1749487463412",
             alt: "Main gym area"
           }, {
-            src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1215%20(1).jpg?updatedAt=1749489855132",
             alt: "Cardio section"
           }, {
-            src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1217%20(1).JPG?updatedAt=1749489900850",
             alt: "Weight training"
           }, {
-            src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1228.JPG?updatedAt=1749490008769",
             alt: "Fitness equipment"
-          }],
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1229.JPG?updatedAt=1749490027431",
+            alt: "Cardio equipment"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Gym%20/_DSC1231%20(1).jpg?updatedAt=1749491571075",
+            alt: "Treadmill"
+          }  
+        ],
           videos: [{
             id: "gym1",
             title: "State-of-the-Art Gym Tour",
@@ -112,28 +123,49 @@ const GalleryPage = () => {
         library: {
           title: "Library",
           images: [{
-            src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Librarry/_DSC6652.png?updatedAt=1749492021261",
             alt: "Reading room"
           }, {
-            src: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Librarry/_DSC6649.png?updatedAt=1749492021348",
             alt: "Book collection"
           }, {
-            src: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Librarry/_DSC6661.png?updatedAt=1749492021847",
             alt: "Study area"
-          }]
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Librarry/_DSC6654.png?updatedAt=1749492021796",
+            alt: "Book rack"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Librarry/_DSC6668.png?updatedAt=1749492022019",
+            alt: "Bookshelf"
+          }
+        ]
         },
         yoga: {
           title: "Yoga",
           images: [{
-            src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1494.JPG?updatedAt=1749528345325",
             alt: "Yoga studio"
           }, {
-            src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1199.JPG?updatedAt=1749528354404",
             alt: "Meditation space"
           }, {
-            src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1185%20(1).jpg?updatedAt=1749528557080",
             alt: "Practice area"
-          }],
+          },{
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1209%20(2)%20(1).jpg?updatedAt=1749528558362",
+            alt: "Meditation space"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1177%20(1).jpg?updatedAt=1749528557098",
+            alt: "Meditation space"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1193%20(1).jpg?updatedAt=1749528557172",
+            alt: "Meditation space"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Yoga/_DSC1202%20(2).jpg?updatedAt=1749528557517",
+            alt: "Meditation space"
+          },
+        
+        ],
           videos: [{
             id: "yoga1",
             title: "Yoga Studio Overview",
@@ -145,92 +177,184 @@ const GalleryPage = () => {
         medicare: {
           title: "Medicare",
           images: [{
-            src: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Medical%20Care/_DSC6800.jpg?updatedAt=1749492446800",
             alt: "Medical facility"
           }, {
-            src: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Medical%20Care/_DSC6806.png?updatedAt=1749492454225",
             alt: "Healthcare room"
           }, {
-            src: "https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Medical%20Care/_DSC6796.png?updatedAt=1749492454470",
             alt: "Medical equipment"
           }]
         },
         pools: {
           title: "Pools & Jacuzzi",
           images: [{
-            src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1908.JPG?updatedAt=1749492737609",
             alt: "Swimming pool"
           }, {
-            src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1389.JPG?updatedAt=1749492741817",
             alt: "Jacuzzi area"
           }, {
-            src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1922.JPG?updatedAt=1749492741864",
             alt: "Pool deck"
-          }]
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1881.JPG?updatedAt=1749492742176",
+            alt: "Pool table"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1879.JPG?updatedAt=1749492742271",
+            alt: "Pool table"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20&%20Jacuzzi/_DSC1882.JPG?updatedAt=1749492742444",
+            alt: "Pool table"
+          }
+        ]
         },
         dining: {
           title: "Dining",
           images: [{
-            src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1861%20(1).jpg?updatedAt=1749493270482",
             alt: "Dining hall"
           }, {
-            src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1837%20(2)%20(1).jpg?updatedAt=1749493270577",
             alt: "Dining area"
           }, {
-            src: "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1333.JPG?updatedAt=1749493284509",
             alt: "Community dining"
-          }]
+          }
+          , {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1344.JPG?updatedAt=1749493284584",
+            alt: "Community dining"
+          }
+          , {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1330.JPG?updatedAt=1749493284760",
+            alt: "Community dining"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Private%20Dining/_DSC1854.JPG?updatedAt=1749493284889",
+            alt: "Community dining"
+          }
+        ]
         },
         restaurant: {
           title: "Restaurant",
           images: [{
-            src: "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1311%20(1).jpg?updatedAt=1749525199382",
             alt: "Restaurant interior"
           }, {
-            src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1302%20(2).jpg?updatedAt=1749525200674",
             alt: "Fine dining"
           }, {
-            src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1853%20(1).jpg?updatedAt=1749525201571",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1325%20(1).jpg?updatedAt=1749525201690",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1255%20(2).jpg?updatedAt=1749525201981",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1259%20(2).jpg?updatedAt=1749525202045",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1329%20(1)%20(1).jpg?updatedAt=1749525202069",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1306%20(1).jpg?updatedAt=1749526905571",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1252%20(1).jpg?updatedAt=1749526908426",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1259%20(3)%20(1).jpg?updatedAt=1749526909241",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1245%20(1).jpg?updatedAt=1749526909420",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1253%20(1).jpg?updatedAt=1749526909492",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1250%20(1).jpg?updatedAt=1749526909576",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1268%20(1).jpg?updatedAt=1749526909553",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1242%20(1).jpg?updatedAt=1749526909562",
+            alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1269%20(1).jpg?updatedAt=1749526909584",
             alt: "Restaurant seating"
           }]
         },
         saloon: {
-          title: "Saloon (Sauna & Steam)",
+          title: "Saloon and Spa", 
           images: [{
-            src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1616.jpg?updatedAt=1749527444754",
             alt: "Sauna room"
           }, {
-            src: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1651.jpg?updatedAt=1749527444944",
             alt: "Steam room"
           }, {
-            src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1609.jpg?updatedAt=1749527445342",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1675.jpg?updatedAt=1749527445664",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1637.jpg?updatedAt=1749527448478",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1662.JPG?updatedAt=1749527595174",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1619.JPG?updatedAt=1749527595213",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1648.JPG?updatedAt=1749527595529",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1676.JPG?updatedAt=1749527595513",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1628.JPG?updatedAt=1749527595563",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1632.JPG?updatedAt=1749527628404",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1640%20(1).jpg?updatedAt=1749527688179",
+            alt: "Wellness area"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Spa%20etc/_DSC1696%20(1).jpg?updatedAt=1749527688307",
             alt: "Wellness area"
           }]
-        },
+        },  
         recreation: {
           title: "Recreation Room (Chess, Carrom, Cards)",
           images: [{
-            src: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Rec%20room/_DSC6745.jpg?updatedAt=1749493648460",
             alt: "Recreation room"
           }, {
-            src: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Rec%20room/_DSC6739.jpg?updatedAt=17494936484850",
             alt: "Game tables"
           }, {
-            src: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Rec%20room/_DSC6731.jpg?updatedAt=1749493648566",
             alt: "Social games area"
-          }]
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Rec%20room/_DSC6735.jpg?updatedAt=1749493648852",
+            alt: "Recreation room"
+          }
+        ]
         },
         poolTable: {
           title: "Pool Table",
           images: [{
-            src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&q=80",
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/Screenshot%202025-06-06%20180147.png?updatedAt=1749492961943",
             alt: "Pool table area"
           }, {
-            src: "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&q=80",
+            src: "hhttps://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6618.png?updatedAt=1749493032485",
             alt: "Billiards room"
-          }, {
-            src: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80",
-            alt: "Recreation space"
           }]
         }
       }
@@ -239,56 +363,68 @@ const GalleryPage = () => {
     studio: {
       title: "Studio",
       images: [{
-        src: "https://images.unsplash.com/photo-1565182999561-f9a9b5eb7b66?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/Screenshot%202025-06-06%20170502.png?updatedAt=1749527870730",
         alt: "Modern studio apartment"
       }, {
-        src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1506.JPG?updatedAt=1749527880650",
         alt: "Studio living area"
-      }, {
-        src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+      },{
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1556.JPG?updatedAt=1749527881030",
+        alt: "Compact studio design"
+      },{
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1548%20(1).jpg?updatedAt=1749527959259",
         alt: "Compact studio design"
       }, {
-        src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1565%20-%20Copy%20(1).jpg?updatedAt=1749527959716",
         alt: "Studio bedroom area"
       }]
     },
-    onebhk: {
+    onebhk: { 
       title: "1BHK",
       images: [{
-        src: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6704.jpg?updatedAt=1749473533772 ",
         alt: "1BHK living room"
       }, {
-        src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6703.jpg?updatedAt=1749469796091",
         alt: "1BHK bedroom"
       }, {
-        src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6700.jpg?updatedAt=1749469757051",
         alt: "1BHK kitchen"
       }, {
-        src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6690.jpg?updatedAt=1749469726423",
         alt: "1BHK bathroom"
       }, {
-        src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972%20(1).jpg?updatedAt=1749470200400",
         alt: "1BHK balcony"
       }]
     },
     twobhk: {
       title: "2BHK",
       images: [{
-        src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/005.jpg?updatedAt=1749470164831",
         alt: "2BHK living room"
       }, {
-        src: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1962%20(1).jpg?updatedAt=1749470119057",
         alt: "2BHK master bedroom"
       }, {
-        src: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1957%20(2).jpg?updatedAt=1749470056411",
         alt: "2BHK second bedroom"
       }, {
-        src: "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1940%20(1).jpg?updatedAt=1749469955530",
         alt: "2BHK kitchen"
       }, {
-        src: "https://images.unsplash.com/photo-1602872030219-ad4b9c0c5309?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1943.JPG?updatedAt=1749469913562",
         alt: "2BHK bathroom"
-      }]
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972%20(1).jpg?updatedAt=1749470200400",
+        alt: "2BHK balcony"   
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/008.jpg?updatedAt=1749470315428",
+        alt: "2BHK master bathroom"
+      }
+      
+      
+    ]
     },
     videos: {
       title: "Videos",
@@ -321,21 +457,10 @@ const GalleryPage = () => {
     miscellaneous: {
       title: "Miscellaneous",
       images: [{
-        src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Misc/_DSC1324.JPG?updatedAt=1749492253399",
         alt: "Common area"
-      }, {
-        src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
-        alt: "Garden view"
-      }, {
-        src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
-        alt: "Wellness space"
-      }, {
-        src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&q=80",
-        alt: "Peaceful corner"
-      }, {
-        src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
-        alt: "Community space"
-      }]
+      }
+    ]
     }
   };
   const openLightbox = (images: GalleryImage[], startIndex: number) => {
