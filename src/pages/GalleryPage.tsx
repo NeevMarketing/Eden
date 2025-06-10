@@ -71,22 +71,22 @@ const GalleryPage = () => {
       }]
     },
 
-    lobby: {
-      title: "Lobby",
-      images: [{
-        src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
-        alt: "Main lobby"
-      }, {
-        src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
-        alt: "Reception area"
-      }, {
-        src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
-        alt: "Lobby seating"
-      }, {
-        src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
-        alt: "Welcome area"
-      }]
-    },
+    // lobby: {
+    //   title: "Lobby",
+    //   images: [{
+    //     src: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&q=80",
+    //     alt: "Main lobby"
+    //   }, {
+    //     src: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?auto=format&fit=crop&q=80",
+    //     alt: "Reception area"
+    //   }, {
+    //     src: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80",
+    //     alt: "Lobby seating"
+    //   }, {
+    //     src: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80",
+    //     alt: "Welcome area"
+    //   }]
+    // },
     amenities: {
       title: "Amenities",
       subcategories: {
@@ -285,6 +285,9 @@ const GalleryPage = () => {
           }, {
             src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1269%20(1).jpg?updatedAt=1749526909584",
             alt: "Restaurant seating"
+          }, {
+            src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Restaurant/_DSC1324.JPG?updatedAt=1749550756982",
+            alt: "Restaurant seating"
           }]
         },
         saloon: {
@@ -381,12 +384,23 @@ const GalleryPage = () => {
       }, {
         src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1565%20-%20Copy%20(1).jpg?updatedAt=1749527959716",
         alt: "Studio bedroom area"
-      }]
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1588.jpg?updatedAt=1749552521164",
+        alt: "Compact studio design"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1583%20(1).jpg?updatedAt=1749552519851",
+        alt: "Compact studio design"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1559%20(2)%20(1).jpg?updatedAt=1749552519870",
+        alt: "Compact studio design"
+      },
+    
+    ]
     },
     onebhk: { 
       title: "1BHK",
       images: [{
-        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6704.jpg?updatedAt=1749473533772 ",
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6704.jpg?updatedAt=1749473533772",
         alt: "1BHK living room"
       }, {
         src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6703.jpg?updatedAt=1749469796091",
@@ -400,7 +414,26 @@ const GalleryPage = () => {
       }, {
         src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972%20(1).jpg?updatedAt=1749470200400",
         alt: "1BHK balcony"
-      }]
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6685.jpg?updatedAt=1749469688303",
+        alt: "1BHK bathroom"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6684.jpg?updatedAt=1749553257334",
+        alt: "1BHK bathroom"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6678.jpg?updatedAt=1749553256761",
+        alt: "1BHK bathroom"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6673.jpg?updatedAt=1749553256467",
+        alt: "1BHK bathroom"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6679.jpg?updatedAt=1749553002757",
+        alt: "1BHK bathroom"
+      }, {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6683.jpg?updatedAt=1749553002762",
+        alt: "1BHK bathroom"
+      },
+    ]
     },
     twobhk: {
       title: "2BHK",
@@ -424,6 +457,21 @@ const GalleryPage = () => {
         alt: "2BHK balcony"   
       }, {
         src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/008.jpg?updatedAt=1749470315428",
+        alt: "2BHK master bathroom"
+      } , {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1965.jpg?updatedAt=1749554730036",
+        alt: "2BHK master bathroom"
+      } , {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1976.jpg?updatedAt=1749554730069",
+        alt: "2BHK master bathroom"
+      } , {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1949.jpg?updatedAt=1749554729795",
+        alt: "2BHK master bathroom"
+      } , {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC6637.jpg?updatedAt=1749554729155",
+        alt: "2BHK master bathroom"
+      } , {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/006.jpg?updatedAt=1749554603056",
         alt: "2BHK master bathroom"
       }
       
@@ -458,14 +506,14 @@ const GalleryPage = () => {
         description: "See our beautifully designed apartments and living spaces"
       }]
     },
-    miscellaneous: {
-      title: "Miscellaneous",
-      images: [{
-        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Misc/_DSC1324.JPG?updatedAt=1749492253399",
-        alt: "Common area"
-      }
-    ]
-    }
+    // miscellaneous: {
+    //   title: "Miscellaneous",
+    //   images: [{
+    //     src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Misc/_DSC1324.JPG?updatedAt=1749492253399",
+    //     alt: "Common area"
+    //   }
+    // ]
+    // }
   };
   const openLightbox = (images: GalleryImage[], startIndex: number) => {
     setCurrentImages(images);
@@ -549,7 +597,7 @@ const GalleryPage = () => {
 
           <div className="space-y-6 mb-16">
             {/* Regular Categories - ordered with miscellaneous at the end */}
-            {Object.entries(galleryCategories).filter(([key]) => !['amenities', 'videos', 'miscellaneous'].includes(key)).concat([['miscellaneous', galleryCategories.miscellaneous]]).map(([key, category]) => <Card key={key} className="overflow-hidden shadow-lg border-0">
+            {Object.entries(galleryCategories).filter(([key]) => !['amenities', 'videos'].includes(key)).map(([key, category]) => <Card key={key} className="overflow-hidden shadow-lg border-0">
                 <Collapsible open={openSections.includes(key)} onOpenChange={() => toggleSection(key)}>
                   <CollapsibleTrigger asChild>
                     <div className="cursor-pointer hover:bg-stone-50 transition-colors bg-gradient-to-r from-stone-50 to-white p-6">

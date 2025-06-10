@@ -173,7 +173,7 @@ const TwoBHKPage = () => {
             className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Back to Choose Your Sanctuary
+            Back to Choose Your Appartment
           </Button>
         </div>
 
