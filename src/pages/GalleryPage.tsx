@@ -335,14 +335,14 @@ const GalleryPage = () => {
               src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/Screenshot%202025-06-06%20180147.png?updatedAt=1749492961943",
               alt: "Pool table area",
             },
-            {
-              src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6614.jpg?updatedAt=1749538308854",
-              alt: "Billiards room",
-            },
-            {
-              src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6618.png?updatedAt=1749493032485",
-              alt: "Billiards room",
-            },
+            // {
+            //   src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6614.jpg?updatedAt=1749538308854",
+            //   alt: "Billiards room",
+            // },
+            // {
+            //   src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Pool%20table/_DSC6618.png?updatedAt=1749493032485",
+            //   alt: "Billiards room",
+            // },
           ],
         },
       },
