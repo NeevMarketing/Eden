@@ -75,7 +75,7 @@ const SanctuarySelectionCard = ({
 
         {/* Retreat Details */}
         <div>
-          <h4 className="font-medium text-stone-800 mb-3">Retreat Details</h4>
+          {/* <h4 className="font-medium text-stone-800 mb-3">Retreat Details</h4> */}
           <div className="bg-stone-50 rounded-lg p-4">
             {bookingDetails.isPackage && bookingDetails.packageDetails ? (
               <>
@@ -115,7 +115,7 @@ const SanctuarySelectionCard = ({
             ) : (
               <>
                 <div className="font-medium text-stone-800 mb-1">
-                  Custom Journey
+                Selected Days
                 </div>
                 <div className="text-sm text-stone-600">
                   {displayNights} {displayNights === 1 ? "night" : "nights"}{" "}

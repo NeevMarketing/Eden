@@ -19,7 +19,7 @@ const StudioPage = () => {
   const collections = [
     {
       name: "CREST",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Crest/_DSC1559%20(1).jpg?updatedAt=1749467553482",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Crest/_DSC1559%20Color%20Grade%20(1).jpg?updatedAt=1749565244397",
       description: "Located on the lower levels, this thoughtfully curated studio is perfect for those who appreciate convenience without compromise. Large windows bring in natural light while elegant interiors create a warm, inviting atmosphere. Whether you're staying a few nights or a few months, Crest offers a seamless functionality, just steps away from everything you need.",
       features: [
         "Fully Furnished Apartment",
@@ -32,7 +32,7 @@ const StudioPage = () => {
     },
     {
       name: "HAMILTON",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Hamilton/_DSC1549%20(1).jpg?updatedAt=1749467663710",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Hamilton/_DSC1549%20Color%20Grade%20(1).jpg?updatedAt=1749564939582",
       description: "Positioned on higher floors, Hamilton studio apartments offer expansive views along with refined privacy. These premium residences are perfect for guests seeking a tranquil yet connected experience. With spacious layouts and curated interiors, Hamilton provides a sophisticated retreat for longer or more peaceful stays.",
       features: [
         "Fully Furnished Apartment",
@@ -45,7 +45,7 @@ const StudioPage = () => {
     },
     {
       name: "SKYLINE",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Skyline/_DSC1512%20(1).JPG?updatedAt=1749467761922",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Skyline/_DSC1512%20(2).JPG?updatedAt=1749564780793",
       description: "Located at the highest level of the property, Skyline studio apartments offer unmatched panoramic views and a heightened sense of serenity. Designed for those who appreciate exclusivity and elevation, Skyline delivers a luxurious, quiet sanctuary ideal for unwinding, reflecting, or working in peace.",
       features: [
         "Fully Furnished Apartment",
@@ -168,7 +168,7 @@ const StudioPage = () => {
       <section className="relative h-96 flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Cover%20(3).JPG?updatedAt=1749454413354')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Cover-Color-Grade%20(2).jpg?updatedAt=1749564491868')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">

@@ -19,7 +19,7 @@ const TwoBHKPage = () => {
   const collections = [
     {
       name: "VICTORIA",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Victoria/_DSC1929%20(1).JPG?updatedAt=1749468620071",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Victoria/_DSC1929%20Color%20Grade%20(1).jpg?updatedAt=1749566157749",
       description: "Victoria is a well-planned apartment that offers all the essentials for a smooth stay. Each bedroom comes with its own bathroom. There’s a cozy living area with a dining space, a workspace, and a fully equipped kitchen. It’s perfect for families or small groups who want a clean, functional, and easy-to-settle-in space with everything you need, and nothing you don’t.",
       features: [
         "2 Bedrooms with Bathrooms",
@@ -33,7 +33,7 @@ const TwoBHKPage = () => {
     },
     {
       name: "RENAISSANCE",
-      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Renaissance/_DSC1946.jpg?updatedAt=1749468555424",
+      image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Renaissance/_DSC1946%20Color%20Grade.jpg?updatedAt=1749565928739",
       description: "Renaissance is a larger, high-end suite that gives you more space, more comfort, and a beautiful view from the balcony. It includes two spacious bedrooms, a stylish living area, and separate spaces to relax, eat, or work. If you’re looking to stay longer or want something extra special, Renaissance gives you the best of everything with peace, privacy, and the mountains right outside.",
       features: [
         "2 Bedrooms with Bathrooms",
@@ -155,7 +155,7 @@ const TwoBHKPage = () => {
       <section className="relative h-96 flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Cover%20-%20to%20be%20extracted%20fom%20the%20video.png?updatedAt=1749455197415')" }}
+          style={{ backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/2%20BHK/Cover%20-%20to%20be%20extracted%20fom%20the%20video%20cOLOR%20GRADE.jpg?updatedAt=1749565821739')" }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white">
