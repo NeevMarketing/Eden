@@ -5,6 +5,13 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import studio1 from "../images/studio/studio1.jpg";
+import studio2 from "../images/studio/_DSC1559-Color-Grade.jpg";
+import studio3 from "../images/studio/_DSC1583.jpg";
+import studio4 from "../images/studio/_DSC1588-Color-Grade.jpg";
+import studio5 from "../images/studio/Screenshot-2025-06-06-170502-Color-Grade.jpg";
+import studio6 from "../images/studio/_DSC1583.jpg";
+
 import {
   Image,
   ChevronDown,
@@ -352,27 +359,27 @@ const GalleryPage = () => {
       title: "Studio",
       images: [
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/Screenshot%202025-06-06%20170502.png?updatedAt=1749527870730",
+          src: studio1,
           alt: "Modern studio apartment",
         },
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1506.JPG?updatedAt=1749527880650",
+          src: studio2,
           alt: "Studio living area",
         },
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1548%20(1).jpg?updatedAt=1749527959259",
+          src: studio3,
           alt: "Compact studio design",
         },
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1588%20(1).jpg?updatedAt=1749628511826",
+          src: studio4,
           alt: "Compact studio design",
         },
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1583%20(1).jpg?updatedAt=1749552519851",
+          src: studio5,
           alt: "Compact studio design",
         },
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1559%20(2)%20(1).jpg?updatedAt=1749552519870",
+          src: studio6,
           alt: "Compact studio design",
         },
       ],
@@ -381,13 +388,13 @@ const GalleryPage = () => {
       title: "1BHK",
       images: [
         {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6700.jpg?updatedAt=1749469757051",
+          src: "https://ik.imagekit.io/k5ldi6s6u/Edenneev/Gallery/Studio/_DSC1588-Color-Grade.jpg?updatedAt=1749642389476",
           alt: "1BHK kitchen",
         },
-        {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972%20(1).jpg?updatedAt=1749470200400",
-          alt: "1BHK balcony",
-        },
+        // {
+        //   src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972%20(1).jpg?updatedAt=1749470200400",
+        //   alt: "1BHK balcony",
+        // },
         {
           src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6685.jpg?updatedAt=1749469688303",
           alt: "1BHK bathroom",
@@ -396,10 +403,10 @@ const GalleryPage = () => {
           src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6684.jpg?updatedAt=1749553257334",
           alt: "1BHK bathroom",
         },
-        {
-          src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6683.jpg?updatedAt=1749553002762",
-          alt: "1BHK bathroom",
-        },
+        // {
+        //   src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6683.jpg?updatedAt=1749553002762",
+        //   alt: "1BHK bathroom",
+        // },
       ],
     },
     twobhk: {
