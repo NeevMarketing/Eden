@@ -57,8 +57,8 @@ export const useBookingCalculations = (bookingDetails: BookingDetails) => {
       return bookingDetails.packageDetails.price;
     }
     
-    if (bookingDetails.roomCategory && bookingDetails.roomCategory.startingPrice) {
-      const totalPrice = bookingDetails.roomCategory.startingPrice * displayNights;
+    if (bookingDetails.roomCategory) {
+      const totalPrice = bookingDetails.roomCategory[bookingDetails.roomCategory.name] * displayNights;
       console.log('Calculated price from room category:', totalPrice);
       return totalPrice;
     }

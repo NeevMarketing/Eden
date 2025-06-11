@@ -147,7 +147,7 @@ const DatePackageSelector = ({
                     <span className="font-medium">Total Price:</span>
                     <br />₹
                     {(
-                      roomCategory.startingPrice *
+                      roomCategory[roomCategory.name] *
                       differenceInDays(checkOutDate, checkInDate)
                     ).toLocaleString()}
                   </div>
@@ -198,7 +198,7 @@ const DatePackageSelector = ({
           <div className="bg-gradient-to-r from-eden/10 to-emerald/10 rounded-xl p-4 inline-block">
             <p className="text-eden font-medium">
               Selected: {roomCategory.name} • {roomCategory.size} • Starting from ₹
-              {roomCategory.startingPrice.toLocaleString()}/night
+              {roomCategory[roomCategory.name].toLocaleString()}/night
             </p>
           </div>
         </div>

@@ -27,6 +27,9 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
+        "Complimentary Breakfast",
+        "Access to Amenities"
+
       ],
       recommendation: "Recommended for: Guests who value quick access to amenities, minimal stair or lift use, and a seamless living experience."
     },
@@ -40,6 +43,9 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
+        "Complimentary Breakfast",
+        "Access to Amenities"
+
       ],
       recommendation: "Recommended for: Individuals or couples who enjoy open views, a quiet setting, and a balance between luxury and convenience."
     },
@@ -53,6 +59,9 @@ const StudioPage = () => {
         "Fully Equipped Kitchen",
         "Well-Appointed Bathroom",
         "Complimentary Wi-Fi",
+        "Complimentary Breakfast",
+        "Access to Amenities"
+
       ],
       recommendation: "Recommended for: Guests seeking a top-floor location with unobstructed views of the skyline, flooded with natural light throughout the day"
     }
@@ -89,7 +98,7 @@ const StudioPage = () => {
   };
 
   if (showForm) {
-    const mockBookingDetails: BookingDetails = {
+    const mockBookingDetails: any = {
       roomType: {
         id: 'studio',
         name: 'Studio Apartment',
@@ -97,6 +106,9 @@ const StudioPage = () => {
         size: '650 sq ft',
         guests: 2,
         startingPrice: 7500,
+        HAMILTON: 8000,
+        CREST:7500,
+        SKYLINE:8500,
         description: 'Comfortable studio apartment',
         amenities: []
       },
@@ -108,6 +120,9 @@ const StudioPage = () => {
         size: '650 sq ft',
         guests: 2,
         startingPrice: 7500,
+        HAMILTON: 8000,
+        CREST:7500,
+        SKYLINE:8500,
         amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
         roomTypeId: 'studio'
       },
@@ -141,6 +156,9 @@ const StudioPage = () => {
       size: '650 sq ft',
       guests: 2,
       startingPrice: 7500,
+      HAMILTON: 8000,
+      CREST:7500,
+      SKYLINE:8500,
       amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
       roomTypeId: 'studio'
     };
@@ -252,9 +270,7 @@ const StudioPage = () => {
               Safety & Accessibility Features
             </h2>
             <div className="w-full flex justify-center">
-                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                <ShieldCheck />
-                </div>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
               </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
               All our residences are designed with senior safety and

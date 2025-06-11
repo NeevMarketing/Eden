@@ -287,13 +287,23 @@ const Contact: React.FC = () => {
             <div className="overflow-hidden rounded-lg h-80 shadow-md">
               {/* This is a placeholder for a map. In a real implementation, you would use Google Maps or similar */}
               <div className="w-full h-full bg-eden-light/50 flex items-center justify-center">
-                <div className="text-center p-6">
+              <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.973118789161!2d78.0668453!3d30.4022508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d781c32e1e33%3A0xc44581aeff8d738a!2sEden%20-%20Senior%20Living%20%26%20Wellness!5e0!3m2!1sen!2sin!4v1718088888888"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, borderRadius: "5px"  }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                
+                {/* <div className="text-center p-6">
                   <MapPin className="mx-auto mb-4 text-eden" size={32} />
                   <h4 className="text-xl font-serif text-eden-dark mb-1">
                     Eden Gracious Living
                   </h4>
                   <p className="text-eden-text">Dehradun, Uttarakhand</p>
-                </div>
+                </div> */}
                 {/* {isLoaded ? (
                   <GoogleMap
                     mapContainerStyle={containerStyle}
@@ -308,15 +318,7 @@ const Contact: React.FC = () => {
                   </div>
                 )} */}
                 <div className="overflow-hidden rounded-lg h-80 shadow-md">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.973118789161!2d78.0668453!3d30.4022508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d781c32e1e33%3A0xc44581aeff8d738a!2sEden%20-%20Senior%20Living%20%26%20Wellness!5e0!3m2!1sen!2sin!4v1718088888888"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0, borderRadius: "5px" }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                 
                 </div>
               </div>
             </div>
