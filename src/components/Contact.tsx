@@ -133,7 +133,7 @@ const Contact: React.FC = () => {
               <h3 className="text-2xl font-serif text-eden-dark mb-6">
                 Enquiry Form
               </h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="ContactUsForm space-y-6 ">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
