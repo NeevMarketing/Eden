@@ -138,7 +138,7 @@ const InquiryForm = ({
           { name: 'number_of_guests', value: formData.numberOfGuests },
           { name: 'check_in', value: bookingDetails?.packageDetails?.checkInDate.toDateString() },
           { name: 'check_out', value: bookingDetails?.packageDetails?.checkOutDate.toDateString() },
-          { name: 'stay_package', value: bookingDetails?.packageDetails?.duration },
+          { name: 'stay_package', value: 'Custom' },
           { name: 'room_type', value: bookingDetails.roomType?.name },
           { name: 'room_description', value: bookingDetails.roomCategory?.name },
           { name: 'special_request', value: formData.specialRequests },
