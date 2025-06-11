@@ -309,9 +309,7 @@ const StudioPage = () => {
               Safety & Accessibility Features
             </h2>
             <div className="w-full flex justify-center">
-              <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                <ShieldCheck />
-              </div>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
             </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
               All our residences are designed with senior safety and

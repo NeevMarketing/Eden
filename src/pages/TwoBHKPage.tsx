@@ -375,9 +375,7 @@ const TwoBHKPage = () => {
                 <div className="w-6 h-6 bg-eden rounded-sm"><ShieldCheck color='#fff'  /></div>
               </div> */}
               <div className="w-full flex justify-center">
-                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                  <ShieldCheck />
-                </div>
+              <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
               </div>
 
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
