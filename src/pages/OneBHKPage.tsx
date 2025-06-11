@@ -27,7 +27,7 @@ const OneBHKPage = () => {
     {
       name: "REGENCY",
       image:
-        "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686%20(1).jpg?updatedAt=1749565673138",
+        "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686.jpg?updatedAt=1749656748355",
       description:
         "Regency offers the space and comfort of home, thoughtfully designed for guests who value a more expansive living environment. With a separate living room, private bedroom, and a fully equipped kitchen, this 1 BHK is ideal for longer stays, work-from-home flexibility, or simply enjoying a more relaxed and roomy setup.",
       features: [
@@ -160,7 +160,7 @@ const OneBHKPage = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1%20(1).jpg?updatedAt=1749565673213')",
+              "url(https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1.jpg?updatedAt=1749656748241')",
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
@@ -273,10 +273,10 @@ const OneBHKPage = () => {
               Safety & Accessibility Features
             </h2>
             <div className="w-full flex justify-center">
-                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+              <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
                 <ShieldCheck />
-                </div>
               </div>
+            </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
               All our residences are designed with senior safety and
               accessibility in mind.
@@ -287,7 +287,7 @@ const OneBHKPage = () => {
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-full flex justify-center">
                 <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                <Activity />
+                  <Activity />
                 </div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
@@ -301,13 +301,12 @@ const OneBHKPage = () => {
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-full flex justify-center">
-                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                <Accessibility />
+                <div className="w-full flex justify-center">
+                  <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                    <Accessibility />
+                  </div>
                 </div>
-              </div>
-                <div className="w-6 h-6 bg-eden rounded-sm">
-                </div>
+                <div className="w-6 h-6 bg-eden rounded-sm"></div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
                 Accessible Design
@@ -320,26 +319,26 @@ const OneBHKPage = () => {
 
             <Card className="p-6 text-center bg-white border-0">
               <div className="w-12 h-12 bg-eden/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <div className="w-full flex justify-center">
-                <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    className="lucide lucide-droplet-off-icon lucide-droplet-off"
-                  >
-                    <path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586" />
-                    <path d="m2 2 20 20" />
-                    <path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
-                  </svg>
+                <div className="w-full flex justify-center">
+                  <div className=" flex justify-center mb-4 text-eden bg-eden-light/50 w-12 h-12 rounded-full  items-center  group-hover:bg-eden group-hover:text-white transition-all duration-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      className="lucide lucide-droplet-off-icon lucide-droplet-off"
+                    >
+                      <path d="M18.715 13.186C18.29 11.858 17.384 10.607 16 9.5c-2-1.6-3.5-4-4-6.5a10.7 10.7 0 0 1-.884 2.586" />
+                      <path d="m2 2 20 20" />
+                      <path d="M8.795 8.797A11 11 0 0 1 8 9.5C6 11.1 5 13 5 15a7 7 0 0 0 13.222 3.208" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
               </div>
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">
                 Anti-Slip Flooring

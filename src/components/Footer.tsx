@@ -86,7 +86,7 @@ Dehradun 248 009, Uttarakhand, India
         <div className="container-custom py-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-eden-light/80 text-sm mb-2 md:mb-0">
-              © {new Date().getFullYear()} Eden Gracious Living. All rights reserved.
+              © {new Date().getFullYear()} Eden Wellness & Hospitality. All rights reserved.
             </p>
             <div className="flex space-x-4 text-sm">
               <a href="/terms-privacy" target="_blank" className="text-eden-light/90 hover:text-white transition-colors">Privacy Policy</a>

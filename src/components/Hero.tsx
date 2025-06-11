@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   return <section className="relative pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20 lg:pb-32 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 z-0" style={{
-  backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Home-Page-Cover.png?updatedAt=1749462492625')"
+  backgroundImage: "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Home-Page-Cover.jpg?updatedAt=1749655344808')"
 }} />
 
 <div className="absolute inset-0 bg-gradient-to-b from-eden-beige/10 to-eden-light/70 z-10"></div>

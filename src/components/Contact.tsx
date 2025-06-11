@@ -290,7 +290,7 @@ const Contact: React.FC = () => {
                 <div className="text-center p-6">
                   <MapPin className="mx-auto mb-4 text-eden" size={32} />
                   <h4 className="text-xl font-serif text-eden-dark mb-1">
-                    Eden Gracious Living
+                    Eden Wellness & Hospitality
                   </h4>
                   <p className="text-eden-text">Dehradun, Uttarakhand</p>
                 </div>
