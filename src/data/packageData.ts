@@ -4,7 +4,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "studio",
     name: "Studio Apartment",
-    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/Studio%20Appartment/Cover%20(2)%20(1).jpg?updatedAt=1749314710452",
+    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/sTUDIO%20Cover.jpg?updatedAt=1749654353949",
     size: "400-500 sq ft",
     guests: 1,
     startingPrice: 7500,
@@ -14,7 +14,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "1bhk",
     name: "1 BHK Apartment",
-    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/1%20BHK%201.1.jpg?updatedAt=1749461379159",
+    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/1BHK.jpg?updatedAt=1749654353195",
     size: "600-800 sq ft",
     guests: 2,
     startingPrice: 10000,
@@ -24,7 +24,7 @@ export const roomTypes: RoomType[] = [
   {
     id: "2bhk",
     name: "2 BHK Apartment",
-    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/2BHK%20(2)%20(1).jpg?updatedAt=1749461337818",
+    image: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Home%20page/Accommodations/2BHK.jpg?updatedAt=1749654353873",
     size: "900-1200 sq ft",
     guests: 4,
     startingPrice: 15000,

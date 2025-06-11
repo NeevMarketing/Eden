@@ -27,7 +27,7 @@ const OneBHKPage = () => {
     {
       name: "REGENCY",
       image:
-        "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686%20(1).jpg?updatedAt=1749565673138",
+        "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/_DSC6686.jpg?updatedAt=1749656748355",
       description:
         "Regency offers the space and comfort of home, thoughtfully designed for guests who value a more expansive living environment. With a separate living room, private bedroom, and a fully equipped kitchen, this 1 BHK is ideal for longer stays, work-from-home flexibility, or simply enjoying a more relaxed and roomy setup.",
       features: [
@@ -166,7 +166,7 @@ const OneBHKPage = () => {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1%20(1).jpg?updatedAt=1749565673213')",
+              "url(https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Accommodations/1%20BHK/Cover%201.1.jpg?updatedAt=1749656748241')",
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
@@ -279,7 +279,7 @@ const OneBHKPage = () => {
               Safety & Accessibility Features
             </h2>
             <div className="w-full flex justify-center">
-              <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+            <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
             </div>
             <p className="text-stone-600 text-lg mb-8 max-w-2xl mx-auto font-light">
               All our residences are designed with senior safety and
