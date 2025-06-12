@@ -371,7 +371,7 @@ export const accomodation_data = {
         description: "Perfect for short getaways",
         duration: "7 Days",
         price: 150000,
-        orignal_per_night: 250000,
+        orignal_per_night: 25000,
         avgPerNight: 21428,
         voucher: 12000,
         features: [
@@ -390,7 +390,7 @@ export const accomodation_data = {
         duration: "14 Days",
         description: "Perfect for longer renewal",
         price: 250000,
-        orignal_per_night: 250000,
+        orignal_per_night: 25000,
         voucher: 20000,
         avgPerNight: 17857,
         features: [
@@ -409,9 +409,8 @@ export const accomodation_data = {
         days: 30,
         description: "Perfect for longer renewal",
         duration: "30 Days",
-
         price: 360000,
-        orignal_per_night: 250000,
+        orignal_per_night: 25000,
         voucher: 40000,
         avgPerNight: 12000,
         features: [
