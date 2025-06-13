@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
-
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,25 +27,25 @@ const Navbar: React.FC = () => {
 
   const scrollToSection = (sectionId: string) => {
     let currentURL = window.location.href;
-    if(currentURL.includes('#') || currentURL.split('/')[3] == ""){
+    if (currentURL.includes("#") || currentURL.split("/")[3] == "") {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
-    }else {
-      window.location.href = window.location.origin+'/#'+sectionId;
+    } else {
+      window.location.href = window.location.origin + "/#" + sectionId;
       setTimeout(() => {
         const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
       }, 1000);
     }
-    
+
     // setTimeout(() => {
-     
+
     // }, 100);
-    
+
     setIsMobileMenuOpen(false);
   };
 
@@ -58,68 +57,132 @@ const Navbar: React.FC = () => {
         <a href="/" className="flex items-center">
           {/* <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
           <span className="text-md text-eden ml-1 font-light">Gracious Living</span> */}
-          <img src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249" alt="logo" className="w-20" />
+          <img
+            src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249"
+            alt="logo"
+            className="w-20"
+          />
         </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="/#about" className="text-eden-text hover:text-eden transition-colors">About</a>
+          <a
+            href="/#about"
+            className="text-eden-text hover:text-eden transition-colors"
+          >
+            About
+          </a>
           {/* <a href="/#choose-your-sanctuary" className="text-eden-text hover:text-eden transition-colors">Accommodations</a> */}
-          <button 
-            onClick={() => scrollToSection('choose-your-sanctuary')} 
+          <button
+            onClick={() => scrollToSection("choose-your-sanctuary")}
             className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
           >
             Accommodations
           </button>
-          <a href="/#amenities" className="text-eden-text hover:text-eden transition-colors">Amenities</a>
+          <a
+            href="/#amenities"
+            className="text-eden-text hover:text-eden transition-colors"
+          >
+            Amenities
+          </a>
           {/* <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a> */}
-          <button 
-            onClick={() => scrollToSection('faq')} 
+          <button
+            onClick={() => scrollToSection("faq")}
             className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
           >
             FAQs
           </button>
-          <a href="/gallery" className="text-eden-text hover:text-eden transition-colors">Gallery</a>
+          <a
+            href="/gallery"
+            className="text-eden-text hover:text-eden transition-colors"
+          >
+            Gallery
+          </a>
           <a href="/#contact">
-            <Button variant="outline" className="border-eden text-eden hover:bg-eden hover:text-white">Contact Us</Button>
+            <Button
+              variant="outline"
+              className="border-eden text-eden hover:bg-eden hover:text-white"
+            >
+              Contact Us
+            </Button>
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-eden-dark"
+          className="md:hidden text-eden-dark duration-300"
           onClick={toggleMobileMenu}
           aria-label="Open Menu"
         >
-          <Menu size={24} />
+          <motion.div
+            key={isMobileMenuOpen ? "close" : "menu"}
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </motion.div>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4">
-          <div className="container-custom flex flex-col space-y-4">
-            <a href="/#about" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>About</a>
-            <button 
-              onClick={() => scrollToSection('choose-your-sanctuary')} 
-              className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
-            >
-              Accommodations
-            </button>
-            <a href="/#amenities" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Amenities</a>
-            <button 
-              onClick={() => scrollToSection('faq')} 
-              className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
-            >
-              FAQs
-            </button>
-            <a href="/gallery" className="text-eden-text hover:text-eden py-2 px-4" onClick={toggleMobileMenu}>Gallery</a>
-            <a href="/#contact" className="py-2 px-4" onClick={toggleMobileMenu}>
-              <Button className="bg-eden text-white w-full">Contact Us</Button>
-            </a>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4 z-50"
+          >
+            <div className="container-custom flex flex-col space-y-4">
+              <a
+                href="/#about"
+                className="text-eden-text hover:text-eden py-2 px-4"
+                onClick={toggleMobileMenu}
+              >
+                About
+              </a>
+              <button
+                onClick={() => scrollToSection("choose-your-sanctuary")}
+                className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
+              >
+                Accommodations
+              </button>
+              <a
+                href="/#amenities"
+                className="text-eden-text hover:text-eden py-2 px-4"
+                onClick={toggleMobileMenu}
+              >
+                Amenities
+              </a>
+              <button
+                onClick={() => scrollToSection("faq")}
+                className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
+              >
+                FAQs
+              </button>
+              <a
+                href="/gallery"
+                className="text-eden-text hover:text-eden py-2 px-4"
+                onClick={toggleMobileMenu}
+              >
+                Gallery
+              </a>
+              <a
+                href="/#contact"
+                className="py-2 px-4"
+                onClick={toggleMobileMenu}
+              >
+                <Button className="bg-eden text-white w-full">
+                  Contact Us
+                </Button>
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

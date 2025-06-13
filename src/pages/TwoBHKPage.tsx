@@ -38,7 +38,6 @@ const TwoBHKPage = () => {
         "Air Conditioning (Hot & Cold)",
         "Laundry Service",
         "Complimentary Breakfast",
-
       ],
       recommendation:
         "Recommended for: Small families or groups seeking a comfortable, reliable apartment with clearly separated living and sleeping areas.",
@@ -57,7 +56,7 @@ const TwoBHKPage = () => {
         "Air Conditioning (Hot & Cold)",
         "Laundry Service",
         "Complimentary Breakfast",
-        "Access to Amenities"
+        "Access to Amenities",
       ],
       recommendation:
         "Recommended for: Families who want top-tier design, extra room to unwind, and a more luxurious living experience for longer stays.",
@@ -102,10 +101,10 @@ const TwoBHKPage = () => {
         size: "1600 sq ft",
         guests: 4,
         startingPrice: 15000,
-        VICTORIA:15000,
-        RENAISSANCE:25000,
-        description: 'Spacious 2BHK apartment',
-        amenities: []
+        VICTORIA: 15000,
+        RENAISSANCE: 25000,
+        description: "Spacious 2BHK apartment",
+        amenities: [],
       },
       roomCategory: {
         id: selectedSanctuary.toLowerCase(),
@@ -118,10 +117,11 @@ const TwoBHKPage = () => {
         size: "1600 sq ft",
         guests: 4,
         startingPrice: 15000,
-        VICTORIA:15000,
-        RENAISSANCE:25000,
-        amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
-        roomTypeId: '2bhk'
+        VICTORIA: 15000,
+        RENAISSANCE: 25000,
+        amenities:
+          collections.find((c) => c.name === selectedSanctuary)?.features || [],
+        roomTypeId: "2bhk",
       },
       nights: packageDetails?.nights || 1,
       isPackage: packageDetails?.isPackage || false,
@@ -155,10 +155,11 @@ const TwoBHKPage = () => {
       size: "1600 sq ft",
       guests: 4,
       startingPrice: 15000,
-      VICTORIA:15000,
-      RENAISSANCE:25000,
-      amenities: collections.find(c => c.name === selectedSanctuary)?.features || [],
-      roomTypeId: '2bhk'
+      VICTORIA: 15000,
+      RENAISSANCE: 25000,
+      amenities:
+        collections.find((c) => c.name === selectedSanctuary)?.features || [],
+      roomTypeId: "2bhk",
     };
 
     return (
@@ -375,7 +376,7 @@ const TwoBHKPage = () => {
                 <div className="w-6 h-6 bg-eden rounded-sm"><ShieldCheck color='#fff'  /></div>
               </div> */}
               <div className="w-full flex justify-center">
-              <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+                <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
               </div>
 
               <h3 className="text-lg font-serif font-semibold mb-3 text-stone-800">

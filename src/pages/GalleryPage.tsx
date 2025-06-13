@@ -62,6 +62,8 @@ const GalleryPage = () => {
   const [selectedVideo, setSelectedVideo] = useState("");
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [openSections, setOpenSections] = useState<string[]>(["exterior"]);
+  const [overlayDirection, setOverlayDirection] = useState(null);
+
   const galleryCategories: Record<string, GalleryCategoryType> = {
     exterior: {
       title: "Exterior",
@@ -551,6 +553,12 @@ const GalleryPage = () => {
         : [...prev, sectionId]
     );
   };
+
+  const showOverlay = (dir) => {
+    setOverlayDirection(dir);
+    setTimeout(() => setOverlayDirection(null), 150); // 150ms flash
+  };
+
   const renderImageGrid = (images: GalleryImage[]) => (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
       {images.map((image, index) => (
@@ -817,6 +825,64 @@ const GalleryPage = () => {
 
             {currentImages.length > 1 && (
               <>
+                {/* Left click area */}
+                <div
+                  className="absolute left-0 top-0 h-full w-1/2 z-40 cursor-pointer"
+                  onClick={() => {
+                    showOverlay("left");
+                    navigateImage("prev");
+                  }}
+                />
+
+                {/* Right click area */}
+                <div
+                  className="absolute right-0 top-0 h-full w-1/2 z-40 cursor-pointer"
+                  onClick={() => {
+                    showOverlay("right");
+                    navigateImage("next");
+                  }}
+                />
+
+                {/* Arrows */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20 rounded-full"
+                  onClick={() => {
+                    showOverlay("left");
+                    navigateImage("prev");
+                  }}
+                >
+                  <ChevronLeft className="h-8 w-8" />
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 text-white hover:bg-white/20 rounded-full"
+                  onClick={() => {
+                    showOverlay("right");
+                    navigateImage("next");
+                  }}
+                >
+                  <ChevronRight className="h-8 w-8" />
+                </Button>
+
+                {/* Overlay effect */}
+                {overlayDirection && (
+                  <div
+                    className={`absolute inset-0 z-30 ${
+                      overlayDirection === "left"
+                        ? "bg-black/10"
+                        : "bg-black/10"
+                    } animate-fade`}
+                  ></div>
+                )}
+              </>
+            )}
+
+            {/* {currentImages.length > 1 && (
+              <>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -835,7 +901,7 @@ const GalleryPage = () => {
                   <ChevronRight className="h-8 w-8" />
                 </Button>
               </>
-            )}
+            )} */}
 
             <img
               src={currentImages[selectedImageIndex]?.src}

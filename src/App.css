@@ -58,4 +58,17 @@
   color: #888;
 }
 
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-fade {
+  animation: fade 0.15s ease-out;
+}
+
 
