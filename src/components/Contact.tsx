@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -51,6 +51,7 @@ const ContactInfo: React.FC<{
 const Contact: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [Name, setName] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [Email, setEmail] = useState("");
   const [Message, setMessage] = useState("");
   const [phone, setPhone] = useState("");
@@ -59,6 +60,46 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!Name || !Email || !phone || !roomType || !duration) {
+      setErrorMsg("Please fill in all the required fields.");
+      return;
+    }
+    setErrorMsg("");
+
+    //   const { data, error } = await supabase
+    //     .from("Contact Us")
+    //     .insert([
+    //       {
+    //         name: Name,
+    //         email: Email,
+    //         message: Message,
+    //         phone: phone,
+    //         room_type: roomType,
+    //         duration: duration,
+    //       },
+    //     ])
+    //     .select();
+
+    //   if (error) {
+    //     alert(error.message);
+    //   } else {
+    //     console.log(data);
+    //     setIsSubmitted(true);
+    //     setName("");
+    //     setEmail("");
+    //     setMessage("");
+    //     setPhone("");
+    //     setRoomType("");
+    //     setDuration("");
+    //     window.open("/thank-you", "_blank");
+    //   }
+    //   // setTimeout(() => {
+
+    //   // }, 1000);
+    //   // Reset success message after 5 seconds
+    //   setTimeout(() => setIsSubmitted(false), 5000);
+    // };
 
     const { data, error } = await supabase
       .from("Contact Us")
@@ -75,9 +116,8 @@ const Contact: React.FC = () => {
       .select();
 
     if (error) {
-      alert(error.message);
+      setErrorMsg(error.message);
     } else {
-      console.log(data);
       setIsSubmitted(true);
       setName("");
       setEmail("");
@@ -87,12 +127,18 @@ const Contact: React.FC = () => {
       setDuration("");
       window.open("/thank-you", "_blank");
     }
-    // setTimeout(() => {
 
-    // }, 1000);
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setErrorMsg("");
+    }, 5000);
   };
+
+  useEffect(() => {
+    if (Email && roomType && duration && Name && phone) {
+      setErrorMsg("");
+    }
+  }, [Name, Email, phone, roomType, duration]);
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -137,6 +183,11 @@ const Contact: React.FC = () => {
                 onSubmit={handleSubmit}
                 className="ContactUsForm space-y-6 "
               >
+                {errorMsg && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-sm">
+                    {errorMsg}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="name">Full Name</Label>
