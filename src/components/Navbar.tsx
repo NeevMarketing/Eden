@@ -1,190 +1,384 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-const Navbar: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Phone, Mail } from "lucide-react";
+import "@/Styles/Contact.css";
+import { createClient } from "@supabase/supabase-js";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+const containerStyle = {
+  width: "400px",
+  height: "400px",
+};
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+const center = {
+  lat: 30.4022508,
+  lng: 78.069287,
+};
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+// Create a single supabase client for interacting with your database
+const supabase = createClient(
+  "https://pcrleaefqjoijrhydhis.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU"
+);
 
-  const scrollToSection = (sectionId: string) => {
-    let currentURL = window.location.href;
-    if (currentURL.includes("#") || currentURL.split("/")[3] == "") {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      window.location.href = window.location.origin + "/#" + sectionId;
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 1000);
-    }
-
-    // setTimeout(() => {
-
-    // }, 100);
-
-    setIsMobileMenuOpen(false);
-  };
-
+const ContactInfo: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  content: string | React.ReactNode;
+}> = ({ icon, title, content }) => {
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white py-3`}
-    >
-      <div className="container-custom flex items-center justify-between">
-        <a href="/" className="flex items-center">
-          {/* <span className="text-2xl font-serif font-semibold text-eden-dark">Eden</span>
-          <span className="text-md text-eden ml-1 font-light">Gracious Living</span> */}
-          <img
-            src="https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Eden-logo.png?updatedAt=1749536236249"
-            alt="logo"
-            className="w-20"
-          />
-        </a>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <a
-            href="/#about"
-            className="text-eden-text hover:text-eden transition-colors"
-          >
-            About
-          </a>
-          {/* <a href="/#choose-your-sanctuary" className="text-eden-text hover:text-eden transition-colors">Accommodations</a> */}
-          <button
-            onClick={() => scrollToSection("choose-your-sanctuary")}
-            className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
-          >
-            Accommodations
-          </button>
-          <a
-            href="/#amenities"
-            className="text-eden-text hover:text-eden transition-colors"
-          >
-            Amenities
-          </a>
-          {/* <a href="/#faq" className="text-eden-text hover:text-eden transition-colors">FAQs</a> */}
-          <button
-            onClick={() => scrollToSection("faq")}
-            className="text-eden-text hover:text-eden transition-colors bg-transparent border-none cursor-pointer"
-          >
-            FAQs
-          </button>
-          <a
-            href="/gallery"
-            className="text-eden-text hover:text-eden transition-colors"
-          >
-            Gallery
-          </a>
-          <a href="/#contact">
-            <Button
-              variant="outline"
-              className="border-eden text-eden hover:bg-eden hover:text-white"
-            >
-              Contact Us
-            </Button>
-          </a>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-eden-dark duration-300"
-          onClick={toggleMobileMenu}
-          aria-label="Open Menu"
-        >
-          <motion.div
-            key={isMobileMenuOpen ? "close" : "menu"}
-            initial={{ rotate: -90, opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            exit={{ rotate: 90, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.div>
-        </button>
+    <div className="flex items-start">
+      <div className="text-eden mr-4">{icon}</div>
+      <div>
+        <h4 className="font-medium text-eden-dark">{title}</h4>
+        <div className="text-eden-text">{content}</div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4 z-50"
-          >
-            <div className="container-custom flex flex-col space-y-4">
-              <a
-                href="/#about"
-                className="text-eden-text hover:text-eden py-2 px-4"
-                onClick={toggleMobileMenu}
-              >
-                About
-              </a>
-              <button
-                onClick={() => scrollToSection("choose-your-sanctuary")}
-                className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
-              >
-                Accommodations
-              </button>
-              <a
-                href="/#amenities"
-                className="text-eden-text hover:text-eden py-2 px-4"
-                onClick={toggleMobileMenu}
-              >
-                Amenities
-              </a>
-              <button
-                onClick={() => scrollToSection("faq")}
-                className="text-eden-text hover:text-eden py-2 px-4 text-left bg-transparent border-none cursor-pointer"
-              >
-                FAQs
-              </button>
-              <a
-                href="/gallery"
-                className="text-eden-text hover:text-eden py-2 px-4"
-                onClick={toggleMobileMenu}
-              >
-                Gallery
-              </a>
-              <a
-                href="/#contact"
-                className="py-2 px-4"
-                onClick={toggleMobileMenu}
-              >
-                <Button className="bg-eden text-white w-full">
-                  Contact Us
-                </Button>
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+const Contact: React.FC = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [Name, setName] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Message, setMessage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [roomType, setRoomType] = useState("");
+  const [duration, setDuration] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!Name || !Email || !Message || !phone || !roomType || !duration) {
+      setErrorMsg("Please fill in all the required fields.");
+      return;
+    }
+    setErrorMsg("");
+
+    //   const { data, error } = await supabase
+    //     .from("Contact Us")
+    //     .insert([
+    //       {
+    //         name: Name,
+    //         email: Email,
+    //         message: Message,
+    //         phone: phone,
+    //         room_type: roomType,
+    //         duration: duration,
+    //       },
+    //     ])
+    //     .select();
+
+    //   if (error) {
+    //     alert(error.message);
+    //   } else {
+    //     console.log(data);
+    //     setIsSubmitted(true);
+    //     setName("");
+    //     setEmail("");
+    //     setMessage("");
+    //     setPhone("");
+    //     setRoomType("");
+    //     setDuration("");
+    //     window.open("/thank-you", "_blank");
+    //   }
+    //   // setTimeout(() => {
+
+    //   // }, 1000);
+    //   // Reset success message after 5 seconds
+    //   setTimeout(() => setIsSubmitted(false), 5000);
+    // };
+
+    const { data, error } = await supabase
+      .from("Contact Us")
+      .insert([
+        {
+          name: Name,
+          email: Email,
+          message: Message,
+          phone: phone,
+          room_type: roomType,
+          duration: duration,
+        },
+      ])
+      .select();
+
+    if (error) {
+      setErrorMsg(error.message);
+    } else {
+      setIsSubmitted(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+      setPhone("");
+      setRoomType("");
+      setDuration("");
+      window.open("/thank-you", "_blank");
+    }
+
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setErrorMsg("");
+    }, 5000);
+  };
+
+  useEffect(() => {
+    if (Name && Email && phone && roomType && duration) {
+      setErrorMsg("");
+    }
+  }, [Name, Email, phone, roomType, duration]);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: "AIzaSyA88wFERvzQy58u2VisFUP2ddNXxKj_wP0",
+  });
+
+  const [map, setMap] = React.useState(null);
+
+  const onLoad = React.useCallback(function callback(map) {
+    // This is just an example of getting and using the map instance!!! don't just blindly copy!
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map);
+  }, []);
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
+  return (
+    <section id="contact" className="section-padding bg-eden-beige/30">
+      <div className="container-custom">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
+            Contact Us
+          </h2>
+          <div className="w-20 h-1 bg-eden mx-auto mb-6"></div>
+          <p className="text-eden-text">
+            Have questions or ready to explore Eden? We'd love to hear from you
+            and help plan your stay.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <Card className="border-eden-light/50 shadow-sm">
+            <CardContent className="p-6">
+              <h3 className="text-2xl font-serif text-eden-dark mb-6">
+                Enquiry Form
+              </h3>
+              <form
+                onSubmit={handleSubmit}
+                className="ContactUsForm space-y-6 "
+              >
+                {errorMsg && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-sm">
+                    {errorMsg}
+                  </div>
+                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input
+                      id="name"
+                      value={Name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      value={Email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      type="email"
+                      placeholder="Your email"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone</Label>
+                    <Input
+                      id="phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Your phone number"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="room-type">Preferred Room Type</Label>
+                    <Select value={roomType} onValueChange={setRoomType}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select room type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="studio">Studio Apartment</SelectItem>
+                        <SelectItem value="1bhk">1BHK Apartment</SelectItem>
+                        <SelectItem value="2bhk">2BHK Apartment</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="duration">Preferred Duration</Label>
+                    <Select value={duration} onValueChange={setDuration}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select duration" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="1week">1 Week</SelectItem>
+                        <SelectItem value="2weeks">2 Weeks</SelectItem>
+                        <SelectItem value="3weeks">3 Weeks</SelectItem>
+                        <SelectItem value="4weeks">4 Weeks</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
+                    value={Message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Your message or specific requirements"
+                    rows={4}
+                  />
+                </div>
+
+                <Button type="submit" className="btn-primary w-full">
+                  Send Enquiry
+                </Button>
+
+                <div
+                  className={
+                    isSubmitted
+                      ? "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg active"
+                      : "mt-4 p-4 bg-green-50 border border-green-200 rounded-lg inactive"
+                  }
+                >
+                  <p className="text-green-800 font-medium text-center">
+                    Thank You for contacting Eden, We will reach out to you
+                    shortly.
+                  </p>
+                </div>
+              </form>
+            </CardContent>
+          </Card>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-serif text-eden-dark mb-6">
+                Get in Touch
+              </h3>
+              <div className="space-y-6">
+                <ContactInfo
+                  icon={<MapPin />}
+                  title="Location"
+                  content={
+                    <address className="not-italic">
+                      Khasra 39 & 40, Near Vaibhav Farms,
+                      <br />
+                      Purkul Road, Bhagwantpur,
+                      <br />
+                      Dehradun 248 009, Uttarakhand, India
+                    </address>
+                  }
+                />
+
+                <ContactInfo
+                  icon={<Phone />}
+                  title="Phone"
+                  content={
+                    <a href="tel:+917533909333" className="hover:text-eden">
+                      +91-7533909333
+                    </a>
+                  }
+                />
+
+                <ContactInfo
+                  icon={<Mail />}
+                  title="Email"
+                  content={
+                    <div className="space-y-1">
+                      <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=info@edenseniors.com"
+                        target="_blank"
+                        className="hover:text-eden block"
+                      >
+                        info@edenseniors.com
+                      </a>
+                      <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=sales@edenseniors.com"
+                        target="_blank"
+                        className="hover:text-eden block"
+                      >
+                        sales@edenseniors.com
+                      </a>
+                    </div>
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-lg h-80 shadow-md">
+              {/* This is a placeholder for a map. In a real implementation, you would use Google Maps or similar */}
+              <div className="w-full h-full bg-eden-light/50 flex items-center justify-center">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3444.973118789161!2d78.0668453!3d30.4022508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3908d781c32e1e33%3A0xc44581aeff8d738a!2sEden%20-%20Senior%20Living%20%26%20Wellness!5e0!3m2!1sen!2sin!4v1718088888888"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, borderRadius: "5px" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+
+                {/* <div className="text-center p-6">
+                  <MapPin className="mx-auto mb-4 text-eden" size={32} />
+                  <h4 className="text-xl font-serif text-eden-dark mb-1">
+                    Eden Wellness & Hospitality
+                  </h4>
+                  <p className="text-eden-text">Dehradun, Uttarakhand</p>
+                </div> */}
+                {/* {isLoaded ? (
+                  <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={15}
+                    onLoad={onLoad}
+                    onUnmount={onUnmount}
+                  />
+                ) : (
+                  <div className="flex justify-center items-center h-full text-eden-dark">
+                    Loading map...
+                  </div>
+                )} */}
+                <div className="overflow-hidden rounded-lg h-80 shadow-md"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
