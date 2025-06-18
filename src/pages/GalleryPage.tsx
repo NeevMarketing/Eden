@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import RoomTypeSelector from "@/components/accommodations/RoomSelector";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -663,7 +664,7 @@ const GalleryPage = () => {
             </p>
           </div>
 
-          <div className="space-y-6 mb-16">
+          <div className="space-y-6 mb-5">
             {/* Regular Categories - ordered with miscellaneous at the end */}
             {Object.entries(galleryCategories)
               .filter(([key]) => !["amenities", "videos"].includes(key))
@@ -906,7 +907,7 @@ const GalleryPage = () => {
             <img
               src={currentImages[selectedImageIndex]?.src}
               alt={currentImages[selectedImageIndex]?.alt}
-              className="w-full h-[80vh] object-contain"
+              className="w-full h-[80vh] object-cover"
             />
 
             {currentImages.length > 1 && (
@@ -933,6 +934,11 @@ const GalleryPage = () => {
           </div>
         </DialogContent>
       </Dialog>
+      <div style={{ marginTop: "-100px", marginBottom: "100px" }}>
+        <RoomTypeSelector
+          onSelect={(room) => console.log("Selected Room:", room)}
+        />
+      </div>
 
       <Footer />
     </div>
