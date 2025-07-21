@@ -14,6 +14,7 @@ import CancellationPolicyPage from "./pages/CancellationPolicyPage";
 import NotFound from "./pages/NotFound";
 import RoomTypeSelector from "./components/accommodations/RoomSelector";
 import BookingSummaryPage from "./pages/BookingSummaryPage";
+import BookNowPage from "./pages/BookNowPage";
 
 const queryClient = new QueryClient();
 

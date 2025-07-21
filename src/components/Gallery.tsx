@@ -117,7 +117,7 @@ const Gallery: React.FC = () => {
           ))}
         </Carousel>
 
-        <div className="text-center">
+        <div className="text-center mt-6">
           <Button
             onClick={handleExploreGallery}
             className="bg-eden hover:bg-emerald-700 text-white px-8 py-3 rounded-xl text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 md:mt-8"

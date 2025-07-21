@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
-import { BookingDetails, InquiryForm as InquiryFormType } from '@/types/accommodation';
-import SanctuarySelectionCard from './SanctuarySelectionCard';
-import InquiryForm from './InquiryForm';
-import { useBookingCalculations } from '@/hooks/useBookingCalculations';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+import {
+  BookingDetails,
+  InquiryForm as InquiryFormType,
+} from "@/types/accommodation";
+import SanctuarySelectionCard from "./SanctuarySelectionCard";
+import InquiryForm from "./InquiryForm";
+import { useBookingCalculations } from "@/hooks/useBookingCalculations";
+import { useNavigate } from "react-router-dom";
+
 interface InquiryFormComponentProps {
   bookingDetails: BookingDetails;
   onSubmit: (formData: InquiryFormType) => void;
@@ -13,35 +18,44 @@ interface InquiryFormComponentProps {
 const InquiryFormComponent = ({
   bookingDetails,
   onSubmit,
-  onBack
+  onBack,
 }: InquiryFormComponentProps) => {
   const [formData, setFormData] = useState<InquiryFormType>({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    email: "",
+    phone: "",
     numberOfGuests: 1,
     preferredCheckIn: undefined,
-    specialRequests: '',
-    emergencyContact: '',
-    medicalConditions: ''
+    specialRequests: "",
+    emergencyContact: "",
+    medicalConditions: "",
   });
-  const {
-    displayNights,
-    totalPrice
-  } = useBookingCalculations(bookingDetails);
+  const { displayNights, totalPrice } = useBookingCalculations(bookingDetails);
+
+  const navigate = useNavigate();
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
+    navigate("/thank-you");
   };
-  const handleInputChange = (field: keyof InquiryFormType, value: string | Date | number) => {
-    setFormData(prev => ({
+  const handleInputChange = (
+    field: keyof InquiryFormType,
+    value: string | Date | number
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
-  return <div className="max-w-6xl mx-auto px-4 py-8" id='book-now'>
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-8" id="book-now">
       <div className="mb-8">
-        <Button variant="outline" onClick={onBack} className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3">
+        <Button
+          variant="outline"
+          onClick={onBack}
+          className="border-stone-300 text-stone-600 hover:bg-stone-50 rounded-xl px-6 py-3"
+        >
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back to Stay Options
         </Button>
@@ -52,10 +66,21 @@ const InquiryFormComponent = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <SanctuarySelectionCard bookingDetails={bookingDetails} displayNights={displayNights} totalPrice={totalPrice} selectedGuests={formData.numberOfGuests} />
-        
-        <InquiryForm bookingDetails={bookingDetails} formData={formData} onInputChange={handleInputChange} onSubmit={handleSubmit} />
+        <SanctuarySelectionCard
+          bookingDetails={bookingDetails}
+          displayNights={displayNights}
+          totalPrice={totalPrice}
+          selectedGuests={formData.numberOfGuests}
+        />
+
+        <InquiryForm
+          bookingDetails={bookingDetails}
+          formData={formData}
+          onInputChange={handleInputChange}
+          onSubmit={handleSubmit}
+        />
       </div>
-    </div>;
+    </div>
+  );
 };
 export default InquiryFormComponent;

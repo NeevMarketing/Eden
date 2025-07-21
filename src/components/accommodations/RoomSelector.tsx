@@ -131,7 +131,7 @@ const RoomTypeSelector = () => {
                     className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
                     onClick={() => handleKnowMore(roomType)}
                   >
-                    Know More
+                    Book Now
                   </Button>
                 </div>
               </CardContent>
