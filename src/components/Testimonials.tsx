@@ -73,7 +73,7 @@ const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/google-reviews")
+    fetch("https://edenbackend-be8s.onrender.com/api/google-reviews")
       .then((res) => res.json())
       .then((data) => setTestimonials(data.reviews || []));
   }, []);
