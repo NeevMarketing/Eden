@@ -1,66 +1,105 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Leaf } from "lucide-react";
 import { RoomType } from "@/types/accommodation";
 import { roomTypes } from "../../data/packageData";
 import { updatedRoomData } from "../../data/roomData";
-import '@/Styles/Contact.css'
+import { useNavigate } from "react-router-dom";
+import "@/Styles/Contact.css";
 
 interface RoomTypeSelectorProps {
   onSelect: (roomType: RoomType) => void;
 }
-const RoomTypeSelector = ({
-  onSelect
-}: RoomTypeSelectorProps) => {
-  // Filter out 3BHK option
-  const availableRoomTypes = roomTypes.filter(room => room.id !== '3bhk');
-  const handleKnowMore = (roomType: RoomType) => {
-    // Open in new tab based on room type
-    let url = '';
-    switch (roomType.name.toLowerCase()) {
-      case 'studio apartment':
-        url = '/studio';
-        break;
-      case '1 bhk apartment':
-        url = '/1bhk';
-        break;
-      case '2 bhk apartment':
-        url = '/2bhk';
-        break;
-      default:
-        url = '/';
-    }
-    window.open(url, '_blank');
+// const RoomTypeSelector = ({
+//   onSelect
+// }: RoomTypeSelectorProps) => {
+//   // Filter out 3BHK option
+//   const availableRoomTypes = roomTypes.filter(room => room.id !== '3bhk');
+//   const handleKnowMore = (roomType: RoomType) => {
+//     // Open in new tab based on room type
+//     let url = '';
+//     switch (roomType.name.toLowerCase()) {
+//       case 'studio apartment':
+//         url = '/studio';
+//         break;
+//       case '1 bhk apartment':
+//         url = '/1bhk';
+//         break;
+//       case '2 bhk apartment':
+//         url = '/2bhk';
+//         break;
+//       default:
+//         url = '/';
+//     }
+//     window.open(url, '_blank');
+//   };
+
+const RoomTypeSelector = () => {
+  const navigate = useNavigate();
+  const availableRoomTypes = roomTypes.filter((room) => room.id !== "3bhk");
+
+  const handleKnowMore = (roomType) => {
+    navigate(`/booking-summary/${roomType.id}`);
   };
-  const getRoomData = (roomId: string) => {
-    return updatedRoomData[roomId as keyof typeof updatedRoomData] || {
-      size: roomTypes.find(r => r.id === roomId)?.size || "",
-      guests: `${roomTypes.find(r => r.id === roomId)?.guests || 1} guests`,
-      maxGuests: roomTypes.find(r => r.id === roomId)?.guests || 1
-    };
+
+  const getRoomData = (roomId) => {
+    return (
+      updatedRoomData[roomId] || {
+        size: roomTypes.find((r) => r.id === roomId)?.size || "",
+        guests: `${roomTypes.find((r) => r.id === roomId)?.guests || 1} guests`,
+        maxGuests: roomTypes.find((r) => r.id === roomId)?.guests || 1,
+      }
+    );
   };
-  return <div className="space-y-12 pt-24" >
+
+  // const getRoomData = (roomId: string) => {
+  //   return updatedRoomData[roomId as keyof typeof updatedRoomData] || {
+  //     size: roomTypes.find(r => r.id === roomId)?.size || "",
+  //     guests: `${roomTypes.find(r => r.id === roomId)?.guests || 1} guests`,
+  //     maxGuests: roomTypes.find(r => r.id === roomId)?.guests || 1
+  //   };
+  // };
+  return (
+    <div className="space-y-12 pt-24" id="pick-your-apartment">
       <div className="text-center">
         <div className=" customflex  mb-6">
           <Leaf className="w-8 h-8 text-eden mr-3" />
-          <h2 className="font-serif font-bold text-stone-800 text-5xl">Pick Your Apartment</h2>
+          <h2 className="font-serif font-bold text-stone-800 text-5xl">
+            Pick Your Apartment
+          </h2>
         </div>
-        <p className="text-stone-600 text-lg font-light">Browse our studio, 1BHK, and 2BHK Apartments to match your needs</p>
+        <p className="text-stone-600 text-lg font-light">
+          Browse our studio, 1BHK, and 2BHK Apartments to match your needs
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {availableRoomTypes.map(roomType => {
-        const roomData = getRoomData(roomType.id);
-        return <Card key={roomType.id} className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full">
+        {availableRoomTypes.map((roomType) => {
+          const roomData = getRoomData(roomType.id);
+          return (
+            <Card
+              key={roomType.id}
+              className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full"
+            >
               <div className="relative overflow-hidden">
-                <img src={roomType.image} alt={roomType.name} className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img
+                  src={roomType.image}
+                  alt={roomType.name}
+                  className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <Badge className="absolute top-6 left-6 bg-white/90 text-stone-700 hover:bg-white border-0 px-4 py-2 text-sm font-medium backdrop-blur-sm">
                   {roomData.size}
                 </Badge>
               </div>
-              
+
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-serif font-bold text-stone-800">
                   {roomType.name}
@@ -69,7 +108,7 @@ const RoomTypeSelector = ({
                   {roomType.description}
                 </CardDescription>
               </CardHeader>
-              
+
               <CardContent className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2 text-stone-600">
@@ -77,23 +116,30 @@ const RoomTypeSelector = ({
                     <span className="font-medium">{roomData.guests}</span>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm text-stone-500 font-medium">Starting from</p>
+                    <p className="text-sm text-stone-500 font-medium">
+                      Starting from
+                    </p>
                     <p className="text-3xl font-serif font-bold text-emerald-700">
                       ₹{roomType.startingPrice.toLocaleString()}
                     </p>
                     <p className="text-sm text-stone-500">per night</p>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-center">
-                  <Button className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl" onClick={() => handleKnowMore(roomType)}>
+                  <Button
+                    className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
+                    onClick={() => handleKnowMore(roomType)}
+                  >
                     Know More
                   </Button>
                 </div>
               </CardContent>
-            </Card>;
-      })}
+            </Card>
+          );
+        })}
       </div>
-    </div>;
+    </div>
+  );
 };
 export default RoomTypeSelector;

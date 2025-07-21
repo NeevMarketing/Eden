@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Image } from "lucide-react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import "../Styles/Global.css";
 
 const Gallery: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const galleryImages = [
     {
@@ -44,9 +47,9 @@ const Gallery: React.FC = () => {
     },
   ];
 
-  const openLightbox = (imageSrc: string) => {
-    setSelectedImage(imageSrc);
-    setIsOpen(true);
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
   };
 
   const handleExploreGallery = () => {
@@ -55,7 +58,6 @@ const Gallery: React.FC = () => {
 
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -72,7 +74,6 @@ const Gallery: React.FC = () => {
       items: 1,
     },
   };
-
   return (
     <section id="gallery" className="section-padding">
       <div className="container-custom">
@@ -91,19 +92,21 @@ const Gallery: React.FC = () => {
           autoPlay
           infinite
           autoPlaySpeed={2000}
-          arrows={false}
-          //  showDots
+          arrows
+          showDots={false}
+          itemClass="px-2"
         >
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="relative aspect-square overflow-hidden rounded-lg cursor-pointer group p-8"
-              onClick={() => openLightbox(image.src)}
+              className="relative aspect-[4/3] md:aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group p-4"
+              onClick={() => openLightbox(index)}
             >
               <img
                 src={image.src}
                 alt={image.alt}
-                className=" rounded-xl w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className="rounded-xl w-full h-full transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-eden-dark/0 group-hover:bg-eden-dark/30 transition-all duration-300 flex items-center justify-center">
                 <div className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -124,15 +127,25 @@ const Gallery: React.FC = () => {
         </div>
       </div>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden">
-          <img
-            src={selectedImage}
-            alt="Gallery image"
-            className="w-full h-full object-contain"
-          />
-        </DialogContent>
-      </Dialog>
+      {/* Lightbox with swipe and arrows */}
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={galleryImages.map((img) => ({
+          src: img.src,
+          alt: img.alt,
+        }))}
+        index={lightboxIndex}
+        on={{
+          view: ({ index }) => setLightboxIndex(index),
+        }}
+        // All controls (arrows, swipe, close) are built-in and mobile friendly!
+        styles={{
+          container: { backgroundColor: "rgba(0,0,0,0.83)" },
+          navigationPrev: { color: "#fff" },
+          navigationNext: { color: "#fff" },
+        }}
+      />
     </section>
   );
 };

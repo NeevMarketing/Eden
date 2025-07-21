@@ -651,7 +651,7 @@ const GalleryPage = () => {
         </div>
       </section>
 
-      <main className="section-padding">
+      <main className="section-padding" id="gallery">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif font-semibold mb-4 text-eden-dark">
