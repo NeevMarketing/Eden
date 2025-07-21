@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import GoogleLogo from "../images/Google__G__logo.svg.png";
 
 interface GoogleReview {
   author_name: string;
@@ -19,11 +20,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ review }) => {
       <CardContent className="flex flex-col h-full justify-between p-6">
         {/* Top: Google logo */}
         <div className="flex flex-col items-center">
-          <img
-            src="/src/images/google-logo-icon-gsuite-hd-701751694791470gzbayltphh.png"
-            alt="Google"
-            className="w-10 h-10 mb-2"
-          />
+          <img src={GoogleLogo} alt="Google" className="w-10 h-10 mb-2" />
           {/* Star rating */}
           <div className="flex justify-center mb-2">
             <span className="text-yellow-500 text-lg">
@@ -50,14 +47,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ review }) => {
         {/* Bottom: User image and name */}
         <div className="flex items-center mt-4 justify-center">
           <img
-            src={
-              review.profile_photo_url || "/images/reviews/default-avatar.png"
-            }
+            src={review.profile_photo_url || "../images/user2-test.png"}
             alt={review.author_name}
             className="h-12 w-12 rounded-full object-cover border mr-3"
             onError={(e) => {
-              (e.target as HTMLImageElement).src =
-                "/images/reviews/default-avatar.png";
+              (e.target as HTMLImageElement).src = "../images/user2-test.png";
             }}
           />
           <span className="font-semibold text-eden-dark text-xs">
