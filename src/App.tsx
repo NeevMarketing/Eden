@@ -15,6 +15,8 @@ import NotFound from "./pages/NotFound";
 import RoomTypeSelector from "./components/accommodations/RoomSelector";
 import BookingSummaryPage from "./pages/BookingSummaryPage";
 import BookNowPage from "./pages/BookNowPage";
+import { RoomType } from "./types/accommodation";
+import BookSummary from "./pages/BookSummary";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/studio" element={<StudioPage />} />
           <Route path="/1bhk" element={<OneBHKPage />} />
           <Route path="/2bhk" element={<TwoBHKPage />} />
+          <Route path="/book-now" element={<BookNowPage />} />
+          <Route path="/book-summary" element={<BookSummary />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/thank-you" element={<ThankYouPage />} />
           <Route path="/terms-privacy" element={<TermsPrivacyPage />} />
@@ -36,7 +40,16 @@ const App = () => (
             path="/cancellation-policy"
             element={<CancellationPolicyPage />}
           />
-          <Route path="/" element={<RoomTypeSelector />} />
+          <Route
+            path="/"
+            element={
+              <RoomTypeSelector
+                onSelect={function (roomType: RoomType): void {
+                  throw new Error("Function not implemented.");
+                }}
+              />
+            }
+          />
           <Route
             path="/booking-summary/:roomId"
             element={<BookingSummaryPage />}

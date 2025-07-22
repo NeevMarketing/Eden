@@ -88,7 +88,7 @@ const TwoBHKPage = () => {
   };
 
   const handleBackToSanctuary = () => {
-    window.location.href = "/#accommodations";
+    window.location.href = "/#pick-your-apartment";
   };
 
   if (showForm) {

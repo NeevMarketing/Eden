@@ -1,133 +1,135 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle, MapPin, Users } from "lucide-react";
-import { BookingDetails } from "@/types/accommodation";
-import { updatedRoomData } from "../../src/data/roomData";
+import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+import { Badge, Leaf, Users } from "lucide-react";
+import { RoomType } from "@/types/accommodation";
+import { roomTypes } from "../data/packageData";
+import { updatedRoomData } from "../data/roomData";
 import { useNavigate } from "react-router-dom";
 
-const stayList = [
-  { text: "Room boarding with breakfast" },
-  { text: "Food vouchers: ₹6,000" },
-  { text: "Spa sessions: ₹6,000" },
-  { text: "8 Yoga sessions" },
-  { text: "Access to swimming pool" },
-  { text: "Access to movie theatre" },
-  { text: "Access to library" },
-  { text: "Access to pool table" },
-];
+import "@/Styles/Contact.css";
 
-interface SanctuarySelectionCardProps {
-  bookingDetails: any;
-  displayNights: number;
-  totalPrice: number;
-  selectedGuests?: number;
-}
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-const handleBack = () => {
-  // Go to home, then scroll to the section after navigation
-  window.location.href = "/#pick-your-apartment";
-};
-
-const SanctuarySelectionCard = ({ bookingDetails, formData, backSource }) => {
+function BookNowPage() {
   const navigate = useNavigate();
-  const { roomType, packageDetails } = bookingDetails;
-  const roomData = roomType ? updatedRoomData[roomType.id] || {} : {};
+  const availableRoomTypes = roomTypes.filter((room) => room.id !== "3bhk");
+  const getRoomData = (roomId) => {
+    return (
+      updatedRoomData[roomId] || {
+        size: roomTypes.find((r) => r.id === roomId)?.size || "",
+        guests: `${roomTypes.find((r) => r.id === roomId)?.guests || 1} guests`,
+        maxGuests: roomTypes.find((r) => r.id === roomId)?.guests || 1,
+      }
+    );
+  };
+  const handleBookNow = (roomType) => {
+    const room = roomType.name;
+    const price = roomType.startingPrice;
+    const size = updatedRoomData[roomType.id]?.size || roomType.size || "";
+    const guests = updatedRoomData[roomType.id]?.guests || roomType.guests || 1;
 
-  // Example: Save percent calculation (replace with your logic if needed)
-  const savePercent = 20;
+    // 👇 Add maxGuests separately
+    const maxGuests = roomType.name.toLowerCase().includes("studio") ? 2 : 3;
 
+    const queryParams = new URLSearchParams({
+      room,
+      price: price.toString(),
+      size,
+      guests: String(guests), // display as “1-2 guests” still if needed
+      maxGuests: String(maxGuests), // for form dropdown
+    });
+
+    navigate(`/book-summary?${queryParams.toString()}`);
+  };
   return (
     <>
-      {/* Back Button */}
-      <button
-        className="mb-6 flex items-center gap-2 text-stone-600 hover:text-emerald-700 text-base font-medium bg-white border border-stone-200 rounded-lg px-4 py-2 transition"
-        onClick={handleBack}
-        aria-label="Back to Apartment"
-      >
-        <svg
-          width="18"
-          height="18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-        Back to Apartment
-      </button>
+      <div>
+        <Navbar />
+        <div className="room-selector-container">
+          <div className="space-y-12 pt-24" id="pick-your-apartment">
+            <div className="text-center">
+              <div className=" customflex  mb-6">
+                <Leaf className="w-8 h-8 text-eden mr-3" />
+                <h2 className="font-serif font-bold text-stone-800 text-5xl">
+                  Pick Your Apartment
+                </h2>
+              </div>
+              <p className="text-stone-600 text-lg font-light">
+                Browse our studio, 1BHK, and 2BHK Apartments to match your needs
+              </p>
+            </div>
 
-      <div className="bg-white border-stone-200 rounded-lg p-6">
-        <h2 className="text-2xl font-serif font-bold mb-4 flex items-center gap-2 text-emerald-800">
-          <svg
-            width="22"
-            height="22"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M8 12l2 2 4-4" />
-          </svg>
-          Your Stay Summary
-        </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {availableRoomTypes.map((roomType) => {
+                const roomData = getRoomData(roomType.id);
+                return (
+                  <Card
+                    key={roomType.id}
+                    className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full"
+                  >
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={roomType.image}
+                        alt={roomType.name}
+                        className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                      <Badge className="absolute top-6 left-6 bg-white/90 text-stone-700 hover:bg-white border-0 px-4 py-2 text-sm font-medium backdrop-blur-sm">
+                        {roomData.size}
+                      </Badge>
+                    </div>
 
-        <div className="mb-4 bg-stone-50 rounded-lg p-4 border-primary border-l-4">
-          <div className="font-bold text-stone-700">Accommodation</div>
-          <div className="text-lg font-serif text-emerald-800">
-            {roomType?.name}
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-2xl font-serif font-bold text-stone-800">
+                        {roomType.name}
+                      </CardTitle>
+                      <CardDescription className="text-stone-600 text-base leading-relaxed font-light">
+                        {roomType.description}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="space-y-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2 text-stone-600">
+                          <Users className="w-5 h-5 text-eden" />
+                          <span className="font-medium">{roomData.guests}</span>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-sm text-stone-500 font-medium">
+                            Starting from
+                          </p>
+                          <p className="text-3xl font-serif font-bold text-emerald-700">
+                            ₹{roomType.startingPrice.toLocaleString()}
+                          </p>
+                          <p className="text-sm text-stone-500">per night</p>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-center">
+                        <Button
+                          className="w-full bg-eden hover:bg-emerald-700 text-white border-0 py-6 text-lg font-medium transition-all duration-300 rounded-xl"
+                          onClick={() => handleBookNow(roomType)}
+                        >
+                          Book Now
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
-          <div className="flex items-center gap-2 text-stone-600 mt-1">
-            <span>{roomData.size} sq ft</span>
-            <span>·</span>
-            <Users className="w-4 h-4" />
-            <span>
-              {formData.numberOfGuests} of {roomData.maxGuests} guests
-            </span>
-          </div>
-        </div>
-        {/* List and Save badge in one row */}
-        <div className="mb-3 sm:mb-4 flex sm:flex-row items-start gap-2 bg-stone-50 rounded-lg p-3 sm:p-4">
-          <ul className="pl-0 text-stone-700 text-xs sm:text-sm space-y-1 w-full sm:w-auto">
-            {stayList.map((item, idx) => (
-              <li key={idx} className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-600 min-w-[16px]" />
-                {item.text}
-              </li>
-            ))}
-          </ul>
-          <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 mt-1 whitespace-nowrap self-start">
-            Save {savePercent}%
-          </Badge>
-        </div>
-        <div className="mb-4 bg-stone-50 rounded-lg p-4">
-          <div className="font-semibold text-stone-700 mb-2">
-            Your Stay Includes
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Badge>Fully Furnished Apartment</Badge>
-            <Badge>Air Conditioning (Hot & Cold)</Badge>
-            <Badge>Fully Equipped Kitchen</Badge>
-            <Badge>Well-Appointed Bathroom</Badge>
-            <Badge>Complimentary Wi-Fi</Badge>
-            <Badge>Complimentary Breakfast</Badge>
-            <Badge>Access to Amenities</Badge>
-          </div>
-        </div>
-        <div className="bg-stone-50 rounded-lg p-4 border-primary border-l-4">
-          <div className="font-semibold text-stone-700 mb-1">
-            Estimated Cost
-          </div>
-          <div className="text-3xl font-serif font-bold text-emerald-700">
-            ₹{packageDetails.price.toLocaleString()}
-          </div>
-          <div className="text-xs text-stone-500 mt-1">*Excluding GST</div>
         </div>
       </div>
     </>
   );
-};
+}
 
-export default SanctuarySelectionCard;
+export default BookNowPage;
