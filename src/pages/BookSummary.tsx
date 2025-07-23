@@ -22,7 +22,6 @@ const supabase = createClient(
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU"
 );
 
-
 const stayList = [
   { text: "Room boarding with breakfast" },
   { text: "Food vouchers" },
@@ -72,17 +71,17 @@ const BookingSummaryPage = () => {
     console.log("📝 Booking Submission:", submission);
     //  Submit to Supabase
     const { data, error } = await supabase
-    .from("Leads")
-    .insert([submission])
-    .select();
+      .from("Leads")
+      .insert([submission])
+      .select();
 
-  if (error) {
-    console.error("Supabase error:", error.message);
-    alert("Error: " + error.message);
-  } else {
-    console.log("Supabase response:", data);
-    navigate("/thank-you");
-  }
+    if (error) {
+      console.error("Supabase error:", error.message);
+      alert("Error: " + error.message);
+    } else {
+      console.log("Supabase response:", data);
+      navigate("/thank-you");
+    }
   };
 
   return (
