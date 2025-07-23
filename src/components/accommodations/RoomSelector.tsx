@@ -25,6 +25,10 @@ const apartmentGalleries: Record<
   studio: {
     images: [
       {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/Cover-Color-Grade.jpg?updatedAt=1749652804837",
+        alt: "1BHK kitchen",
+      },
+      {
         src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1548-Color-Grade.jpg?updatedAt=1749652804815",
         alt: "Studio living area",
       },
@@ -221,8 +225,19 @@ const RoomTypeSelector = ({ onSelect }: RoomTypeSelectorProps) => {
                   alt={roomType.name}
                   className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-center justify-center">
-                  <Image className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-6 h-6" />
+                <div className="absolute inset-0 flex flex-col justify-between">
+                  <div className="flex items-center justify-center h-full">
+                    <Image className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-6 h-6" />
+                  </div>
+                  {/* Dots container */}
+                  <div className="pb-4 flex justify-center gap-2">
+                    {[1, 2, 3].map((_, index) => (
+                      <span
+                        key={index}
+                        className={`w-2 h-2 rounded-full bg-white/80 animate-bounce-dot-${index}`}
+                      />
+                    ))}
+                  </div>
                 </div>
                 <Badge className="absolute top-6 left-6 bg-white/90 text-stone-700 border-0 px-4 py-2 text-sm font-medium backdrop-blur-sm">
                   {roomData.size}

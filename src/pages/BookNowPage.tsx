@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { Badge, Leaf, Ruler, Users } from "lucide-react";
+import { Badge, Image, Leaf, Ruler, Users } from "lucide-react";
 import { RoomType } from "@/types/accommodation";
 import { roomTypes } from "../data/packageData";
 import { updatedRoomData } from "../data/roomData";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import { useNavigate } from "react-router-dom";
 
 import "@/Styles/Contact.css";
@@ -16,6 +18,96 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+const apartmentGalleries: Record<
+  string,
+  { images: { src: string; alt: string }[] }
+> = {
+  studio: {
+    images: [
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/Cover-Color-Grade.jpg?updatedAt=1749652804837",
+        alt: "1BHK kitchen",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1548-Color-Grade.jpg?updatedAt=1749652804815",
+        alt: "Studio living area",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1588-Color-Grade.jpg?updatedAt=1749652804799",
+        alt: "Studio bedroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1559-Color-Grade.jpg?updatedAt=1749652804567",
+        alt: "Studio bathroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/_DSC1583.jpg?updatedAt=1749652804323",
+        alt: "Studio kitchen",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/Studio%20Appartment/Screenshot-2025-06-06-170502-Color-Grade.jpg?updatedAt=1749652802781",
+        alt: "Studio balcony",
+      },
+    ],
+  },
+  onebhk: {
+    images: [
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6686-Color-Grade.jpg?updatedAt=1749653239184",
+        alt: "1BHK kitchen",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6684-Color-Grade.jpg?updatedAt=1749653239126",
+        alt: "1BHK balcony",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/Cover-1.1-Color-Grade.jpg?updatedAt=1749653239013",
+        alt: "1BHK bathroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/1BHK/_DSC6678-Color-Grade.jpg?updatedAt=1749653238641",
+        alt: "1BHK bathroom",
+      },
+    ],
+  },
+  twobhk: {
+    images: [
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1946%20Color%20Grade.jpg?updatedAt=1749653423612",
+        alt: "2BHK living room",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1949-Color-Grade.jpg?updatedAt=1749653418146",
+        alt: "2BHK master bedroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1962-Color-Grade.jpg?updatedAt=1749653417819",
+        alt: "2BHK kitchen",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1929-Color-Grade.jpg?updatedAt=1749653417734",
+        alt: "2BHK bathroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC1972-Color-Grade.jpg?updatedAt=1749653417708",
+        alt: "2BHK balcony",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/_DSC6637-Color-Grade.jpg?updatedAt=1749653417374",
+        alt: "2BHK master bathroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/006-Color-Grade.jpg?updatedAt=1749653417022",
+        alt: "2BHK master bathroom",
+      },
+      {
+        src: "https://ik.imagekit.io/sjuj0rpud/Eden%20Gallery/Gallery/2BHK/Cover---to-be-extracted-fom-the-video-cOLOR-GRADE.jpg?updatedAt=1749653416116",
+        alt: "2BHK master bathroom",
+      },
+    ],
+  },
+};
 
 function BookNowPage() {
   const navigate = useNavigate();
@@ -29,6 +121,13 @@ function BookNowPage() {
       }
     );
   };
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<
+    { src: string; alt: string }[]
+  >([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
   const handleBookNow = (roomType) => {
     const room = roomType.name;
     const price = roomType.startingPrice;
@@ -47,6 +146,17 @@ function BookNowPage() {
     });
 
     navigate(`/book-summary?${queryParams.toString()}`);
+  };
+
+  const getGalleryKey = (id: string) => {
+    switch (id.toLowerCase()) {
+      case "1bhk":
+        return "onebhk";
+      case "2bhk":
+        return "twobhk";
+      default:
+        return id.toLowerCase(); // "studio"
+    }
   };
 
   return (
@@ -70,18 +180,44 @@ function BookNowPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {availableRoomTypes.map((roomType) => {
                 const roomData = getRoomData(roomType.id);
-                console.log("ROOM ID", roomType.id, "SIZE", roomData.size);
+                const galleryKey = getGalleryKey(roomType.id);
+                const galleryImages =
+                  apartmentGalleries[galleryKey]?.images || [];
+
                 return (
                   <Card
                     key={roomType.id}
                     className="group hover:-translate-y-2 transition-all duration-700 border-0 bg-white/80 backdrop-blur-sm overflow-hidden max-w-sm mx-auto w-full"
                   >
-                    <div className="relative overflow-hidden">
+                    <div
+                      className="relative overflow-hidden cursor-pointer group"
+                      onClick={() => {
+                        const galleryImages =
+                          apartmentGalleries[galleryKey]?.images || [];
+                        setLightboxImages(galleryImages);
+                        setLightboxIndex(0);
+                        setLightboxOpen(true);
+                      }}
+                    >
                       <img
                         src={roomType.image}
                         alt={roomType.name}
                         className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700"
                       />
+                      <div className="absolute inset-0 flex flex-col justify-between">
+                        <div className="flex items-center justify-center h-full">
+                          <Image className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-6 h-6" />
+                        </div>
+                        {/* Dots container */}
+                        <div className="pb-4 flex justify-center gap-2">
+                          {[1, 2, 3].map((_, index) => (
+                            <span
+                              key={index}
+                              className={`w-2 h-2 rounded-full bg-white/80 animate-bounce-dot-${index}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
                       <div className="absolute top-6 right-6 bg-black/50 text-white text-xs md:text-sm px-3 py-1 rounded-md font-medium shadow-lg backdrop-blur-sm">
                         <div className="flex items-center space-x-1">
                           <Ruler className="w-4 h-4 text-eden-dark" />
@@ -129,6 +265,20 @@ function BookNowPage() {
                 );
               })}
             </div>
+            <Lightbox
+              open={lightboxOpen}
+              close={() => setLightboxOpen(false)}
+              slides={lightboxImages}
+              index={lightboxIndex}
+              on={{
+                view: ({ index }) => setLightboxIndex(index),
+              }}
+              styles={{
+                container: { backgroundColor: "rgba(0, 0, 0, 0.85)" },
+                navigationPrev: { color: "#fff" },
+                navigationNext: { color: "#fff" },
+              }}
+            />
           </div>
         </div>
       </div>
