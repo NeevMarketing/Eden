@@ -73,8 +73,6 @@ const BookingSummaryPage = () => {
       room_description: bookingDetails.roomCategory?.name,
       special_request: formData.specialRequests,
     };
-    console.log("Jsondata");
-    console.log(Jsondata);
 
     const { data, error } = await supabase
       .from("Leads")
