@@ -27,6 +27,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { max } from "date-fns";
 
 const apartmentGalleries: Record<
   string,
@@ -144,7 +145,15 @@ function BookNowPage() {
     const guests = updatedRoomData[roomType.id]?.guests || roomType.guests || 1;
 
     // 👇 Add maxGuests separately
-    const maxGuests = roomType.name.toLowerCase().includes("studio") ? 2 : 3;
+    var maxGuests :number =0
+    if(roomType.name.toLowerCase().includes("studio")){
+      // ? 2 : 3
+      maxGuests = 2
+    }else if(roomType.name.toLowerCase().includes("1 bhk")){
+      maxGuests = 3
+    }else {
+      maxGuests = 4
+    }
 
     const queryParams = new URLSearchParams({
       room,
