@@ -138,7 +138,7 @@ function BookNowPage() {
   >([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const handleBookNow = (roomType) => {
+  const handleBookNow = (roomType:any) => {
     const room = roomType.name;
     const price = roomType.startingPrice;
     const size = updatedRoomData[roomType.id]?.size || roomType.size || "";

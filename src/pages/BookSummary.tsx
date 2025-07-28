@@ -13,10 +13,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { createClient } from "@supabase/supabase-js";
 
-// ✅ Initialize Supabase
+// Create a single supabase client for interacting with your database
 const supabase = createClient(
   "https://pcrleaefqjoijrhydhis.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBjcmxlYWVmcWpvaWpyaHlkaGlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyMTEyNzQsImV4cCI6MjA2NDc4NzI3NH0.YAU_W5cL1Y1xLJpoOCnQYGYdH4IFxwa-vOvku8l1_zU"
@@ -67,19 +66,31 @@ const BookingSummaryPage = () => {
       notes,
     };
 
+    const Jsondata: any = {
+      name: name,
+      email: email,
+      phone:phone,
+      number_of_guests: selectedGuests,
+      check_in: preferredDate?.toDateString(),
+      stay_package: "BookNow",
+      room_type: room,
+      room_description: size,
+      special_request: notes,
+    };
+
     // Log to console
     console.log("📝 Booking Submission:", submission);
     //  Submit to Supabase
+
     const { data, error } = await supabase
       .from("Leads")
-      .insert([submission])
+      .insert([Jsondata])
       .select();
 
     if (error) {
-      console.error("Supabase error:", error.message);
-      alert("Error: " + error.message);
+      alert(error.message);
     } else {
-      console.log("Supabase response:", data);
+      console.log(data);
       navigate("/thank-you");
     }
   };
