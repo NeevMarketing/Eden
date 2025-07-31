@@ -96,6 +96,7 @@ const BookingSummaryPage = () => {
           formData={formData}
         />
       </div>
+      <></>
       <div className="flex-1">
         <InquiryForm
           bookingDetails={bookingDetails}
